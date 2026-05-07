@@ -1,0 +1,13 @@
+# NotificationEventOrderBy
+
+Order by options for notification channels.
+
+## Enum
+
+* `ID` (value: `'id'`)
+
+* `CREATEDAT` (value: `'createdAt'`)
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

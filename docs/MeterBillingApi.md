@@ -1,32 +1,32 @@
-# moolabs.BillingApi
+# moolabs.MeterBillingApi
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**advance_invoice_action**](BillingApi.md#advance_invoice_action) | **POST** /api/v1/billing/invoices/{invoiceId}/advance | Advance the invoice&#39;s state to the next status
-[**approve_invoice_action**](BillingApi.md#approve_invoice_action) | **POST** /api/v1/billing/invoices/{invoiceId}/approve | Send the invoice to the customer
-[**create_billing_profile**](BillingApi.md#create_billing_profile) | **POST** /api/v1/billing/profiles | Create a new billing profile
-[**create_pending_invoice_line**](BillingApi.md#create_pending_invoice_line) | **POST** /api/v1/billing/customers/{customerId}/invoices/pending-lines | Create pending line items
-[**delete_billing_profile**](BillingApi.md#delete_billing_profile) | **DELETE** /api/v1/billing/profiles/{id} | Delete a billing profile
-[**delete_billing_profile_customer_override**](BillingApi.md#delete_billing_profile_customer_override) | **DELETE** /api/v1/billing/customers/{customerId} | Delete a customer override
-[**delete_invoice**](BillingApi.md#delete_invoice) | **DELETE** /api/v1/billing/invoices/{invoiceId} | Delete an invoice
-[**get_billing_profile**](BillingApi.md#get_billing_profile) | **GET** /api/v1/billing/profiles/{id} | Get a billing profile
-[**get_billing_profile_customer_override**](BillingApi.md#get_billing_profile_customer_override) | **GET** /api/v1/billing/customers/{customerId} | Get a customer override
-[**get_invoice**](BillingApi.md#get_invoice) | **GET** /api/v1/billing/invoices/{invoiceId} | Get an invoice
-[**invoice_pending_lines_action**](BillingApi.md#invoice_pending_lines_action) | **POST** /api/v1/billing/invoices/invoice | Invoice a customer based on the pending line items
-[**list_billing_profile_customer_overrides**](BillingApi.md#list_billing_profile_customer_overrides) | **GET** /api/v1/billing/customers | List customer overrides
-[**list_billing_profiles**](BillingApi.md#list_billing_profiles) | **GET** /api/v1/billing/profiles | List billing profiles
-[**list_invoices**](BillingApi.md#list_invoices) | **GET** /api/v1/billing/invoices | List invoices
-[**recalculate_invoice_tax_action**](BillingApi.md#recalculate_invoice_tax_action) | **POST** /api/v1/billing/invoices/{invoiceId}/taxes/recalculate | Recalculate an invoice&#39;s tax amounts
-[**retry_invoice_action**](BillingApi.md#retry_invoice_action) | **POST** /api/v1/billing/invoices/{invoiceId}/retry | Retry advancing the invoice after a failed attempt.
-[**simulate_invoice**](BillingApi.md#simulate_invoice) | **POST** /api/v1/billing/customers/{customerId}/invoices/simulate | Simulate an invoice for a customer
-[**snapshot_quantities_invoice_action**](BillingApi.md#snapshot_quantities_invoice_action) | **POST** /api/v1/billing/invoices/{invoiceId}/snapshot-quantities | Snapshot quantities for usage based line items
-[**update_billing_profile**](BillingApi.md#update_billing_profile) | **PUT** /api/v1/billing/profiles/{id} | Update a billing profile
-[**update_invoice**](BillingApi.md#update_invoice) | **PUT** /api/v1/billing/invoices/{invoiceId} | Update an invoice
-[**update_invoice_payment_status**](BillingApi.md#update_invoice_payment_status) | **POST** /api/v1/billing/invoices/{invoiceId}/payment-status | Update invoice payment status
-[**upsert_billing_profile_customer_override**](BillingApi.md#upsert_billing_profile_customer_override) | **PUT** /api/v1/billing/customers/{customerId} | Create a new or update a customer override
-[**void_invoice_action**](BillingApi.md#void_invoice_action) | **POST** /api/v1/billing/invoices/{invoiceId}/void | Void an invoice
+[**advance_invoice_action**](MeterBillingApi.md#advance_invoice_action) | **POST** /api/v1/billing/invoices/{invoiceId}/advance | Advance the invoice&#39;s state to the next status
+[**approve_invoice_action**](MeterBillingApi.md#approve_invoice_action) | **POST** /api/v1/billing/invoices/{invoiceId}/approve | Send the invoice to the customer
+[**create_billing_profile**](MeterBillingApi.md#create_billing_profile) | **POST** /api/v1/billing/profiles | Create a new billing profile
+[**create_pending_invoice_line**](MeterBillingApi.md#create_pending_invoice_line) | **POST** /api/v1/billing/customers/{customerId}/invoices/pending-lines | Create pending line items
+[**delete_billing_profile**](MeterBillingApi.md#delete_billing_profile) | **DELETE** /api/v1/billing/profiles/{id} | Delete a billing profile
+[**delete_billing_profile_customer_override**](MeterBillingApi.md#delete_billing_profile_customer_override) | **DELETE** /api/v1/billing/customers/{customerId} | Delete a customer override
+[**delete_invoice**](MeterBillingApi.md#delete_invoice) | **DELETE** /api/v1/billing/invoices/{invoiceId} | Delete an invoice
+[**get_billing_profile**](MeterBillingApi.md#get_billing_profile) | **GET** /api/v1/billing/profiles/{id} | Get a billing profile
+[**get_billing_profile_customer_override**](MeterBillingApi.md#get_billing_profile_customer_override) | **GET** /api/v1/billing/customers/{customerId} | Get a customer override
+[**get_invoice**](MeterBillingApi.md#get_invoice) | **GET** /api/v1/billing/invoices/{invoiceId} | Get an invoice
+[**invoice_pending_lines_action**](MeterBillingApi.md#invoice_pending_lines_action) | **POST** /api/v1/billing/invoices/invoice | Invoice a customer based on the pending line items
+[**list_billing_profile_customer_overrides**](MeterBillingApi.md#list_billing_profile_customer_overrides) | **GET** /api/v1/billing/customers | List customer overrides
+[**list_billing_profiles**](MeterBillingApi.md#list_billing_profiles) | **GET** /api/v1/billing/profiles | List billing profiles
+[**list_invoices**](MeterBillingApi.md#list_invoices) | **GET** /api/v1/billing/invoices | List invoices
+[**recalculate_invoice_tax_action**](MeterBillingApi.md#recalculate_invoice_tax_action) | **POST** /api/v1/billing/invoices/{invoiceId}/taxes/recalculate | Recalculate an invoice&#39;s tax amounts
+[**retry_invoice_action**](MeterBillingApi.md#retry_invoice_action) | **POST** /api/v1/billing/invoices/{invoiceId}/retry | Retry advancing the invoice after a failed attempt.
+[**simulate_invoice**](MeterBillingApi.md#simulate_invoice) | **POST** /api/v1/billing/customers/{customerId}/invoices/simulate | Simulate an invoice for a customer
+[**snapshot_quantities_invoice_action**](MeterBillingApi.md#snapshot_quantities_invoice_action) | **POST** /api/v1/billing/invoices/{invoiceId}/snapshot-quantities | Snapshot quantities for usage based line items
+[**update_billing_profile**](MeterBillingApi.md#update_billing_profile) | **PUT** /api/v1/billing/profiles/{id} | Update a billing profile
+[**update_invoice**](MeterBillingApi.md#update_invoice) | **PUT** /api/v1/billing/invoices/{invoiceId} | Update an invoice
+[**update_invoice_payment_status**](MeterBillingApi.md#update_invoice_payment_status) | **POST** /api/v1/billing/invoices/{invoiceId}/payment-status | Update invoice payment status
+[**upsert_billing_profile_customer_override**](MeterBillingApi.md#upsert_billing_profile_customer_override) | **PUT** /api/v1/billing/customers/{customerId} | Create a new or update a customer override
+[**void_invoice_action**](MeterBillingApi.md#void_invoice_action) | **POST** /api/v1/billing/invoices/{invoiceId}/void | Void an invoice
 
 
 # **advance_invoice_action**
@@ -55,16 +55,16 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     invoice_id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
 
     try:
         # Advance the invoice's state to the next status
         api_response = api_instance.advance_invoice_action(invoice_id)
-        print("The response of BillingApi->advance_invoice_action:\n")
+        print("The response of MeterBillingApi->advance_invoice_action:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->advance_invoice_action: %s\n" % e)
+        print("Exception when calling MeterBillingApi->advance_invoice_action: %s\n" % e)
 ```
 
 
@@ -131,16 +131,16 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     invoice_id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
 
     try:
         # Send the invoice to the customer
         api_response = api_instance.approve_invoice_action(invoice_id)
-        print("The response of BillingApi->approve_invoice_action:\n")
+        print("The response of MeterBillingApi->approve_invoice_action:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->approve_invoice_action: %s\n" % e)
+        print("Exception when calling MeterBillingApi->approve_invoice_action: %s\n" % e)
 ```
 
 
@@ -208,16 +208,16 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     billing_profile_create = moolabs.BillingProfileCreate() # BillingProfileCreate | 
 
     try:
         # Create a new billing profile
         api_response = api_instance.create_billing_profile(billing_profile_create)
-        print("The response of BillingApi->create_billing_profile:\n")
+        print("The response of MeterBillingApi->create_billing_profile:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->create_billing_profile: %s\n" % e)
+        print("Exception when calling MeterBillingApi->create_billing_profile: %s\n" % e)
 ```
 
 
@@ -284,17 +284,17 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     customer_id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
     invoice_pending_line_create_input = moolabs.InvoicePendingLineCreateInput() # InvoicePendingLineCreateInput | 
 
     try:
         # Create pending line items
         api_response = api_instance.create_pending_invoice_line(customer_id, invoice_pending_line_create_input)
-        print("The response of BillingApi->create_pending_invoice_line:\n")
+        print("The response of MeterBillingApi->create_pending_invoice_line:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->create_pending_invoice_line: %s\n" % e)
+        print("Exception when calling MeterBillingApi->create_pending_invoice_line: %s\n" % e)
 ```
 
 
@@ -360,14 +360,14 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
 
     try:
         # Delete a billing profile
         api_instance.delete_billing_profile(id)
     except Exception as e:
-        print("Exception when calling BillingApi->delete_billing_profile: %s\n" % e)
+        print("Exception when calling MeterBillingApi->delete_billing_profile: %s\n" % e)
 ```
 
 
@@ -433,14 +433,14 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     customer_id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
 
     try:
         # Delete a customer override
         api_instance.delete_billing_profile_customer_override(customer_id)
     except Exception as e:
-        print("Exception when calling BillingApi->delete_billing_profile_customer_override: %s\n" % e)
+        print("Exception when calling MeterBillingApi->delete_billing_profile_customer_override: %s\n" % e)
 ```
 
 
@@ -506,14 +506,14 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     invoice_id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
 
     try:
         # Delete an invoice
         api_instance.delete_invoice(invoice_id)
     except Exception as e:
-        print("Exception when calling BillingApi->delete_invoice: %s\n" % e)
+        print("Exception when calling MeterBillingApi->delete_invoice: %s\n" % e)
 ```
 
 
@@ -581,17 +581,17 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
     expand = [moolabs.BillingProfileExpand()] # List[BillingProfileExpand] |  (optional)
 
     try:
         # Get a billing profile
         api_response = api_instance.get_billing_profile(id, expand=expand)
-        print("The response of BillingApi->get_billing_profile:\n")
+        print("The response of MeterBillingApi->get_billing_profile:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->get_billing_profile: %s\n" % e)
+        print("Exception when calling MeterBillingApi->get_billing_profile: %s\n" % e)
 ```
 
 
@@ -660,17 +660,17 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     customer_id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
     expand = [moolabs.BillingProfileCustomerOverrideExpand()] # List[BillingProfileCustomerOverrideExpand] |  (optional)
 
     try:
         # Get a customer override
         api_response = api_instance.get_billing_profile_customer_override(customer_id, expand=expand)
-        print("The response of BillingApi->get_billing_profile_customer_override:\n")
+        print("The response of MeterBillingApi->get_billing_profile_customer_override:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->get_billing_profile_customer_override: %s\n" % e)
+        print("Exception when calling MeterBillingApi->get_billing_profile_customer_override: %s\n" % e)
 ```
 
 
@@ -739,7 +739,7 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     invoice_id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
     expand = [moolabs.InvoiceExpand()] # List[InvoiceExpand] |  (optional)
     include_deleted_lines = False # bool |  (optional) (default to False)
@@ -747,10 +747,10 @@ with moolabs.ApiClient(configuration) as api_client:
     try:
         # Get an invoice
         api_response = api_instance.get_invoice(invoice_id, expand=expand, include_deleted_lines=include_deleted_lines)
-        print("The response of BillingApi->get_invoice:\n")
+        print("The response of MeterBillingApi->get_invoice:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->get_invoice: %s\n" % e)
+        print("Exception when calling MeterBillingApi->get_invoice: %s\n" % e)
 ```
 
 
@@ -820,16 +820,16 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     invoice_pending_lines_action_input = moolabs.InvoicePendingLinesActionInput() # InvoicePendingLinesActionInput | 
 
     try:
         # Invoice a customer based on the pending line items
         api_response = api_instance.invoice_pending_lines_action(invoice_pending_lines_action_input)
-        print("The response of BillingApi->invoice_pending_lines_action:\n")
+        print("The response of MeterBillingApi->invoice_pending_lines_action:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->invoice_pending_lines_action: %s\n" % e)
+        print("Exception when calling MeterBillingApi->invoice_pending_lines_action: %s\n" % e)
 ```
 
 
@@ -898,7 +898,7 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     billing_profile = ['billing_profile_example'] # List[str] | Filter by billing profile. (optional)
     customers_without_pinned_profile = True # bool | Only return customers without pinned billing profiles. This implicitly sets includeAllCustomers to true. (optional)
     include_all_customers = True # bool | Include customers without customer overrides.  If set to false only the customers specifically associated with a billing profile will be returned.  If set to true, in case of the default billing profile, all customers will be returned. (optional) (default to True)
@@ -915,10 +915,10 @@ with moolabs.ApiClient(configuration) as api_client:
     try:
         # List customer overrides
         api_response = api_instance.list_billing_profile_customer_overrides(billing_profile=billing_profile, customers_without_pinned_profile=customers_without_pinned_profile, include_all_customers=include_all_customers, customer_id=customer_id, customer_name=customer_name, customer_key=customer_key, customer_primary_email=customer_primary_email, expand=expand, order=order, order_by=order_by, page=page, page_size=page_size)
-        print("The response of BillingApi->list_billing_profile_customer_overrides:\n")
+        print("The response of MeterBillingApi->list_billing_profile_customer_overrides:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->list_billing_profile_customer_overrides: %s\n" % e)
+        print("Exception when calling MeterBillingApi->list_billing_profile_customer_overrides: %s\n" % e)
 ```
 
 
@@ -998,7 +998,7 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     include_archived = False # bool |  (optional) (default to False)
     expand = [moolabs.BillingProfileExpand()] # List[BillingProfileExpand] |  (optional)
     page = 1 # int | Page index.  Default is 1. (optional) (default to 1)
@@ -1009,10 +1009,10 @@ with moolabs.ApiClient(configuration) as api_client:
     try:
         # List billing profiles
         api_response = api_instance.list_billing_profiles(include_archived=include_archived, expand=expand, page=page, page_size=page_size, order=order, order_by=order_by)
-        print("The response of BillingApi->list_billing_profiles:\n")
+        print("The response of MeterBillingApi->list_billing_profiles:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->list_billing_profiles: %s\n" % e)
+        print("Exception when calling MeterBillingApi->list_billing_profiles: %s\n" % e)
 ```
 
 
@@ -1087,7 +1087,7 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     statuses = [moolabs.InvoiceStatus()] # List[InvoiceStatus] | Filter by the invoice status. (optional)
     extended_statuses = ['extended_statuses_example'] # List[str] | Filter by invoice extended statuses (optional)
     issued_after = '2023-01-01T01:01:01.001Z' # datetime | Filter by invoice issued time. Inclusive. (optional)
@@ -1107,10 +1107,10 @@ with moolabs.ApiClient(configuration) as api_client:
     try:
         # List invoices
         api_response = api_instance.list_invoices(statuses=statuses, extended_statuses=extended_statuses, issued_after=issued_after, issued_before=issued_before, period_start_after=period_start_after, period_start_before=period_start_before, created_after=created_after, created_before=created_before, expand=expand, customers=customers, include_deleted=include_deleted, page=page, page_size=page_size, order=order, order_by=order_by)
-        print("The response of BillingApi->list_invoices:\n")
+        print("The response of MeterBillingApi->list_invoices:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->list_invoices: %s\n" % e)
+        print("Exception when calling MeterBillingApi->list_invoices: %s\n" % e)
 ```
 
 
@@ -1190,16 +1190,16 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     invoice_id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
 
     try:
         # Recalculate an invoice's tax amounts
         api_response = api_instance.recalculate_invoice_tax_action(invoice_id)
-        print("The response of BillingApi->recalculate_invoice_tax_action:\n")
+        print("The response of MeterBillingApi->recalculate_invoice_tax_action:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->recalculate_invoice_tax_action: %s\n" % e)
+        print("Exception when calling MeterBillingApi->recalculate_invoice_tax_action: %s\n" % e)
 ```
 
 
@@ -1266,16 +1266,16 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     invoice_id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
 
     try:
         # Retry advancing the invoice after a failed attempt.
         api_response = api_instance.retry_invoice_action(invoice_id)
-        print("The response of BillingApi->retry_invoice_action:\n")
+        print("The response of MeterBillingApi->retry_invoice_action:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->retry_invoice_action: %s\n" % e)
+        print("Exception when calling MeterBillingApi->retry_invoice_action: %s\n" % e)
 ```
 
 
@@ -1343,17 +1343,17 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     customer_id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
     invoice_simulation_input = moolabs.InvoiceSimulationInput() # InvoiceSimulationInput | 
 
     try:
         # Simulate an invoice for a customer
         api_response = api_instance.simulate_invoice(customer_id, invoice_simulation_input)
-        print("The response of BillingApi->simulate_invoice:\n")
+        print("The response of MeterBillingApi->simulate_invoice:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->simulate_invoice: %s\n" % e)
+        print("Exception when calling MeterBillingApi->simulate_invoice: %s\n" % e)
 ```
 
 
@@ -1420,16 +1420,16 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     invoice_id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
 
     try:
         # Snapshot quantities for usage based line items
         api_response = api_instance.snapshot_quantities_invoice_action(invoice_id)
-        print("The response of BillingApi->snapshot_quantities_invoice_action:\n")
+        print("The response of MeterBillingApi->snapshot_quantities_invoice_action:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->snapshot_quantities_invoice_action: %s\n" % e)
+        print("Exception when calling MeterBillingApi->snapshot_quantities_invoice_action: %s\n" % e)
 ```
 
 
@@ -1497,17 +1497,17 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
     billing_profile_replace_update_with_workflow = moolabs.BillingProfileReplaceUpdateWithWorkflow() # BillingProfileReplaceUpdateWithWorkflow | 
 
     try:
         # Update a billing profile
         api_response = api_instance.update_billing_profile(id, billing_profile_replace_update_with_workflow)
-        print("The response of BillingApi->update_billing_profile:\n")
+        print("The response of MeterBillingApi->update_billing_profile:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->update_billing_profile: %s\n" % e)
+        print("Exception when calling MeterBillingApi->update_billing_profile: %s\n" % e)
 ```
 
 
@@ -1576,17 +1576,17 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     invoice_id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
     invoice_replace_update = moolabs.InvoiceReplaceUpdate() # InvoiceReplaceUpdate | 
 
     try:
         # Update an invoice
         api_response = api_instance.update_invoice(invoice_id, invoice_replace_update)
-        print("The response of BillingApi->update_invoice:\n")
+        print("The response of MeterBillingApi->update_invoice:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->update_invoice: %s\n" % e)
+        print("Exception when calling MeterBillingApi->update_invoice: %s\n" % e)
 ```
 
 
@@ -1655,17 +1655,17 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     invoice_id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
     custom_invoicing_update_payment_status_request = moolabs.CustomInvoicingUpdatePaymentStatusRequest() # CustomInvoicingUpdatePaymentStatusRequest | 
 
     try:
         # Update invoice payment status
         api_response = api_instance.update_invoice_payment_status(invoice_id, custom_invoicing_update_payment_status_request)
-        print("The response of BillingApi->update_invoice_payment_status:\n")
+        print("The response of MeterBillingApi->update_invoice_payment_status:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->update_invoice_payment_status: %s\n" % e)
+        print("Exception when calling MeterBillingApi->update_invoice_payment_status: %s\n" % e)
 ```
 
 
@@ -1734,17 +1734,17 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     customer_id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
     billing_profile_customer_override_create = moolabs.BillingProfileCustomerOverrideCreate() # BillingProfileCustomerOverrideCreate | 
 
     try:
         # Create a new or update a customer override
         api_response = api_instance.upsert_billing_profile_customer_override(customer_id, billing_profile_customer_override_create)
-        print("The response of BillingApi->upsert_billing_profile_customer_override:\n")
+        print("The response of MeterBillingApi->upsert_billing_profile_customer_override:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->upsert_billing_profile_customer_override: %s\n" % e)
+        print("Exception when calling MeterBillingApi->upsert_billing_profile_customer_override: %s\n" % e)
 ```
 
 
@@ -1813,17 +1813,17 @@ configuration = moolabs.Configuration(
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = moolabs.BillingApi(api_client)
+    api_instance = moolabs.MeterBillingApi(api_client)
     invoice_id = '01G65Z755AFWAKHE12NY0CQ9FH' # str | 
     void_invoice_action_input = moolabs.VoidInvoiceActionInput() # VoidInvoiceActionInput | 
 
     try:
         # Void an invoice
         api_response = api_instance.void_invoice_action(invoice_id, void_invoice_action_input)
-        print("The response of BillingApi->void_invoice_action:\n")
+        print("The response of MeterBillingApi->void_invoice_action:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BillingApi->void_invoice_action: %s\n" % e)
+        print("Exception when calling MeterBillingApi->void_invoice_action: %s\n" % e)
 ```
 
 

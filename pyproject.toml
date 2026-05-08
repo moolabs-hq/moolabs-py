@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "moolabs"
-version = "0.0.0"
+version = "0.0.0-rc4"
 description = "Moolabs API"
 authors = ["OpenAPI Generator Community <team@openapitools.org>"]
 license = "Apache-2.0"

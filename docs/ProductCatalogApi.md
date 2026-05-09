@@ -39,6 +39,7 @@ Archive a add-on version.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -52,6 +53,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -83,7 +93,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -115,6 +125,7 @@ Archive a plan version.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -128,6 +139,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -159,7 +179,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -191,6 +211,7 @@ Create a new add-on.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -205,6 +226,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -236,7 +266,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -267,6 +297,7 @@ Features are either metered or static. A feature is metered if meterSlug is prov
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -281,6 +312,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -312,7 +352,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -343,6 +383,7 @@ Create a new plan.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -357,6 +398,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -388,7 +438,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -419,6 +469,7 @@ Create new add-on assignment for plan.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -433,6 +484,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -466,7 +526,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -499,6 +559,7 @@ Soft delete add-on by id.  Once a add-on is deleted it cannot be undeleted.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -511,6 +572,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -540,7 +610,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -572,6 +642,7 @@ Archive a feature by ID.  Once a feature is archived it cannot be unarchived. If
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -584,6 +655,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -613,7 +693,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -645,6 +725,7 @@ Soft delete plan by plan.id.  Once a plan is deleted it cannot be undeleted.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -657,6 +738,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -686,7 +776,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -718,6 +808,7 @@ Delete add-on assignment for plan.  Once a plan is deleted it cannot be undelete
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -730,6 +821,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -761,7 +861,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -793,6 +893,7 @@ Get add-on by id or key. The latest published version is returned if latter is u
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -806,6 +907,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -839,7 +949,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -871,6 +981,7 @@ Get a feature by ID.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -884,6 +995,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -915,7 +1035,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -947,6 +1067,7 @@ Get a plan by id or key. The latest published version is returned if latter is u
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -960,6 +1081,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -993,7 +1123,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -1025,6 +1155,7 @@ Get add-on assignment for plan by id.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -1038,6 +1169,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -1071,7 +1211,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -1103,6 +1243,7 @@ List all add-ons.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -1119,6 +1260,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -1168,7 +1318,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -1199,6 +1349,7 @@ List features.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -1214,6 +1365,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -1259,7 +1419,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -1290,6 +1450,7 @@ List all available add-ons for plan.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -1305,6 +1466,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -1352,7 +1522,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -1384,6 +1554,7 @@ List all plans.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -1400,6 +1571,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -1449,7 +1629,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -1480,6 +1660,7 @@ Create a new draft version from plan. It returns error if there is already a pla
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -1493,6 +1674,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -1524,7 +1714,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -1556,6 +1746,7 @@ Publish a add-on version.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -1569,6 +1760,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -1600,7 +1800,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -1632,6 +1832,7 @@ Publish a plan version.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -1645,6 +1846,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -1676,7 +1886,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -1708,6 +1918,7 @@ Update add-on by id.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -1722,6 +1933,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -1755,7 +1975,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -1787,6 +2007,7 @@ Update plan by id.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -1801,6 +2022,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -1834,7 +2064,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 
@@ -1866,6 +2096,7 @@ Update add-on assignment for plan.
 
 ### Example
 
+* Bearer Authentication (CloudTokenAuth):
 
 ```python
 import moolabs
@@ -1880,6 +2111,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: CloudTokenAuth
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -1915,7 +2155,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[CloudTokenAuth](../README.md#CloudTokenAuth)
 
 ### HTTP request headers
 

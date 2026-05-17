@@ -60,7 +60,12 @@ def _noop_logger(_msg: str, _fields: dict) -> None:
 from ._dx_buffer import IngestBuffer, IngestBufferConfig
 from ._dx_namespaces import _Namespace, make_namespace
 from ._dx_routing import CAPABILITY_ORDER, SUBDOMAIN_MAP
-from ._dx_urls import IngestResolverConfig, IngestUrlResolver, derive_host
+from ._dx_urls import (
+    IngestResolverConfig,
+    IngestUrlResolver,
+    derive_host,
+    resolve_effective_base_url,
+)
 
 if TYPE_CHECKING:
     # Avoid runtime imports of the generated layer until first use, so
@@ -148,7 +153,15 @@ class Moolabs:
         if not api_key or not isinstance(api_key, str):
             raise ValueError("api_key must be a non-empty string")
         self._api_key = api_key
-        self._base_url = base_url or _DEFAULT_BASE_URL
+        # Apex (``moolabs.com``) is a marketing/branding host, not an env
+        # root — the ALB cert is ``*.prod.moolabs.com`` only. Rewrite the
+        # customer-supplied base_url ONCE at construction so all downstream
+        # subdomain composition (derive_host, IngestUrlResolver) sees the
+        # effective env-rooted host. Explicit env roots and self-hosted
+        # bases pass through unchanged. See _dx_urls.resolve_effective_base_url.
+        self._base_url = resolve_effective_base_url(
+            base_url or _DEFAULT_BASE_URL, self._api_key
+        )
         # Optional per-event diagnostic logger. NONE = no output. When
         # provided, the SDK invokes it on terminal_drop / overflow /
         # abandoned-on-shutdown / drain-failure events with a stable msg

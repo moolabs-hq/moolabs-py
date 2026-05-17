@@ -1,11 +1,18 @@
 """URL derivation + F2 ingest fallback chain.
 
-Two responsibilities:
+Three responsibilities:
 
-1. ``derive_host(backend, base_url)`` — convention-based subdomain rewriting
+1. ``resolve_effective_base_url(base_url, api_key)`` — init-time rewrite of
+   the customer-supplied ``base_url`` into the effective env-rooted host
+   the rest of the SDK uses. Apex (``moolabs.com``) gets an env prefix
+   injected from the key; explicit env roots (``dev.moolabs.com``) and
+   self-hosted bases pass through unchanged. Pure function, no state.
+   **Called exactly once at SDK construction** — see Moolabs.__init__.
+
+2. ``derive_host(backend, base_url)`` — convention-based subdomain rewriting
    used for every non-ingest capability call. Pure function, no state.
 
-2. ``IngestUrlResolver`` — stateful F2 fallback chain for the event-ingest
+3. ``IngestUrlResolver`` — stateful F2 fallback chain for the event-ingest
    hot path (contracts §3.5). Resolves the URL to POST events to via a 4-step
    chain, tracking discovery failures and recently-failed cached URLs.
 
@@ -71,6 +78,107 @@ def normalize_base_url(base_url: str) -> str:
     if not host:
         raise ValueError(f"base_url has no parseable host: {base_url!r}")
     return host
+
+
+# ── Effective base_url resolution (init-time only) ────────────────────────
+#
+# Customer-facing apex domains where the SDK injects an env prefix derived
+# from the API key. Bare apex like ``moolabs.com`` is a marketing/branding
+# host, not an env root — the ALB cert is ``*.prod.moolabs.com`` (no SAN
+# for ``*.moolabs.com``), so the SDK must compose subdomains under an env
+# root like ``prod.moolabs.com``.
+#
+# Add new entries here when Moolabs adds new customer-facing apex TLDs
+# (e.g. ``moolabs.io``). Self-hosted customers passing their own root
+# (``tenant.example.com``) match no entry and pass through unchanged.
+_INJECT_ENV_APEXES: frozenset[str] = frozenset({"moolabs.com"})
+
+# Env prefixes the SDK recognizes in the API key. Customer keys minted
+# by the future region-aware issuer have the form ``{env}-{region}-{rand}``,
+# e.g. ``prod-us-d0b7403...``. Legacy raw-hex keys have no prefix and
+# fall back to ``prod`` (rule 3 in resolve_effective_base_url).
+_KNOWN_ENV_TOKENS: frozenset[str] = frozenset({"prod", "dev", "staging"})
+
+# Fallback env root used for legacy unprefixed keys when ``base_url`` is
+# an apex. Today this is the only deployed env root with a valid wildcard
+# ALB cert; multi-region rollout adds ``prod-us``, ``prod-eu``, etc.
+_LEGACY_KEY_FALLBACK_ENV: str = "prod"
+
+
+def extract_env_prefix(api_key: str) -> Optional[str]:
+    """Extract the ``{env}-{region}`` prefix from a region-aware API key.
+
+    The future key format is ``{env}-{region}-{random}`` where ``env`` is
+    one of ``prod`` / ``dev`` / ``staging`` and ``region`` is a short
+    code like ``us``, ``eu``, ``au``. Legacy raw-hex keys returned None.
+
+    >>> extract_env_prefix("prod-us-d0b740abc")
+    'prod-us'
+    >>> extract_env_prefix("dev-eu-xyz")
+    'dev-eu'
+    >>> extract_env_prefix("staging-au-1234")
+    'staging-au'
+    >>> extract_env_prefix("d0b7403c508b360ca637") is None
+    True
+    >>> extract_env_prefix("just-two-tokens-but-bad-env") is None
+    True
+    >>> extract_env_prefix("") is None
+    True
+    """
+    if not api_key or not isinstance(api_key, str):
+        return None
+    parts = api_key.split("-", 2)
+    if len(parts) < 3:
+        return None
+    env, region, _rest = parts
+    if env not in _KNOWN_ENV_TOKENS or not region:
+        return None
+    return f"{env}-{region}"
+
+
+def resolve_effective_base_url(base_url: str, api_key: str) -> str:
+    """Resolve the effective base_url used for SDK subdomain composition.
+
+    Called exactly ONCE at ``Moolabs.__init__`` — never per-call. The
+    result becomes ``self._base_url`` for the rest of the instance's
+    lifetime; ``derive_host`` and ``IngestUrlResolver`` all consume the
+    already-resolved value.
+
+    Three rules:
+
+    1. ``base_url`` is NOT a known customer-facing apex (e.g.
+       ``dev.moolabs.com``, ``prod.moolabs.com``, ``tenant.example.com``):
+       use as-is. The customer has already chosen their env root or is
+       self-hosted; injecting anything would be wrong.
+
+    2. ``base_url`` IS an apex AND the API key has an env-region prefix
+       (``prod-us-xxx``): inject the prefix → ``prod-us.moolabs.com``.
+       This is the multi-region future; today no keys have this format
+       so rule 2 is dormant pending issuer rollout.
+
+    3. ``base_url`` IS an apex AND the key is legacy (no prefix): fall
+       back to ``prod.{apex}``. Today's only working env root.
+
+    >>> resolve_effective_base_url("dev.moolabs.com", "anything")
+    'dev.moolabs.com'
+    >>> resolve_effective_base_url("prod.moolabs.com", "d0b7403c")
+    'prod.moolabs.com'
+    >>> resolve_effective_base_url("tenant.example.com", "anything")
+    'tenant.example.com'
+    >>> resolve_effective_base_url("moolabs.com", "prod-us-d0b740")
+    'prod-us.moolabs.com'
+    >>> resolve_effective_base_url("moolabs.com", "dev-eu-xyz")
+    'dev-eu.moolabs.com'
+    >>> resolve_effective_base_url("moolabs.com", "d0b7403c")
+    'prod.moolabs.com'
+    >>> resolve_effective_base_url("https://moolabs.com/", "d0b7403c")
+    'prod.moolabs.com'
+    """
+    normalized = normalize_base_url(base_url)
+    if normalized not in _INJECT_ENV_APEXES:
+        return normalized
+    env_prefix = extract_env_prefix(api_key) or _LEGACY_KEY_FALLBACK_ENV
+    return f"{env_prefix}.{normalized}"
 
 
 def derive_host(backend: str, base_url: str) -> str:

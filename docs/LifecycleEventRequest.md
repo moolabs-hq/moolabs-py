@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **event_type** | **str** | Event type: ACTIVATED, UPDATED, CANCELLED, PAUSED, RESUMED | 
 **event_id** | **str** | Unique event ID (for idempotency) | 
 **effective_at** | **str** | When the event takes effect (ISO 8601) | 
-**subscription_data** | **Dict[str, object]** |  | [optional] 
-**payload_json** | **str** |  | [optional] 
+**subscription_data** | **Dict[str, object]** | Optional subscription data | [optional] 
+**payload_json** | **str** | Optional JSON payload | [optional] 
 
 ## Example
 

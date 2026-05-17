@@ -11,12 +11,13 @@ Method | HTTP request | Description
 [**get_rule_v1**](AutoTopupApi.md#get_rule_v1) | **GET** /v1/auto-topup/rules/{rule_id} | Get Rule
 [**list_rules_v1**](AutoTopupApi.md#list_rules_v1) | **GET** /v1/auto-topup/rules | List Rules
 [**patch_rule_v1**](AutoTopupApi.md#patch_rule_v1) | **PATCH** /v1/auto-topup/rules/{rule_id} | Patch Rule
+[**payment_failed_v1**](AutoTopupApi.md#payment_failed_v1) | **POST** /v1/auto-topup/payments/failed | Payment Failed
 [**payment_succeeded_v1**](AutoTopupApi.md#payment_succeeded_v1) | **POST** /v1/auto-topup/payments/succeeded | Payment Succeeded
 [**update_rule_v1**](AutoTopupApi.md#update_rule_v1) | **PUT** /v1/auto-topup/rules/{rule_id} | Update Rule
 
 
 # **check_trigger_v1**
-> TriggerResponse check_trigger_v1(rule_id, check_trigger_request=check_trigger_request)
+> AppApiV1AutoTopupRouterTriggerResponse check_trigger_v1(rule_id, check_trigger_request=check_trigger_request)
 
 Check Trigger
 
@@ -27,8 +28,8 @@ Check trigger condition and trigger auto top-up if needed.  This endpoint: - Che
 
 ```python
 import moolabs
+from moolabs.models.app_api_v1_auto_topup_router_trigger_response import AppApiV1AutoTopupRouterTriggerResponse
 from moolabs.models.check_trigger_request import CheckTriggerRequest
-from moolabs.models.trigger_response import TriggerResponse
 from moolabs.rest import ApiException
 from pprint import pprint
 
@@ -67,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TriggerResponse**](TriggerResponse.md)
+[**AppApiV1AutoTopupRouterTriggerResponse**](AppApiV1AutoTopupRouterTriggerResponse.md)
 
 ### Authorization
 
@@ -513,6 +514,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AutoTopupRuleResponse**](AutoTopupRuleResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **payment_failed_v1**
+> PaymentFailedResponse payment_failed_v1(payment_failed_request)
+
+Payment Failed
+
+Handle payment failed callback.  This endpoint: - Emits AUTO_TOPUP_FAILED outbox event (idempotent) - Dispatches topup-failed email via centralized template renderer
+
+### Example
+
+
+```python
+import moolabs
+from moolabs.models.payment_failed_request import PaymentFailedRequest
+from moolabs.models.payment_failed_response import PaymentFailedResponse
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.AutoTopupApi(api_client)
+    payment_failed_request = moolabs.PaymentFailedRequest() # PaymentFailedRequest | 
+
+    try:
+        # Payment Failed
+        api_response = api_instance.payment_failed_v1(payment_failed_request)
+        print("The response of AutoTopupApi->payment_failed_v1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AutoTopupApi->payment_failed_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **payment_failed_request** | [**PaymentFailedRequest**](PaymentFailedRequest.md)|  | 
+
+### Return type
+
+[**PaymentFailedResponse**](PaymentFailedResponse.md)
 
 ### Authorization
 

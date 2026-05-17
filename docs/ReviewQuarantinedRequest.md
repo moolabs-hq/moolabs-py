@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **pool_id** | **str** | Pool identifier | 
 **usage_event_id** | **str** | Usage event ID to review | 
 **action** | **str** | Action: &#39;retry&#39;, &#39;manual_rate&#39;, or &#39;ignore&#39; | 
-**notes** | **str** |  | [optional] 
+**notes** | **str** | Optional notes about the review | [optional] 
 
 ## Example
 

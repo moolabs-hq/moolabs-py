@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **pool_id** | **str** | Pool identifier | 
 **wallet_id** | **str** | Wallet identifier | 
 **as_of_effective_at** | **datetime** | Effective timestamp for balance calculation | 
-**as_of_recorded_at** | **datetime** |  | [optional] 
+**as_of_recorded_at** | **datetime** | Recorded timestamp (cut time) - defaults to now | [optional] 
 **isolation_level** | **str** | Transaction isolation level | [optional] [default to 'REPEATABLE READ']
 
 ## Example

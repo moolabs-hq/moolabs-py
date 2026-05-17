@@ -6,7 +6,7 @@ Request to check and trigger auto top-up.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**as_of** | **datetime** |  | [optional] 
+**as_of** | **datetime** | As-of timestamp (defaults to now) | [optional] 
 
 ## Example
 

@@ -6,8 +6,8 @@ Request to invalidate portal token(s).
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**token** | **str** |  | [optional] 
-**subject** | **str** |  | [optional] 
+**token** | **str** | Plaintext token to revoke | [optional] 
+**subject** | **str** | Revoke all tokens for subject | [optional] 
 
 ## Example
 

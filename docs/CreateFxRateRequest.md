@@ -10,8 +10,9 @@ Name | Type | Description | Notes
 **pool_id** | **str** | Pool identifier | 
 **credits_per_usd_micros** | **int** | Credits per USD in micros | 
 **effective_at** | **datetime** | Effective timestamp for this rate | 
-**rate_version** | **str** |  | [optional] 
+**rate_version** | **str** | Rate version identifier (auto-generated if not provided) | [optional] 
 **usd_micros** | **int** | USD amount in micros (default 1 USD) | [optional] [default to 1000000]
+**created_by** | **str** | Email or identifier of the user creating this rate | [optional] 
 
 ## Example
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **extracted_value** | **float** |  | [optional] 
 **is_numeric** | **bool** |  | 
-**group_by_values** | **Dict[str, Optional[str]]** |  | 
+**group_by_values** | **Dict[str, str]** |  | 
 **reason** | **str** |  | [optional] 
 
 ## Example

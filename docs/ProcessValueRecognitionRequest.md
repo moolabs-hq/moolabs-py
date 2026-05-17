@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **tenant_id** | **str** | Tenant identifier | 
 **pool_id** | **str** | Pool identifier | 
 **journal_entry_id** | **str** | Journal entry ID to process | 
-**effective_at** | **datetime** |  | [optional] 
+**effective_at** | **datetime** | Effective timestamp (uses journal entry&#39;s if not provided) | [optional] 
 
 ## Example
 

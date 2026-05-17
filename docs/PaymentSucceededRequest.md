@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 **wallet_id** | **str** | Wallet identifier | 
 **payment_id** | **str** | Payment identifier (idempotency key) | 
 **amount_micros** | **int** | Amount in micros | 
-**fx_rate_version** | **str** |  | [optional] 
-**credits_per_usd_micros** | **int** |  | [optional] 
-**effective_at** | **datetime** |  | [optional] 
+**fx_rate_version** | **str** | FX rate version | [optional] 
+**credits_per_usd_micros** | **int** | Credits per USD micros | [optional] 
+**effective_at** | **datetime** | Effective timestamp | [optional] 
 
 ## Example
 

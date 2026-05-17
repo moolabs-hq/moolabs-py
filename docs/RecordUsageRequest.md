@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **tenant_id** | **str** | Tenant identifier | 
 **subject_id** | **str** | Subject identifier | 
 **pool_id** | **str** | Credit pool identifier | 
-**wallet_id** | **str** |  | [optional] 
-**subscription_id** | **str** |  | [optional] 
+**wallet_id** | **str** | Wallet identifier (optional, will be resolved) | [optional] 
+**subscription_id** | **str** | Subscription identifier | [optional] 
 **feature_key** | **str** | Feature key | 
-**meter_slug** | **str** |  | [optional] 
+**meter_slug** | **str** | Meter slug | [optional] 
 **usage_event_id** | **str** | Usage event ID (idempotency key) | 
-**request_id** | **str** |  | [optional] 
-**job_id** | **str** |  | [optional] 
+**request_id** | **str** | Request identifier | [optional] 
+**job_id** | **str** | Job identifier | [optional] 
 **effective_at** | **datetime** | Effective timestamp | 
 **usage_vector** | **Dict[str, object]** | Usage vector (JSON object) | 
 

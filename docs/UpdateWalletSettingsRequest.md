@@ -6,10 +6,10 @@ Request to update wallet settings.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**parent_wallet_id** | **str** |  | [optional] 
-**local_hard_cap_micros** | **int** |  | [optional] 
-**policy** | [**WalletPolicy**](WalletPolicy.md) |  | [optional] 
-**audit_note** | **str** |  | [optional] 
+**parent_wallet_id** | **str** | Parent wallet ID. Set to null to detach from hierarchy. | [optional] 
+**local_hard_cap_micros** | **int** | Local hard cap (micros). Set to null to remove override. | [optional] 
+**policy** | [**WalletPolicy**](WalletPolicy.md) | Wallet policy (SOFT_BORROW, HARD_BUDGET, NOTIFY_ONLY) | [optional] 
+**audit_note** | **str** | Audit note for this change | [optional] 
 
 ## Example
 

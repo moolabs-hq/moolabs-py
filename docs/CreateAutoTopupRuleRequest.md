@@ -12,10 +12,10 @@ Name | Type | Description | Notes
 **trigger_type** | **str** | Trigger type (STATE or THRESHOLD) | 
 **trigger_value** | **str** | Trigger value (e.g., &#39;LOW&#39;, &#39;OVERDRAFT&#39;, &#39;ABS:-100000&#39;) | 
 **topup_amount_micros** | **int** | Top-up amount in micros | 
-**topup_cooldown_seconds** | **int** | Cooldown period in seconds | [optional] [default to 3600]
-**max_topups_per_day** | **int** | Maximum top-ups per day | [optional] [default to 5]
-**payment_method_ref** | **str** |  | [optional] 
-**invoice_mode** | **str** | Invoice mode | [optional] [default to 'INVOICE_NOW']
+**topup_cooldown_seconds** | **int** | Cooldown period in seconds | [optional] 
+**max_topups_per_day** | **int** | Maximum top-ups per day | [optional] 
+**payment_method_ref** | **str** | Payment method reference | [optional] 
+**invoice_mode** | **str** | Invoice mode | [optional] 
 
 ## Example
 

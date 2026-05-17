@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**get_ledger_audit**](LedgerApi.md#get_ledger_audit) | **GET** /v1/ledger/audit | Get Ledger Audit
 [**get_ledger_balance**](LedgerApi.md#get_ledger_balance) | **GET** /v1/ledger/balance | Get Ledger Balance
 [**get_wallet_state**](LedgerApi.md#get_wallet_state) | **GET** /v1/ledger/state | Get Wallet State
+[**get_wallet_states_batch**](LedgerApi.md#get_wallet_states_batch) | **POST** /v1/ledger/state/batch | Get Wallet States Batch
 
 
 # **get_ledger_audit**
@@ -168,7 +169,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_wallet_state**
-> object get_wallet_state(tenant_id, pool_id, wallet_id, as_of=as_of, consistency=consistency, effective_as_of=effective_as_of, recorded_as_of=recorded_as_of, consistent_view=consistent_view)
+> object get_wallet_state(wallet_id, tenant_id=tenant_id, pool_id=pool_id, as_of=as_of, consistency=consistency, effective_as_of=effective_as_of, recorded_as_of=recorded_as_of, consistent_view=consistent_view)
 
 Get Wallet State
 
@@ -203,9 +204,9 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.LedgerApi(api_client)
-    tenant_id = 'tenant_id_example' # str | Tenant identifier
-    pool_id = 'pool_id_example' # str | Credit pool identifier
     wallet_id = 'wallet_id_example' # str | Wallet identifier
+    tenant_id = 'tenant_id_example' # str | Tenant identifier (resolved from auth when absent) (optional)
+    pool_id = 'pool_id_example' # str | Credit pool identifier (resolved from auth when absent) (optional)
     as_of = '2013-10-20T19:20:30+01:00' # datetime | As-of timestamp (for time travel, legacy, use effective_as_of instead) (optional)
     consistency = 'eventual' # str | Consistency level: 'eventual' or 'STRONG' (optional) (default to 'eventual')
     effective_as_of = '2013-10-20T19:20:30+01:00' # datetime | Effective as-of timestamp (business time) for time travel (optional)
@@ -214,7 +215,7 @@ with moolabs.ApiClient(configuration) as api_client:
 
     try:
         # Get Wallet State
-        api_response = api_instance.get_wallet_state(tenant_id, pool_id, wallet_id, as_of=as_of, consistency=consistency, effective_as_of=effective_as_of, recorded_as_of=recorded_as_of, consistent_view=consistent_view)
+        api_response = api_instance.get_wallet_state(wallet_id, tenant_id=tenant_id, pool_id=pool_id, as_of=as_of, consistency=consistency, effective_as_of=effective_as_of, recorded_as_of=recorded_as_of, consistent_view=consistent_view)
         print("The response of LedgerApi->get_wallet_state:\n")
         pprint(api_response)
     except Exception as e:
@@ -228,9 +229,9 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**| Tenant identifier | 
- **pool_id** | **str**| Credit pool identifier | 
  **wallet_id** | **str**| Wallet identifier | 
+ **tenant_id** | **str**| Tenant identifier (resolved from auth when absent) | [optional] 
+ **pool_id** | **str**| Credit pool identifier (resolved from auth when absent) | [optional] 
  **as_of** | **datetime**| As-of timestamp (for time travel, legacy, use effective_as_of instead) | [optional] 
  **consistency** | **str**| Consistency level: &#39;eventual&#39; or &#39;STRONG&#39; | [optional] [default to &#39;eventual&#39;]
  **effective_as_of** | **datetime**| Effective as-of timestamp (business time) for time travel | [optional] 
@@ -248,6 +249,86 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_wallet_states_batch**
+> BatchWalletStateResponse get_wallet_states_batch(batch_wallet_state_request)
+
+Get Wallet States Batch
+
+Get states for multiple wallets in a single request.  This endpoint allows fetching wallet states (balance, state) for multiple wallets in a single API call, which is much more efficient than making individual requests.  - Supports up to 100 wallets per request - Eventually consistent by default (fast, uses denormalized remaining_micros) - STRONG consistency available for admin/debug (slower, uses state projection) - Returns states and any errors separately
+
+### Example
+
+* Bearer Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.batch_wallet_state_request import BatchWalletStateRequest
+from moolabs.models.batch_wallet_state_response import BatchWalletStateResponse
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.LedgerApi(api_client)
+    batch_wallet_state_request = moolabs.BatchWalletStateRequest() # BatchWalletStateRequest | 
+
+    try:
+        # Get Wallet States Batch
+        api_response = api_instance.get_wallet_states_batch(batch_wallet_state_request)
+        print("The response of LedgerApi->get_wallet_states_batch:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling LedgerApi->get_wallet_states_batch: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **batch_wallet_state_request** | [**BatchWalletStateRequest**](BatchWalletStateRequest.md)|  | 
+
+### Return type
+
+[**BatchWalletStateResponse**](BatchWalletStateResponse.md)
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **max_topups_per_day** | **int** |  | 
 **payment_method_ref** | **str** |  | 
 **invoice_mode** | **str** |  | 
-**enabled** | **bool** |  | [optional] 
+**enabled** | **bool** |  | [optional] [default to True]
 **last_triggered_at** | **datetime** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 

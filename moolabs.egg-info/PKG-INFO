@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: moolabs
-Version: 0.2.0rc1
+Version: 0.2.0rc4
 Summary: Moolabs API
 Home-page: https://github.com/moolabs-hq/moolabs-py
 Author: OpenAPI Generator community
@@ -22,5 +22,5 @@ Dynamic: license
 Dynamic: requires-dist
 Dynamic: summary
 
-    Unified Moolabs SDK covering billing (CLS) and usage (Meter) operations. Both surfaces share one client and one auth flow.
+    Unified Moolabs SDK. Capability-based public surface stitched from internal service specs: bff, meter, arc, acute. Customers see capability namespaces (usage, billing, collections, etc.); the SDK routes per-operation internally.
     

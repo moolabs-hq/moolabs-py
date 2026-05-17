@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**get_customer_stripe_app_data**](CustomersApi.md#get_customer_stripe_app_data) | **GET** /api/v1/customers/{customerIdOrKey}/stripe | Get customer stripe app data
 [**list_customer_app_data**](CustomersApi.md#list_customer_app_data) | **GET** /api/v1/customers/{customerIdOrKey}/apps | List customer app data
 [**list_customer_subscriptions**](CustomersApi.md#list_customer_subscriptions) | **GET** /api/v1/customers/{customerIdOrKey}/subscriptions | List customer subscriptions
-[**list_customers**](CustomersApi.md#list_customers) | **GET** /api/v1/customers | List customers
+[**list_customers_get**](CustomersApi.md#list_customers_get) | **GET** /api/v1/customers | List customers
 [**update_customer**](CustomersApi.md#update_customer) | **PUT** /api/v1/customers/{customerIdOrKey} | Update customer
 [**upsert_customer_app_data**](CustomersApi.md#upsert_customer_app_data) | **PUT** /api/v1/customers/{customerIdOrKey}/apps | Upsert customer app data
 [**upsert_customer_stripe_app_data**](CustomersApi.md#upsert_customer_stripe_app_data) | **PUT** /api/v1/customers/{customerIdOrKey}/stripe | Upsert customer stripe app data
@@ -728,8 +728,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_customers**
-> CustomerPaginatedResponse list_customers(page=page, page_size=page_size, order=order, order_by=order_by, include_deleted=include_deleted, key=key, name=name, primary_email=primary_email, subject=subject, plan_key=plan_key, expand=expand)
+# **list_customers_get**
+> CustomerPaginatedResponse list_customers_get(page=page, page_size=page_size, order=order, order_by=order_by, include_deleted=include_deleted, key=key, name=name, primary_email=primary_email, subject=subject, plan_key=plan_key, expand=expand)
 
 List customers
 
@@ -782,11 +782,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
     try:
         # List customers
-        api_response = api_instance.list_customers(page=page, page_size=page_size, order=order, order_by=order_by, include_deleted=include_deleted, key=key, name=name, primary_email=primary_email, subject=subject, plan_key=plan_key, expand=expand)
-        print("The response of CustomersApi->list_customers:\n")
+        api_response = api_instance.list_customers_get(page=page, page_size=page_size, order=order, order_by=order_by, include_deleted=include_deleted, key=key, name=name, primary_email=primary_email, subject=subject, plan_key=plan_key, expand=expand)
+        print("The response of CustomersApi->list_customers_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CustomersApi->list_customers: %s\n" % e)
+        print("Exception when calling CustomersApi->list_customers_get: %s\n" % e)
 ```
 
 

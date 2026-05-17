@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **target_wallet_id** | **str** |  | 
 **amount_micros** | **int** | Amount in micros to transfer | 
 **subject_id** | **str** | Subject performing the allocation (for audit) | 
-**reason** | **str** |  | [optional] 
+**reason** | **str** | Audit trail reason | [optional] 
 
 ## Example
 

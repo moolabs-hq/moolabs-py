@@ -10,11 +10,11 @@ Name | Type | Description | Notes
 **pool_id** | **str** | Credit pool identifier | 
 **owner_type** | [**WalletOwnerType**](WalletOwnerType.md) | Owner type (ORG, TEAM, USER, etc.) | 
 **owner_id** | **str** | Owner identifier | 
-**parent_wallet_id** | **str** |  | [optional] 
+**parent_wallet_id** | **str** | Parent wallet ID (for hierarchy) | [optional] 
 **depth** | **int** | Hierarchy depth (0-3) | [optional] [default to 0]
 **policy** | [**WalletPolicy**](WalletPolicy.md) | Wallet policy | [optional] 
-**local_hard_cap_micros** | **int** |  | [optional] 
-**local_soft_threshold_micros** | **int** |  | [optional] 
+**local_hard_cap_micros** | **int** | Local hard cap (micros) | [optional] 
+**local_soft_threshold_micros** | **int** | Local soft threshold (micros) | [optional] 
 
 ## Example
 

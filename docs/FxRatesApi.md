@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**create_fx_rate_endpoint_v1**](FxRatesApi.md#create_fx_rate_endpoint_v1) | **POST** /v1/fx-rates/rates | Create Fx Rate Endpoint
 [**create_value_recognition_entry_endpoint_v1_fx**](FxRatesApi.md#create_value_recognition_entry_endpoint_v1_fx) | **POST** /v1/fx-rates/value-recognition/entry | Create Value Recognition Entry Endpoint
 [**get_fx_rate_at_endpoint_v1**](FxRatesApi.md#get_fx_rate_at_endpoint_v1) | **POST** /v1/fx-rates/rates/at | Get Fx Rate At Endpoint
+[**list_fx_rates_endpoint_v1**](FxRatesApi.md#list_fx_rates_endpoint_v1) | **GET** /v1/fx-rates/rates | List Fx Rates Endpoint
 [**process_value_recognition_v1_fx**](FxRatesApi.md#process_value_recognition_v1_fx) | **POST** /v1/fx-rates/value-recognition/process | Process Value Recognition
 
 
@@ -207,6 +208,79 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_fx_rates_endpoint_v1**
+> List[FxRateResponse] list_fx_rates_endpoint_v1(tenant_id, pool_id, limit=limit)
+
+List Fx Rates Endpoint
+
+List FX rate versions for a pool, newest-first.  Returns all rate versions created for the given tenant/pool combination, ordered by effective_at descending. The first entry is the current live rate.
+
+### Example
+
+
+```python
+import moolabs
+from moolabs.models.fx_rate_response import FxRateResponse
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.FxRatesApi(api_client)
+    tenant_id = 'tenant_id_example' # str | Tenant identifier
+    pool_id = 'pool_id_example' # str | Pool identifier
+    limit = 50 # int | Maximum number of rate versions to return (optional) (default to 50)
+
+    try:
+        # List Fx Rates Endpoint
+        api_response = api_instance.list_fx_rates_endpoint_v1(tenant_id, pool_id, limit=limit)
+        print("The response of FxRatesApi->list_fx_rates_endpoint_v1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FxRatesApi->list_fx_rates_endpoint_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenant_id** | **str**| Tenant identifier | 
+ **pool_id** | **str**| Pool identifier | 
+ **limit** | **int**| Maximum number of rate versions to return | [optional] [default to 50]
+
+### Return type
+
+[**List[FxRateResponse]**](FxRateResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details

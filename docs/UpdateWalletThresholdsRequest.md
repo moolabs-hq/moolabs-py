@@ -6,9 +6,9 @@ Request to update wallet thresholds.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**local_soft_threshold_micros** | **int** |  | [optional] 
-**local_hard_cap_micros** | **int** |  | [optional] 
-**audit_note** | **str** |  | [optional] 
+**local_soft_threshold_micros** | **int** | Local soft threshold (micros). Set to null to remove override. | [optional] 
+**local_hard_cap_micros** | **int** | Local hard cap (micros). Set to null to remove override. | [optional] 
+**audit_note** | **str** | Audit note for this change | [optional] 
 
 ## Example
 

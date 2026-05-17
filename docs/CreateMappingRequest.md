@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meter_slug** | **str** | Meter slug from OpenMeter | 
 **feature_key** | **str** | Feature key to map to | 
-**effective_at** | **str** |  | [optional] 
+**effective_at** | **str** | When this mapping takes effect (ISO 8601, defaults to now) | [optional] 
 
 ## Example
 

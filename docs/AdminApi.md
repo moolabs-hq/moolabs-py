@@ -5,9 +5,12 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**diagnose_subscription**](AdminApi.md#diagnose_subscription) | **GET** /v1/admin/diagnostics/subscription/{subscription_id} | Diagnose Subscription
+[**get_ingest_dead_letters_v1**](AdminApi.md#get_ingest_dead_letters_v1) | **GET** /v1/admin/ingest/dead-letters | Get Ingest Dead Letters
 [**get_ledger_audit_get**](AdminApi.md#get_ledger_audit_get) | **GET** /v1/admin/ledger/audit | Get Ledger Audit
 [**get_ledger_balance_get**](AdminApi.md#get_ledger_balance_get) | **GET** /v1/admin/ledger/balance | Get Ledger Balance
+[**override_first_ingress_endpoint_v1**](AdminApi.md#override_first_ingress_endpoint_v1) | **POST** /v1/admin/usage/first-ingress/override | Override First Ingress Endpoint
 [**process_lifecycle_event_manually_v1_admin**](AdminApi.md#process_lifecycle_event_manually_v1_admin) | **POST** /v1/admin/subscriptions/{subscription_id}/process-lifecycle-event | Process Lifecycle Event Manually
+[**replay_ingest_dead_letter_endpoint_v1**](AdminApi.md#replay_ingest_dead_letter_endpoint_v1) | **POST** /v1/admin/ingest/dead-letters/{dead_letter_id}/replay | Replay Ingest Dead Letter Endpoint
 [**retry_unpriced**](AdminApi.md#retry_unpriced) | **POST** /v1/admin/usage/unpriced/retry | Retry Unpriced
 [**review_quarantined**](AdminApi.md#review_quarantined) | **POST** /v1/admin/usage/quarantined/review | Review Quarantined
 [**trigger_subscription_sync**](AdminApi.md#trigger_subscription_sync) | **POST** /v1/admin/subscriptions/{subscription_id}/sync | Trigger Subscription Sync
@@ -60,6 +63,82 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subscription_id** | **str**|  | 
  **tenant_id** | **str**| Tenant identifier | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_ingest_dead_letters_v1**
+> object get_ingest_dead_letters_v1(tenant_id=tenant_id, pool_id=pool_id, replay_status=replay_status, reason_code=reason_code, limit=limit)
+
+Get Ingest Dead Letters
+
+List durable ingest dead-letter records.
+
+### Example
+
+
+```python
+import moolabs
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.AdminApi(api_client)
+    tenant_id = 'tenant_id_example' # str | Optional tenant filter (optional)
+    pool_id = 'pool_id_example' # str | Optional pool filter (optional)
+    replay_status = 'replay_status_example' # str | Optional replay status filter: PENDING/REPLAYED/FAILED (optional)
+    reason_code = 'reason_code_example' # str | Optional reason code filter (optional)
+    limit = 100 # int | Maximum rows (optional) (default to 100)
+
+    try:
+        # Get Ingest Dead Letters
+        api_response = api_instance.get_ingest_dead_letters_v1(tenant_id=tenant_id, pool_id=pool_id, replay_status=replay_status, reason_code=reason_code, limit=limit)
+        print("The response of AdminApi->get_ingest_dead_letters_v1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->get_ingest_dead_letters_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenant_id** | **str**| Optional tenant filter | [optional] 
+ **pool_id** | **str**| Optional pool filter | [optional] 
+ **replay_status** | **str**| Optional replay status filter: PENDING/REPLAYED/FAILED | [optional] 
+ **reason_code** | **str**| Optional reason code filter | [optional] 
+ **limit** | **int**| Maximum rows | [optional] [default to 100]
 
 ### Return type
 
@@ -241,6 +320,75 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **override_first_ingress_endpoint_v1**
+> object override_first_ingress_endpoint_v1(override_first_ingress_request)
+
+Override First Ingress Endpoint
+
+Break-glass first_ingress_at override.  This endpoint requires DB role/session policy enforcement by billing.override_first_ingress_at() and writes audit rows.
+
+### Example
+
+
+```python
+import moolabs
+from moolabs.models.override_first_ingress_request import OverrideFirstIngressRequest
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.AdminApi(api_client)
+    override_first_ingress_request = moolabs.OverrideFirstIngressRequest() # OverrideFirstIngressRequest | 
+
+    try:
+        # Override First Ingress Endpoint
+        api_response = api_instance.override_first_ingress_endpoint_v1(override_first_ingress_request)
+        print("The response of AdminApi->override_first_ingress_endpoint_v1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->override_first_ingress_endpoint_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **override_first_ingress_request** | [**OverrideFirstIngressRequest**](OverrideFirstIngressRequest.md)|  | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **process_lifecycle_event_manually_v1_admin**
 > object process_lifecycle_event_manually_v1_admin(subscription_id, tenant_id)
 
@@ -300,6 +448,77 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **replay_ingest_dead_letter_endpoint_v1**
+> object replay_ingest_dead_letter_endpoint_v1(dead_letter_id, replay_dead_letter_request=replay_dead_letter_request)
+
+Replay Ingest Dead Letter Endpoint
+
+Replay a dead-letter event back through normalization + usage ingest.
+
+### Example
+
+
+```python
+import moolabs
+from moolabs.models.replay_dead_letter_request import ReplayDeadLetterRequest
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.AdminApi(api_client)
+    dead_letter_id = 'dead_letter_id_example' # str | Dead-letter row identifier
+    replay_dead_letter_request = moolabs.ReplayDeadLetterRequest() # ReplayDeadLetterRequest |  (optional)
+
+    try:
+        # Replay Ingest Dead Letter Endpoint
+        api_response = api_instance.replay_ingest_dead_letter_endpoint_v1(dead_letter_id, replay_dead_letter_request=replay_dead_letter_request)
+        print("The response of AdminApi->replay_ingest_dead_letter_endpoint_v1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->replay_ingest_dead_letter_endpoint_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dead_letter_id** | **str**| Dead-letter row identifier | 
+ **replay_dead_letter_request** | [**ReplayDeadLetterRequest**](ReplayDeadLetterRequest.md)|  | [optional] 
+
+### Return type
+
+**object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

@@ -4,8 +4,8 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_alerts**](MonitoringApi.md#get_alerts) | **GET** /monitoring/alerts | Get Alerts
-[**get_metrics**](MonitoringApi.md#get_metrics) | **GET** /monitoring/metrics | Get Metrics
+[**get_alerts**](MonitoringApi.md#get_alerts) | **GET** /v1/monitoring/alerts | Get Alerts
+[**get_metrics**](MonitoringApi.md#get_metrics) | **GET** /v1/monitoring/metrics | Get Metrics
 
 
 # **get_alerts**

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **subject_id** | **str** | Subject identifier | 
 **usd_amount_micros** | **int** | USD amount in micros | 
 **effective_at** | **datetime** | Effective timestamp | 
-**usage_event_id** | **str** |  | [optional] 
+**usage_event_id** | **str** | Usage event ID | [optional] 
 
 ## Example
 

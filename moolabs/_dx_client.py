@@ -1,134 +1,276 @@
-"""Unified Moolabs SDK facade — `Moolabs(api_key=..., cls_base_url=..., meter_base_url=...)`.
+"""Unified Moolabs SDK facade — capability-based public surface.
 
-This file is hand-written DX layer that sits ON TOP of the openapi-generator
-output. It is copied into the generated tree by `generate.sh` post-codegen
-when the tuple config sets `dx_dir: sdks/dx/python`.
-
-Two top-level namespaces customers see:
-  - `client.cls.*`   → routes to api.moolabs.com (BFF, direct)
-  - `client.meter.*` → routes to meter.moolabs.com (Meter, direct)
-
-Token: ONE `api_key`, generated in the customer UI, valid against both
-backends (each backend validates the same token independently — no
-proxying through BFF).
-
-Usage:
+Customer entry point:
 
     from moolabs import Moolabs
 
-    client = Moolabs(api_key="moo_live_xxx")
+    client = Moolabs(api_key="moo_live_xxx")  # default base_url = "moolabs.com"
 
-    # CLS (BFF-routed) — wallets, grants, ledger, billing, etc.
-    wallet = client.cls.wallets.create_wallet(...)
-    grants = client.cls.grants.list_grants(...)
-    ledger = client.cls.ledger.create_transfer(...)
+    # 11 capability namespaces — convention-based subdomain derivation per call
+    client.usage.list_events()
+    client.billing.list_invoices()
+    client.collections.list_cases()
+    client.usage.ingest_events([...])    # F2 fallback chain + G5 buffer
 
-    # Meter (Meter-routed) — events, meters, entitlements, etc.
-    client.meter.events.ingest_events([...])
-    meters = client.meter.meters.list_meters()
-    sub = client.meter.subscriptions.create_subscription(...)
+    # Self-hosted / staging override
+    other = Moolabs(api_key="...", base_url="moolabs.example.com")
 
-Customer never sees the BFF / Meter split as separate clients or URLs in
-day-to-day code. They just pick which namespace matches the operation
-they want.
+    # Strict-sync mode (raise on F2 chain exhaustion instead of buffering)
+    sync = Moolabs(api_key="...", buffer=False)
 
-NOTE on collisions: BFF and Meter both have `portal` and `subscriptions`
-tags. The OpenAPI generator emits the *first* one as `portal_api.py` /
-`subscriptions_api.py` (currently the Meter side, due to stitch order)
-and the *second* with a `0` suffix on the FILENAME — `portal0_api.py`
-contains the BFF version. The CLASS names inside both files are the
-same (`PortalApi`, `SubscriptionsApi`); routing is determined by which
-ApiClient instance we instantiate them with, not by class identity.
+This file is the post-2026-05-15 rewrite (BE Task E.3) that replaces the
+prior ``client.cls.*`` / ``client.meter.*`` namespaces with capability
+namespaces (contracts §3.2). Key shape changes from rc7:
+
+  - ``base_url`` is now the **root domain** (not a service URL)
+  - ``cls_base_url`` / ``meter_base_url`` REMOVED — convention-based subdomain
+    derivation in the SDK (contracts §3.3)
+  - 11 capability namespaces replace the 2 service namespaces
+  - New: ``buffer`` and ``buffer_max`` constructor params (G5 — contracts §3.5a)
+  - F2 fallback chain on ``usage.ingest_events()`` (contracts §3.5)
+  - All non-ingest capability calls go straight to ``{subdomain}.{base_url}``
+    — no /tenant/config round-trip
+  - ``CapabilityUnavailableError`` was considered, but the rev-2 pivot to
+    convention-based routing means an unreachable backend just surfaces as
+    ``RetryableError`` from the actual HTTP attempt. Error hierarchy unchanged.
 """
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any
+import importlib
+import re
+from typing import TYPE_CHECKING, Any, Callable, Optional
+
+# LoggerFn is the optional per-event diagnostic callback. Customer passes
+# this to Moolabs(... logger=...); the SDK invokes it on terminal_drop,
+# overflow, abandoned-on-shutdown, etc. with a stable msg id + a structured
+# fields dict. Default is _noop_logger (no output).
+#
+# Why a callable, not a class: Python idiom; matches how customers wire
+# `logging.getLogger("myapp").warning` or a structlog binder. No interface
+# definition required.
+LoggerFn = Callable[[str, dict], None]
+
+
+def _noop_logger(_msg: str, _fields: dict) -> None:
+    """Default logger — discards every call. Library never writes to stderr
+    unless the customer explicitly passes a logger to Moolabs(...).
+    """
+
+from ._dx_buffer import IngestBuffer, IngestBufferConfig
+from ._dx_namespaces import _Namespace, make_namespace
+from ._dx_routing import CAPABILITY_ORDER, SUBDOMAIN_MAP
+from ._dx_urls import IngestResolverConfig, IngestUrlResolver, derive_host
 
 if TYPE_CHECKING:
-    # Avoid runtime imports of the generated layer until first use, so that
-    # `import moolabs` is fast and so that test fixtures that mock the
-    # generated layer don't need the real classes at import time.
-    from moolabs.api_client import ApiClient
+    # Avoid runtime imports of the generated layer until first use, so
+    # `import moolabs` is fast and so that test fixtures don't need the
+    # real classes at import time.
+    from moolabs.api_client import ApiClient  # noqa: F401
 
 
-# Default base URLs — production hostnames. Customers behind a private
-# deployment can override per-instance.
-_DEFAULT_CLS_BASE_URL = "https://api.moolabs.com"
-_DEFAULT_METER_BASE_URL = "https://meter.moolabs.com"
+# Bundled default — non-US customers should override via base_url. Future
+# direction (per requirements §C2): derive region from API key payload,
+# fall back to this hostname.
+_DEFAULT_BASE_URL = "moolabs.com"
+
+
+def _pascal_to_snake(name: str) -> str:
+    """Convert ``"MeterBillingApi"`` → ``"meter_billing_api"``.
+
+    Used to map a capability map's class-name string to the actual module
+    file the openapi-generator emits. The Python generator names files
+    by the snake_case form of the tag name plus ``_api``.
+    """
+    s = re.sub(r"(?<!^)(?=[A-Z])", "_", name)
+    return s.lower()
+
+
+def _import_api_class(class_name: str) -> type:
+    """Resolve ``"WalletsApi"`` to the actual class in ``moolabs.api.wallets_api``.
+
+    Raises ``ImportError`` with a clear message if the module or class is
+    missing — typically means the routing map (BE §3.2) references a class
+    the current generated tree doesn't have. The routing-map unit test
+    in tests/test_dx_routing.py catches most drift; this guard is the
+    runtime backstop.
+    """
+    module_name = f"moolabs.api.{_pascal_to_snake(class_name)}"
+    try:
+        module = importlib.import_module(module_name)
+    except ImportError as e:
+        raise ImportError(
+            f"could not import {module_name} (backing class {class_name!r} for "
+            "the SDK's capability routing map). Re-run codegen or check "
+            "_dx_routing.CAPABILITY_MAP."
+        ) from e
+    try:
+        return getattr(module, class_name)
+    except AttributeError as e:
+        raise ImportError(
+            f"module {module_name} exists but doesn't define class {class_name!r}. "
+            "Re-run codegen or check _dx_routing.CAPABILITY_MAP."
+        ) from e
 
 
 class Moolabs:
-    """Unified Moolabs SDK client.
+    """Unified capability-organized Moolabs SDK client.
 
     Args:
-        api_key: Moolabs-issued API key (generated in the customer UI).
-            The same key authenticates against both the CLS (BFF) and
-            Meter backends; each backend validates it independently.
-        cls_base_url: Base URL for CLS / billing operations. Defaults
-            to ``https://api.moolabs.com``.
-        meter_base_url: Base URL for usage / metering operations.
-            Defaults to ``https://meter.moolabs.com``.
+        api_key: Moolabs-issued API key from the dashboard (Access and
+            Security → API keys). Validates against every Moolabs backend
+            via the shared key store (C1 / Shape A, 2026-05-09).
+        base_url: Root domain (host only). Defaults to ``"moolabs.com"``.
+            Self-hosted customers pass their own root (e.g.
+            ``"moolabs.example.com"``); the SDK derives api./meter./arc.
+            subdomains internally.
+        buffer: When True (default), event-ingest failures (F2 chain
+            exhaustion) enqueue events to an in-memory buffer rather than
+            raising. The background worker retries delivery via the F2 chain.
+            Pass ``False`` for strict-sync semantics — failures raise
+            ``RetryableError`` directly.
+        buffer_max: Maximum events the in-memory buffer holds before the
+            drop-oldest overflow policy kicks in. Default 10,000.
+
+    No I/O at construction. Per-backend HTTP clients are constructed
+    lazily on first capability access; the ingest buffer's worker thread
+    is started lazily on the first ``usage.ingest_events()`` call.
     """
 
     def __init__(
         self,
         api_key: str,
-        cls_base_url: str = _DEFAULT_CLS_BASE_URL,
-        meter_base_url: str = _DEFAULT_METER_BASE_URL,
+        base_url: Optional[str] = None,
+        buffer: bool = True,
+        buffer_max: int = 1000,
+        logger: Optional[LoggerFn] = None,
     ) -> None:
-        if not api_key:
-            raise ValueError("Moolabs(api_key=...) is required")
-
+        if not api_key or not isinstance(api_key, str):
+            raise ValueError("api_key must be a non-empty string")
         self._api_key = api_key
-        self._cls_base_url = cls_base_url.rstrip("/")
-        self._meter_base_url = meter_base_url.rstrip("/")
-        self._cls_client: ApiClient | None = None
-        self._meter_client: ApiClient | None = None
+        self._base_url = base_url or _DEFAULT_BASE_URL
+        # Optional per-event diagnostic logger. NONE = no output. When
+        # provided, the SDK invokes it on terminal_drop / overflow /
+        # abandoned-on-shutdown / drain-failure events with a stable msg
+        # id and a structured fields dict — wire it to
+        # logging.getLogger("yourapp").warning, structlog, etc.
+        self._logger: LoggerFn = logger or _noop_logger
 
-    def _make_client(self, base_url: str) -> "ApiClient":
-        # Local import — see TYPE_CHECKING note above.
-        from moolabs.api_client import ApiClient
-        from moolabs.configuration import Configuration
+        # Validate base_url early so a typo crashes at construction, not on
+        # first capability call.
+        for backend in SUBDOMAIN_MAP:
+            # derive_host raises ValueError on malformed base_url; we don't
+            # use the result, just exercise the validator.
+            derive_host(backend, self._base_url)
 
-        return ApiClient(
-            Configuration(host=base_url, access_token=self._api_key)
+        # F2 ingest resolver. discovery_fn is wired in lazily on first
+        # ingest call (so we don't import the generated layer at construction).
+        self._ingest_resolver = IngestUrlResolver(
+            base_url=self._base_url,
+            discovery_fn=self._discover_tenant_config,
+            config=IngestResolverConfig(),
         )
 
-    def _get_cls_client(self) -> "ApiClient":
-        if self._cls_client is None:
-            self._cls_client = self._make_client(self._cls_base_url)
-        return self._cls_client
+        # G5 buffer. Lazy worker start happens in _ingest_buffer property
+        # the first time it's accessed.
+        self._buffer_enabled = bool(buffer)
+        self._buffer_max = buffer_max
+        self._ingest_buffer: Optional[IngestBuffer] = None
 
-    def _get_meter_client(self) -> "ApiClient":
-        if self._meter_client is None:
-            self._meter_client = self._make_client(self._meter_base_url)
-        return self._meter_client
+        # Per-backend ApiClient cache. Lazy construction in _get_client.
+        self._clients: dict[str, Any] = {}
+
+        # Per-capability namespace cache. Lazy construction in capability
+        # property accessors.
+        self._namespaces: dict[str, _Namespace] = {}
+
+    # ── Public capability properties ────────────────────────────────────
+
+    # Eleven capability namespaces (contracts §3.2). Each lazily constructs
+    # its namespace + backing API client instances on first access. The
+    # property pattern preserves IDE autocomplete; the actual method
+    # dispatch is in _Namespace.__getattr__.
 
     @property
-    def cls(self) -> "_ClsNamespace":
-        """All operations that route to the CLS / BFF backend (api.moolabs.com)."""
-        return _ClsNamespace(self._get_cls_client())
+    def usage(self) -> "_Namespace":
+        return self._ns("usage")
 
     @property
-    def meter(self) -> "_MeterNamespace":
-        """All operations that route to the Meter backend (meter.moolabs.com)."""
-        return _MeterNamespace(self._get_meter_client())
+    def customers(self) -> "_Namespace":
+        return self._ns("customers")
 
-    # ── Lifecycle ─────────────────────────────────────────────────────────
+    @property
+    def catalog(self) -> "_Namespace":
+        return self._ns("catalog")
+
+    @property
+    def subscriptions(self) -> "_Namespace":
+        return self._ns("subscriptions")
+
+    @property
+    def entitlements(self) -> "_Namespace":
+        return self._ns("entitlements")
+
+    @property
+    def wallets(self) -> "_Namespace":
+        return self._ns("wallets")
+
+    @property
+    def credits(self) -> "_Namespace":
+        return self._ns("credits")
+
+    @property
+    def billing(self) -> "_Namespace":
+        return self._ns("billing")
+
+    @property
+    def collections(self) -> "_Namespace":
+        return self._ns("collections")
+
+    @property
+    def cost(self) -> "_Namespace":
+        return self._ns("cost")
+
+    @property
+    def notifications(self) -> "_Namespace":
+        return self._ns("notifications")
+
+    # ── Lifecycle ────────────────────────────────────────────────────────
 
     def close(self) -> None:
-        """Release any open HTTP connections held by the underlying ApiClients.
+        """Release HTTP clients + drain the ingest buffer (graceful).
 
-        Safe to call multiple times. Subsequent namespace access reconstructs
-        clients on demand.
+        Safe to call multiple times. After close(), subsequent capability
+        access reconstructs the per-backend clients on demand — but the
+        buffer is closed and cannot be re-started; new ingest calls will
+        raise on F2 exhaustion.
         """
-        if self._cls_client is not None:
-            self._cls_client.close()
-            self._cls_client = None
-        if self._meter_client is not None:
-            self._meter_client.close()
-            self._meter_client = None
+        # Stop the producer thread first (if usage namespace exists) so
+        # it drains pending queue events into the buffer before the buffer
+        # closes. Look it up by capability name to avoid coupling to the
+        # lazy-namespace dict's internal state.
+        usage_ns = self._namespaces.get("usage")
+        if usage_ns is not None:
+            try:
+                usage_ns._stop_producer(timeout=2.0)
+            except Exception:  # noqa: BLE001
+                pass
+
+        # Drain the ingest buffer (synchronously blocks up to
+        # shutdown_flush_timeout_sec from IngestBufferConfig).
+        if self._ingest_buffer is not None:
+            self._ingest_buffer.close()
+
+        # Release each backend's ApiClient. The generated ApiClient has
+        # a .close() in current openapi-generator-python output but it's
+        # idempotent if absent.
+        for client in self._clients.values():
+            try:
+                client.close()
+            except (AttributeError, Exception):  # noqa: BLE001
+                pass
+        self._clients.clear()
+        self._namespaces.clear()
 
     def __enter__(self) -> "Moolabs":
         return self
@@ -136,146 +278,175 @@ class Moolabs:
     def __exit__(self, *_exc_info: object) -> None:
         self.close()
 
+    # ── Internals ────────────────────────────────────────────────────────
 
-class _ClsNamespace:
-    """All operations that route to the CLS / BFF backend (api.moolabs.com).
+    def _ns(self, capability: str) -> "_Namespace":
+        """Lazy namespace construction. Cached per capability for the
+        instance's lifetime so re-accessing ``client.billing`` doesn't
+        rebuild the method index every time."""
+        cached = self._namespaces.get(capability)
+        if cached is not None:
+            return cached
 
-    Sub-namespaces correspond to the BFF's per-resource OpenAPI tags
-    (wallets, grants, ledger, billing, alerts, auto_topup, rate_cards,
-    rating, fx_rates, portal, subscriptions, etc.). New tags added to
-    BFF will need a new property here.
-    """
+        kwargs: dict[str, Any] = {}
+        if capability == "usage":
+            # Wire F2 + G5 hooks
+            kwargs["ingest_resolver"] = self._ingest_resolver
+            kwargs["ingest_buffer"] = self._lazy_ingest_buffer()
+            kwargs["make_client_at_url"] = self._make_client_at_url
 
-    def __init__(self, client: "ApiClient") -> None:
-        self._client = client
+        ns = make_namespace(
+            capability=capability,
+            get_client=self._get_client,
+            import_api_class=_import_api_class,
+            **kwargs,
+        )
+        self._namespaces[capability] = ns
+        return ns
 
-    @property
-    def wallets(self) -> Any:
-        from moolabs.api.wallets_api import WalletsApi
-        return WalletsApi(self._client)
+    def _get_client(self, backend: str) -> Any:
+        """Per-backend ApiClient — lazy + cached. Each backend gets one
+        client pointed at the convention-derived host (``api.{base}``,
+        ``meter.{base}``, ``arc.{base}``)."""
+        if backend in self._clients:
+            return self._clients[backend]
+        host = derive_host(backend, self._base_url)
+        client = self._make_client_at_url(host)
+        self._clients[backend] = client
+        return client
 
-    @property
-    def grants(self) -> Any:
-        from moolabs.api.grants_api import GrantsApi
-        return GrantsApi(self._client)
+    def _make_client_at_url(self, host: str) -> Any:
+        """Create a fresh ApiClient against ``host`` with this instance's
+        API key. Used both for the per-backend cached clients AND for the
+        F2 ingest path's per-call resolved client."""
+        # Import the generated layer lazily so `import moolabs` is fast.
+        from moolabs.api_client import ApiClient
+        from moolabs.configuration import Configuration
 
-    @property
-    def ledger(self) -> Any:
-        from moolabs.api.ledger_api import LedgerApi
-        return LedgerApi(self._client)
+        return ApiClient(
+            Configuration(host=host, access_token=self._api_key)
+        )
 
-    @property
-    def alerts(self) -> Any:
-        from moolabs.api.alerts_api import AlertsApi
-        return AlertsApi(self._client)
+    def _lazy_ingest_buffer(self) -> Optional[IngestBuffer]:
+        """Construct and start the G5 buffer on first request; return None
+        if buffering is disabled."""
+        if not self._buffer_enabled:
+            return None
+        if self._ingest_buffer is None:
+            self._ingest_buffer = IngestBuffer(
+                drain_callback=self._buffer_drain_callback,
+                config=IngestBufferConfig(max_size=self._buffer_max),
+                logger=self._logger,   # propagate (noop if customer didn't supply one)
+            )
+            self._ingest_buffer.start()
+        return self._ingest_buffer
 
-    @property
-    def auto_topup(self) -> Any:
-        from moolabs.api.auto_topup_api import AutoTopupApi
-        return AutoTopupApi(self._client)
+    def _buffer_drain_callback(self, events: list[Any]) -> int:
+        """Worker-thread callback: try to deliver buffered events via the
+        F2 chain. Returns the count successfully delivered (events leave
+        the queue from the front).
 
-    # NOTE: client.cls.billing is intentionally absent. The BFF spec
-    # (`services/moolabs-app/bff/openapi.json`) does not currently emit any
-    # operations under the `billing` tag — the router code declares one but
-    # the OpenAPI dump shows zero billing-tagged ops. When BFF starts
-    # exposing them, add a `billing` property here mirroring `wallets`/etc.
-    # For Meter-side billing, use `client.meter.billing`.
+        Terminal failures (auth 401/403, validation 400/422, removed-route
+        404) DISCARD the batch — retrying with the same key/body fails
+        identically; keeping these in the buffer forever is the silent-
+        data-loss bug. Logs at WARN so the operator sees the drop.
+        """
+        url = self._ingest_resolver.get_ingest_url()
+        try:
+            client = self._make_client_at_url(url)
+            EventsApi = _import_api_class("EventsApi")
+            EventsApi(client).ingest_events(events)
+            self._ingest_resolver.report_post_outcome(url, success=True)
+            return len(events)
+        except Exception as exc:
+            # Lazy import to avoid namespace cycle at module load
+            from ._dx_namespaces import _is_terminal_error
+            if _is_terminal_error(exc):
+                # Drop the batch — retry will fail identically. Bump the
+                # terminal-drop counter (always; cheap, polling-friendly)
+                # AND emit a per-event log (only if customer provided
+                # a logger). Counter alone tells you HOW MUCH; logger
+                # gives you WHICH status + WHICH error per event.
+                if self._ingest_buffer is not None:
+                    self._ingest_buffer.record_terminal_drop(len(events))
+                self._logger(
+                    "moolabs.ingest_buffer.terminal_drop",
+                    {
+                        "status": getattr(exc, "status", None),
+                        "count": len(events),
+                        "error": str(exc),
+                    },
+                )
+                return len(events)
+            self._ingest_resolver.report_post_outcome(url, success=False)
+            return 0   # transient; events stay queued for next tick
 
-    @property
-    def rate_cards(self) -> Any:
-        from moolabs.api.rate_cards_api import RateCardsApi
-        return RateCardsApi(self._client)
+    def _discover_tenant_config(self) -> dict:
+        """Call ``GET /tenant/config`` on the BFF for the F2 resolver.
 
-    @property
-    def rating(self) -> Any:
-        from moolabs.api.rating_api import RatingApi
-        return RatingApi(self._client)
+        Returns the parsed dict. Raises on any HTTP / parse failure — the
+        IngestUrlResolver catches the exception and applies its discovery-
+        retry TTL.
+        """
+        # Lazy import — we may never call this if the customer doesn't ingest.
+        from moolabs.api_client import ApiClient
+        from moolabs.configuration import Configuration
 
-    @property
-    def fx_rates(self) -> Any:
-        from moolabs.api.fx_rates_api import FxRatesApi
-        return FxRatesApi(self._client)
+        host = derive_host("bff", self._base_url)
+        cfg = Configuration(host=host, access_token=self._api_key)
+        client = ApiClient(cfg)
+        try:
+            # The generated TenantConfigApi (or similar) class exposes the
+            # GET /tenant/config endpoint after the BFF spec refresh from
+            # Task A.2 lands in the regenerated SDK. Fall back to raw HTTP
+            # if the class isn't present yet.
+            try:
+                TenantConfigApi = _import_api_class("TenantConfigApi")
+                resp = TenantConfigApi(client).get_tenant_config()
+                # The generated method returns a model instance — convert to dict.
+                if hasattr(resp, "to_dict"):
+                    return resp.to_dict()
+                if isinstance(resp, dict):
+                    return resp
+            except ImportError:
+                # TenantConfigApi not yet generated — fall back to raw HTTP via
+                # the underlying urllib3 pool the ApiClient holds.
+                pass
 
-    @property
-    def portal(self) -> Any:
-        # BFF portal tokens — `portal` tag (Meter's was renamed to MeterPortal
-        # at stitch time, so PortalApi contains only BFF /v1/portal/* paths).
-        from moolabs.api.portal_api import PortalApi
-        return PortalApi(self._client)
+            # Raw fallback. ApiClient.call_api is the generated client's HTTP
+            # entry point; signatures vary across generator versions, so we
+            # bail to a low-level rest call if needed.
+            return self._raw_get_tenant_config(host)
+        finally:
+            try:
+                client.close()
+            except Exception:  # noqa: BLE001
+                pass
 
-    @property
-    def subscriptions(self) -> Any:
-        # BFF subscriptions (paths /v1/subscriptions/*). Meter's Subscriptions
-        # tag is renamed to MeterSubscriptions at stitch time.
-        from moolabs.api.subscriptions_api import SubscriptionsApi
-        return SubscriptionsApi(self._client)
+    def _raw_get_tenant_config(self, host: str) -> dict:
+        """Fallback raw HTTP call for /tenant/config when no generated
+        class is available. Returns the parsed JSON dict."""
+        # Use urllib3 / Python stdlib so we don't add a hard requests/httpx
+        # dependency on the SDK.
+        import json
+        from urllib.request import Request, urlopen
 
+        req = Request(
+            url=f"{host}/v1/tenant/config",
+            headers={
+                "Authorization": f"Bearer {self._api_key}",
+                "Accept": "application/json",
+            },
+        )
+        with urlopen(req, timeout=10) as resp:  # noqa: S310 (URL is internal)
+            data = resp.read()
+        return json.loads(data.decode("utf-8"))
 
-class _MeterNamespace:
-    """All operations that route to the Meter backend (meter.moolabs.com).
+    # ── Introspection ────────────────────────────────────────────────────
 
-    Sub-namespaces correspond to Meter's per-resource OpenAPI tags
-    (events, meters, customers, subscriptions, entitlements, apps,
-    portal, product_catalog, subjects, notifications, etc.).
-    """
-
-    def __init__(self, client: "ApiClient") -> None:
-        self._client = client
-
-    @property
-    def events(self) -> Any:
-        from moolabs.api.events_api import EventsApi
-        return EventsApi(self._client)
-
-    @property
-    def meters(self) -> Any:
-        from moolabs.api.meters_api import MetersApi
-        return MetersApi(self._client)
-
-    @property
-    def customers(self) -> Any:
-        from moolabs.api.customers_api import CustomersApi
-        return CustomersApi(self._client)
-
-    @property
-    def subscriptions(self) -> Any:
-        # Meter subscriptions tagged MeterSubscriptions (renamed at stitch).
-        from moolabs.api.meter_subscriptions_api import MeterSubscriptionsApi
-        return MeterSubscriptionsApi(self._client)
-
-    @property
-    def billing(self) -> Any:
-        # Meter billing tagged MeterBilling (renamed at stitch).
-        from moolabs.api.meter_billing_api import MeterBillingApi
-        return MeterBillingApi(self._client)
-
-    @property
-    def entitlements(self) -> Any:
-        from moolabs.api.entitlements_api import EntitlementsApi
-        return EntitlementsApi(self._client)
-
-    @property
-    def notifications(self) -> Any:
-        from moolabs.api.notifications_api import NotificationsApi
-        return NotificationsApi(self._client)
-
-    @property
-    def apps(self) -> Any:
-        from moolabs.api.apps_api import AppsApi
-        return AppsApi(self._client)
-
-    @property
-    def portal(self) -> Any:
-        # Meter portal tokens tagged MeterPortal (renamed at stitch).
-        from moolabs.api.meter_portal_api import MeterPortalApi
-        return MeterPortalApi(self._client)
-
-    @property
-    def product_catalog(self) -> Any:
-        from moolabs.api.product_catalog_api import ProductCatalogApi
-        return ProductCatalogApi(self._client)
-
-    @property
-    def subjects(self) -> Any:
-        from moolabs.api.subjects_api import SubjectsApi
-        return SubjectsApi(self._client)
+    def __repr__(self) -> str:
+        return (
+            f"<Moolabs(base_url={self._base_url!r}, "
+            f"buffer={self._buffer_enabled}, "
+            f"capabilities={len(CAPABILITY_ORDER)})>"
+        )

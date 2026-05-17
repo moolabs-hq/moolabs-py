@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **effective_at** | **datetime** |  | 
 **rate_version** | **str** |  | 
 **recorded_at** | **datetime** |  | 
+**created_by** | **str** |  | [optional] 
 
 ## Example
 

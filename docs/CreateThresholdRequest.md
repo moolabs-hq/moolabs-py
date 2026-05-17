@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **threshold_type** | **str** | PERCENT or ABSOLUTE | 
 **threshold_value** | **int** | Threshold value (0-100 for PERCENT, micros for ABSOLUTE) | 
-**notify_channels** | **List[str]** |  | [optional] 
+**notify_channels** | [**List[NotifyChannel]**](NotifyChannel.md) | Structured notification channels, e.g. [{\&quot;type\&quot;: \&quot;email\&quot;, \&quot;address\&quot;: \&quot;ops@example.com\&quot;}] | [optional] 
 
 ## Example
 

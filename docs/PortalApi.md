@@ -11,18 +11,18 @@ Method | HTTP request | Description
 
 
 # **create_token_endpoint**
-> object create_token_endpoint(create_portal_token_request)
+> object create_token_endpoint(app_api_v1_portal_router_create_portal_token_request)
 
 Create Token Endpoint
 
-Create a portal token for a subject.  The token is scoped to the subject's tenant and pool (resolved server-side). Plaintext is returned only once — only the SHA-256 hash is stored. tenant_id is derived from server config (never a query param).
+Create a portal token for a subject.  The token is scoped to the subject's tenant and pool (resolved server-side). Plaintext is returned only once — only the SHA-256 hash is stored. tenant_id is resolved from the authenticated API key (per-tenant key → billing.api_keys; global key → TENANT_ID config). Never a query param.
 
 ### Example
 
 
 ```python
 import moolabs
-from moolabs.models.create_portal_token_request import CreatePortalTokenRequest
+from moolabs.models.app_api_v1_portal_router_create_portal_token_request import AppApiV1PortalRouterCreatePortalTokenRequest
 from moolabs.rest import ApiException
 from pprint import pprint
 
@@ -37,11 +37,11 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.PortalApi(api_client)
-    create_portal_token_request = moolabs.CreatePortalTokenRequest() # CreatePortalTokenRequest | 
+    app_api_v1_portal_router_create_portal_token_request = moolabs.AppApiV1PortalRouterCreatePortalTokenRequest() # AppApiV1PortalRouterCreatePortalTokenRequest | 
 
     try:
         # Create Token Endpoint
-        api_response = api_instance.create_token_endpoint(create_portal_token_request)
+        api_response = api_instance.create_token_endpoint(app_api_v1_portal_router_create_portal_token_request)
         print("The response of PortalApi->create_token_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -55,7 +55,7 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_portal_token_request** | [**CreatePortalTokenRequest**](CreatePortalTokenRequest.md)|  | 
+ **app_api_v1_portal_router_create_portal_token_request** | [**AppApiV1PortalRouterCreatePortalTokenRequest**](AppApiV1PortalRouterCreatePortalTokenRequest.md)|  | 
 
 ### Return type
 

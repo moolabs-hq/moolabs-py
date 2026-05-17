@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**get_wallet_members**](WalletsApi.md#get_wallet_members) | **GET** /v1/wallets/{wallet_id}/members | Get Wallet Members
 [**list_wallet_members**](WalletsApi.md#list_wallet_members) | **GET** /v1/wallet_members | List Wallet Members
 [**list_wallets**](WalletsApi.md#list_wallets) | **GET** /v1/wallets | List Wallets
+[**list_wallets_by_subjects_v1**](WalletsApi.md#list_wallets_by_subjects_v1) | **POST** /v1/wallets/by-subjects | List Wallets By Subjects
 [**resolve_tenant_and_pool**](WalletsApi.md#resolve_tenant_and_pool) | **GET** /v1/wallets/resolve | Resolve Tenant And Pool
 [**update_wallet_settings**](WalletsApi.md#update_wallet_settings) | **PATCH** /v1/wallets/{wallet_id}/settings | Update Wallet Settings
 [**update_wallet_thresholds**](WalletsApi.md#update_wallet_thresholds) | **PATCH** /v1/wallets/{wallet_id}/thresholds | Update Wallet Thresholds
@@ -350,7 +351,7 @@ with moolabs.ApiClient(configuration) as api_client:
     to_effective_at = '2013-10-20T19:20:30+01:00' # datetime | End time for activity range (optional)
     effective_as_of = '2013-10-20T19:20:30+01:00' # datetime | Effective as-of timestamp (business time) for time travel (optional)
     recorded_as_of = '2013-10-20T19:20:30+01:00' # datetime | Recorded as-of timestamp (system time) for time travel (optional)
-    consistent_view = True # bool | Use strong consistency for reads (optional)
+    consistent_view = False # bool | Use strong consistency for reads (optional) (default to False)
     limit = 50 # int | Maximum number of items to return (optional) (default to 50)
     cursor = 'cursor_example' # str | Pagination cursor (optional)
 
@@ -375,7 +376,7 @@ Name | Type | Description  | Notes
  **to_effective_at** | **datetime**| End time for activity range | [optional] 
  **effective_as_of** | **datetime**| Effective as-of timestamp (business time) for time travel | [optional] 
  **recorded_as_of** | **datetime**| Recorded as-of timestamp (system time) for time travel | [optional] 
- **consistent_view** | **bool**| Use strong consistency for reads | [optional] 
+ **consistent_view** | **bool**| Use strong consistency for reads | [optional] [default to False]
  **limit** | **int**| Maximum number of items to return | [optional] [default to 50]
  **cursor** | **str**| Pagination cursor | [optional] 
 
@@ -552,6 +553,7 @@ List wallets with optional filters.  - If subscription_id is provided, finds wal
 
 ### Example
 
+* Bearer Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -564,6 +566,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -577,7 +588,7 @@ with moolabs.ApiClient(configuration) as api_client:
     owner_id = 'owner_id_example' # str | Optional owner_id filter (optional)
     effective_as_of = '2013-10-20T19:20:30+01:00' # datetime | Effective as-of timestamp (business time) for time travel (optional)
     recorded_as_of = '2013-10-20T19:20:30+01:00' # datetime | Recorded as-of timestamp (system time) for time travel (optional)
-    consistent_view = True # bool | Use strong consistency for reads (optional)
+    consistent_view = False # bool | Use strong consistency for reads (optional) (default to False)
 
     try:
         # List Wallets
@@ -603,7 +614,7 @@ Name | Type | Description  | Notes
  **owner_id** | **str**| Optional owner_id filter | [optional] 
  **effective_as_of** | **datetime**| Effective as-of timestamp (business time) for time travel | [optional] 
  **recorded_as_of** | **datetime**| Recorded as-of timestamp (system time) for time travel | [optional] 
- **consistent_view** | **bool**| Use strong consistency for reads | [optional] 
+ **consistent_view** | **bool**| Use strong consistency for reads | [optional] [default to False]
 
 ### Return type
 
@@ -611,11 +622,90 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[HTTPBearer](../README.md#HTTPBearer)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_wallets_by_subjects_v1**
+> object list_wallets_by_subjects_v1(batch_wallets_by_subjects_request)
+
+List Wallets By Subjects
+
+Fetch wallet balances for multiple subjects in a single request.  Tenant is derived from the auth context, not from subject membership. Subjects not found under this tenant return no entry (no error).
+
+### Example
+
+* Bearer Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.batch_wallets_by_subjects_request import BatchWalletsBySubjectsRequest
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.WalletsApi(api_client)
+    batch_wallets_by_subjects_request = moolabs.BatchWalletsBySubjectsRequest() # BatchWalletsBySubjectsRequest | 
+
+    try:
+        # List Wallets By Subjects
+        api_response = api_instance.list_wallets_by_subjects_v1(batch_wallets_by_subjects_request)
+        print("The response of WalletsApi->list_wallets_by_subjects_v1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WalletsApi->list_wallets_by_subjects_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **batch_wallets_by_subjects_request** | [**BatchWalletsBySubjectsRequest**](BatchWalletsBySubjectsRequest.md)|  | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

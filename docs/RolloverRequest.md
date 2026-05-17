@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tenant_id** | **str** | Tenant identifier | 
 **subscription_id** | **str** | Subscription identifier | 
-**period_end** | **datetime** |  | [optional] 
+**period_end** | **datetime** | Period end timestamp (defaults to now) | [optional] 
 **grace_window_seconds** | **int** | Grace window in seconds | [optional] [default to 3600]
 
 ## Example

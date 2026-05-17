@@ -17,7 +17,7 @@ Method | HTTP request | Description
 [**invoice_pending_lines_action**](MeterBillingApi.md#invoice_pending_lines_action) | **POST** /api/v1/billing/invoices/invoice | Invoice a customer based on the pending line items
 [**list_billing_profile_customer_overrides**](MeterBillingApi.md#list_billing_profile_customer_overrides) | **GET** /api/v1/billing/customers | List customer overrides
 [**list_billing_profiles**](MeterBillingApi.md#list_billing_profiles) | **GET** /api/v1/billing/profiles | List billing profiles
-[**list_invoices**](MeterBillingApi.md#list_invoices) | **GET** /api/v1/billing/invoices | List invoices
+[**list_invoices_get**](MeterBillingApi.md#list_invoices_get) | **GET** /api/v1/billing/invoices | List invoices
 [**recalculate_invoice_tax_action**](MeterBillingApi.md#recalculate_invoice_tax_action) | **POST** /api/v1/billing/invoices/{invoiceId}/taxes/recalculate | Recalculate an invoice&#39;s tax amounts
 [**retry_invoice_action**](MeterBillingApi.md#retry_invoice_action) | **POST** /api/v1/billing/invoices/{invoiceId}/retry | Retry advancing the invoice after a failed attempt.
 [**simulate_invoice**](MeterBillingApi.md#simulate_invoice) | **POST** /api/v1/billing/customers/{customerId}/invoices/simulate | Simulate an invoice for a customer
@@ -1187,8 +1187,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_invoices**
-> InvoicePaginatedResponse list_invoices(statuses=statuses, extended_statuses=extended_statuses, issued_after=issued_after, issued_before=issued_before, period_start_after=period_start_after, period_start_before=period_start_before, created_after=created_after, created_before=created_before, expand=expand, customers=customers, include_deleted=include_deleted, page=page, page_size=page_size, order=order, order_by=order_by)
+# **list_invoices_get**
+> InvoicePaginatedResponse list_invoices_get(statuses=statuses, extended_statuses=extended_statuses, issued_after=issued_after, issued_before=issued_before, period_start_after=period_start_after, period_start_before=period_start_before, created_after=created_after, created_before=created_before, expand=expand, customers=customers, include_deleted=include_deleted, page=page, page_size=page_size, order=order, order_by=order_by)
 
 List invoices
 
@@ -1246,11 +1246,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
     try:
         # List invoices
-        api_response = api_instance.list_invoices(statuses=statuses, extended_statuses=extended_statuses, issued_after=issued_after, issued_before=issued_before, period_start_after=period_start_after, period_start_before=period_start_before, created_after=created_after, created_before=created_before, expand=expand, customers=customers, include_deleted=include_deleted, page=page, page_size=page_size, order=order, order_by=order_by)
-        print("The response of MeterBillingApi->list_invoices:\n")
+        api_response = api_instance.list_invoices_get(statuses=statuses, extended_statuses=extended_statuses, issued_after=issued_after, issued_before=issued_before, period_start_after=period_start_after, period_start_before=period_start_before, created_after=created_after, created_before=created_before, expand=expand, customers=customers, include_deleted=include_deleted, page=page, page_size=page_size, order=order, order_by=order_by)
+        print("The response of MeterBillingApi->list_invoices_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling MeterBillingApi->list_invoices: %s\n" % e)
+        print("Exception when calling MeterBillingApi->list_invoices_get: %s\n" % e)
 ```
 
 

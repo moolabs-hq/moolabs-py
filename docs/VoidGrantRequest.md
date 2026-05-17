@@ -6,7 +6,7 @@ Request to void a grant.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**void_reason** | **str** |  | [optional] 
+**void_reason** | **str** | Reason for voiding the grant | [optional] 
 
 ## Example
 

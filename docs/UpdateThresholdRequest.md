@@ -6,8 +6,8 @@ Request to update a threshold.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**threshold_value** | **int** |  | [optional] 
-**notify_channels** | **List[str]** |  | [optional] 
+**threshold_value** | **int** | New threshold value | [optional] 
+**notify_channels** | [**List[NotifyChannel]**](NotifyChannel.md) | New notification channels | [optional] 
 
 ## Example
 

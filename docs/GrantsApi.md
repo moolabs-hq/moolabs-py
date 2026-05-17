@@ -116,7 +116,7 @@ with moolabs.ApiClient(configuration) as api_client:
     as_of = '2013-10-20T19:20:30+01:00' # datetime | As-of timestamp for time travel (legacy, use effective_as_of instead) (optional)
     effective_as_of = '2013-10-20T19:20:30+01:00' # datetime | Effective as-of timestamp (business time) for time travel (optional)
     recorded_as_of = '2013-10-20T19:20:30+01:00' # datetime | Recorded as-of timestamp (system time) for time travel (optional)
-    consistent_view = True # bool | Use strong consistency for reads (optional)
+    consistent_view = False # bool | Use strong consistency for reads (optional) (default to False)
     limit = 100 # int | Maximum number of grants to return (optional) (default to 100)
     offset = 0 # int | Offset for pagination (optional) (default to 0)
 
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
  **as_of** | **datetime**| As-of timestamp for time travel (legacy, use effective_as_of instead) | [optional] 
  **effective_as_of** | **datetime**| Effective as-of timestamp (business time) for time travel | [optional] 
  **recorded_as_of** | **datetime**| Recorded as-of timestamp (system time) for time travel | [optional] 
- **consistent_view** | **bool**| Use strong consistency for reads | [optional] 
+ **consistent_view** | **bool**| Use strong consistency for reads | [optional] [default to False]
  **limit** | **int**| Maximum number of grants to return | [optional] [default to 100]
  **offset** | **int**| Offset for pagination | [optional] [default to 0]
 

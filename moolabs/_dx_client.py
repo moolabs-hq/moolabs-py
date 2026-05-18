@@ -149,7 +149,42 @@ class Moolabs:
         buffer: bool = True,
         buffer_max: int = 1000,
         logger: Optional[LoggerFn] = None,
+        enable_ingest_discovery: bool = False,
     ) -> None:
+        """Construct a Moolabs client.
+
+        Args:
+            api_key: Customer API key minted in the moolabs dashboard.
+                This is the only identity input — the SDK never asks the
+                customer to provide a separate tenant_id / namespace /
+                org_id. Each backend resolves the tenant from this key
+                via the shared `billing.api_keys` table (Shape A) and
+                injects the relevant context server-side. If a backend
+                fails to derive the tenant from a valid key, the bug is
+                server-side, not SDK-side — the SDK intentionally does
+                NOT compensate by sending OM-Namespace etc.
+            base_url: Apex or env-rooted host. Defaults to ``moolabs.com``.
+            buffer: When True (default) usage.ingest_events buffers and
+                flushes in a background thread. When False, ingest calls
+                are synchronous.
+            buffer_max: Max events held in the buffer before backpressure
+                kicks in.
+            logger: Optional per-event diagnostic callback.
+            enable_ingest_discovery: When True, ``usage.ingest_events``
+                preflights ``GET /v1/tenant/config`` on the BFF to
+                discover the regional ingest URL. **Default is False**
+                because (a) the simple ``base_url`` case can route
+                directly via the region/last-resort fallback without a
+                preflight round-trip, and (b) BFF currently rejects
+                customer-key Bearer auth (a separate gap), causing
+                discovery to throw — even though the F2 resolver IS
+                designed to fall through to the region fallback on
+                discovery failure, the failure exception class isn't
+                always caught and bubbles up as a ValidationError that
+                aborts the ingest call. Multi-region or shard-aware
+                deployments that need tenant-specific ingest routing
+                can opt in via this flag.
+        """
         if not api_key or not isinstance(api_key, str):
             raise ValueError("api_key must be a non-empty string")
         self._api_key = api_key
@@ -176,11 +211,17 @@ class Moolabs:
             # use the result, just exercise the validator.
             derive_host(backend, self._base_url)
 
-        # F2 ingest resolver. discovery_fn is wired in lazily on first
-        # ingest call (so we don't import the generated layer at construction).
+        # F2 ingest resolver. The discovery step (`GET /v1/tenant/config`
+        # on BFF) is OPT-IN — by default the resolver short-circuits to
+        # the region/last-resort fallback URL without a preflight HTTP
+        # call. See `enable_ingest_discovery` in the constructor docstring
+        # for the rationale; the resolver itself handles
+        # `discovery_fn=None` by skipping step 2 of the F2 chain.
         self._ingest_resolver = IngestUrlResolver(
             base_url=self._base_url,
-            discovery_fn=self._discover_tenant_config,
+            discovery_fn=(
+                self._discover_tenant_config if enable_ingest_discovery else None
+            ),
             config=IngestResolverConfig(),
         )
 
@@ -331,7 +372,14 @@ class Moolabs:
     def _make_client_at_url(self, host: str) -> Any:
         """Create a fresh ApiClient against ``host`` with this instance's
         API key. Used both for the per-backend cached clients AND for the
-        F2 ingest path's per-call resolved client."""
+        F2 ingest path's per-call resolved client.
+
+        The SDK sends ONLY the api_key (via Authorization: Bearer on
+        Configuration.access_token). The server resolves tenant identity
+        from the key — the SDK never sends OM-Namespace or any other
+        tenant-discriminating header. If a backend fails to derive
+        tenant from a valid key, the fix is server-side.
+        """
         # Import the generated layer lazily so `import moolabs` is fast.
         from moolabs.api_client import ApiClient
         from moolabs.configuration import Configuration

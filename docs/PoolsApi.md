@@ -23,7 +23,7 @@ Get a single credit pool. Auth tenant must match tenant_id.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -41,7 +41,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -103,7 +103,7 @@ Aggregate impact statistics for a pool: wallet counts, last rate change, last po
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -121,7 +121,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -183,7 +183,7 @@ Get notification email recipients for a global credit pool.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -201,7 +201,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -263,7 +263,7 @@ Get pool-level top-up defaults (applied when new wallets are created).
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -281,7 +281,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -343,7 +343,7 @@ List credit pools for a tenant. Auth tenant must match tenant_id.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -361,7 +361,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -421,7 +421,7 @@ Update pool settings (name, currency, notification_emails). Only provided fields
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -440,7 +440,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -504,7 +504,7 @@ Set notification email recipients for a global credit pool.  Replaces the full l
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -523,7 +523,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -587,7 +587,7 @@ Update pool-level top-up defaults. Creates the row on first PUT (lazy upsert).
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -606,7 +606,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )

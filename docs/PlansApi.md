@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **amend_plan_endpoint_v1**
-> object amend_plan_endpoint_v1(case_id, plan_id, x_api_key, plan_amend_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object amend_plan_endpoint_v1(case_id, plan_id, plan_amend_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Amend Plan Endpoint
 
@@ -40,14 +40,15 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.PlansApi(api_client)
     case_id = 'case_id_example' # str | 
     plan_id = 'plan_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     plan_amend_request = moolabs.PlanAmendRequest() # PlanAmendRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Amend Plan Endpoint
-        api_response = api_instance.amend_plan_endpoint_v1(case_id, plan_id, x_api_key, plan_amend_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.amend_plan_endpoint_v1(case_id, plan_id, plan_amend_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PlansApi->amend_plan_endpoint_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -63,10 +64,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **plan_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **plan_amend_request** | [**PlanAmendRequest**](PlanAmendRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -91,7 +93,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_plan_endpoint_v1**
-> object create_plan_endpoint_v1(case_id, x_api_key, plan_create_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object create_plan_endpoint_v1(case_id, plan_create_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Create Plan Endpoint
 
@@ -118,14 +120,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.PlansApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     plan_create_request = moolabs.PlanCreateRequest() # PlanCreateRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Create Plan Endpoint
-        api_response = api_instance.create_plan_endpoint_v1(case_id, x_api_key, plan_create_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.create_plan_endpoint_v1(case_id, plan_create_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PlansApi->create_plan_endpoint_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -140,10 +143,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **plan_create_request** | [**PlanCreateRequest**](PlanCreateRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -168,7 +172,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_installments_endpoint_v1**
-> object list_installments_endpoint_v1(case_id, plan_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object list_installments_endpoint_v1(case_id, plan_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Installments Endpoint
 
@@ -195,13 +199,14 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.PlansApi(api_client)
     case_id = 'case_id_example' # str | 
     plan_id = 'plan_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Installments Endpoint
-        api_response = api_instance.list_installments_endpoint_v1(case_id, plan_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_installments_endpoint_v1(case_id, plan_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PlansApi->list_installments_endpoint_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -217,9 +222,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **plan_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -244,7 +250,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reschedule_installment_endpoint_v1**
-> object reschedule_installment_endpoint_v1(case_id, plan_id, installment_id, x_api_key, reschedule_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object reschedule_installment_endpoint_v1(case_id, plan_id, installment_id, reschedule_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Reschedule Installment Endpoint
 
@@ -273,14 +279,15 @@ with moolabs.ApiClient(configuration) as api_client:
     case_id = 'case_id_example' # str | 
     plan_id = 'plan_id_example' # str | 
     installment_id = 'installment_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     reschedule_request = moolabs.RescheduleRequest() # RescheduleRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Reschedule Installment Endpoint
-        api_response = api_instance.reschedule_installment_endpoint_v1(case_id, plan_id, installment_id, x_api_key, reschedule_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.reschedule_installment_endpoint_v1(case_id, plan_id, installment_id, reschedule_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PlansApi->reschedule_installment_endpoint_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -297,10 +304,11 @@ Name | Type | Description  | Notes
  **case_id** | **str**|  | 
  **plan_id** | **str**|  | 
  **installment_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **reschedule_request** | [**RescheduleRequest**](RescheduleRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -325,7 +333,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **waive_installment_endpoint_v1**
-> object waive_installment_endpoint_v1(case_id, plan_id, installment_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object waive_installment_endpoint_v1(case_id, plan_id, installment_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Waive Installment Endpoint
 
@@ -353,13 +361,14 @@ with moolabs.ApiClient(configuration) as api_client:
     case_id = 'case_id_example' # str | 
     plan_id = 'plan_id_example' # str | 
     installment_id = 'installment_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Waive Installment Endpoint
-        api_response = api_instance.waive_installment_endpoint_v1(case_id, plan_id, installment_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.waive_installment_endpoint_v1(case_id, plan_id, installment_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PlansApi->waive_installment_endpoint_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -376,9 +385,10 @@ Name | Type | Description  | Notes
  **case_id** | **str**|  | 
  **plan_id** | **str**|  | 
  **installment_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 

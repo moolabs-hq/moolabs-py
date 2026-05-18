@@ -75,7 +75,7 @@ Revoke a single portal token by ID.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -94,7 +94,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -156,7 +156,7 @@ List API keys for the authenticated tenant (no plaintext).
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -175,7 +175,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -230,7 +230,7 @@ List recent audit events for the tenant, optionally filtered by section.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -249,7 +249,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -311,7 +311,7 @@ Return a downloadable JSON evidence package of recent audit events.  Response is
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -329,7 +329,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -389,7 +389,7 @@ Get counts for ledger, outbox, DLQ, unpriced, warnings.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -408,7 +408,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -463,7 +463,7 @@ List recent warnings (e.g. outbox delivery failures).
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -482,7 +482,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -542,7 +542,7 @@ Get domain and verification status.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -561,7 +561,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -616,7 +616,7 @@ List feature flags with tenant override and default merged.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -635,7 +635,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -690,7 +690,7 @@ List integration connectors with tenant status.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -709,7 +709,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -764,7 +764,7 @@ Return integration health summary: connected count, failed syncs, webhook health
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -782,7 +782,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -837,7 +837,7 @@ Return meter-to-feature key mappings for this tenant.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -856,7 +856,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -911,7 +911,7 @@ MooMeter namespace for the authenticated tenant.  Clerk/org-backed tenants are s
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -929,7 +929,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -984,7 +984,7 @@ List active portal tokens for the authenticated tenant.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -1003,7 +1003,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -1058,7 +1058,7 @@ Get tenant revenue recognition config. Returns defaults if not yet configured.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -1076,7 +1076,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -1131,7 +1131,7 @@ Get sender identity for the authenticated tenant.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -1150,7 +1150,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -1205,7 +1205,7 @@ Get one template by id.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -1224,7 +1224,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -1348,7 +1348,7 @@ Return tenant info, pools, and current credit economics for the authenticated te
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -1366,7 +1366,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -1421,7 +1421,7 @@ Get webhook config for the authenticated tenant (no secret).
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -1440,7 +1440,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -1495,7 +1495,7 @@ Return recent outbox delivery log entries, newest first.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -1513,7 +1513,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -1573,7 +1573,7 @@ Return aggregated delivery metrics for the tenant's webhook from LedgerOutbox.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -1591,7 +1591,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -1644,7 +1644,7 @@ Hubspot Connect
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -1663,7 +1663,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -1721,7 +1721,7 @@ Hubspot Disconnect
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -1739,7 +1739,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -1860,7 +1860,7 @@ Hubspot Test Connection
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -1878,7 +1878,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -1933,7 +1933,7 @@ Issue an API key for an integration provider (e.g. NetSuite).  Returns the plain
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -1951,7 +1951,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -2011,7 +2011,7 @@ List email templates with tenant overrides merged.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -2030,7 +2030,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -2083,7 +2083,7 @@ Netsuite Connect
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -2102,7 +2102,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -2160,7 +2160,7 @@ Netsuite Disconnect
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -2178,7 +2178,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -2299,7 +2299,7 @@ Netsuite Test Connection
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -2317,7 +2317,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -2372,7 +2372,7 @@ Create an API key. Plaintext returned only in this response.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -2392,7 +2392,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -2452,7 +2452,7 @@ Trigger domain verification via Resend and persist status.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -2471,7 +2471,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -2526,7 +2526,7 @@ Create a portal token for the given subject. Subject must have wallet membership
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -2546,7 +2546,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -2606,7 +2606,7 @@ Revoke an API key.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -2625,7 +2625,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -2687,7 +2687,7 @@ Render template preview with sample context values.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -2707,7 +2707,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -2769,7 +2769,7 @@ Set branded domain (status becomes pending).
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -2789,7 +2789,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -2849,7 +2849,7 @@ Set tenant override for a feature flag.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -2869,7 +2869,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -2931,7 +2931,7 @@ Set connector status and/or config.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -2951,7 +2951,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -3013,7 +3013,7 @@ Update sender identity.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -3033,7 +3033,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -3093,7 +3093,7 @@ Update template override.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -3113,7 +3113,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -3175,7 +3175,7 @@ Set webhook URL and auth. Secret only sent when changing.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -3195,7 +3195,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -3253,7 +3253,7 @@ Quickbooks Connect
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -3272,7 +3272,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -3330,7 +3330,7 @@ Quickbooks Disconnect
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -3348,7 +3348,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -3471,7 +3471,7 @@ Quickbooks Test Connection
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -3489,7 +3489,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -3544,7 +3544,7 @@ Reset failed outbox events so the delivery worker retries them.  Resets attempts
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -3562,7 +3562,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -3617,7 +3617,7 @@ Revoke all active API keys for this tenant, disabling all machine access.  Requi
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -3636,7 +3636,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -3696,7 +3696,7 @@ Revoke all active portal tokens for this tenant immediately.  Requires audit_not
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -3715,7 +3715,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -3773,7 +3773,7 @@ Salesforce Connect
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -3792,7 +3792,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -3850,7 +3850,7 @@ Salesforce Disconnect
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -3868,7 +3868,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -3989,7 +3989,7 @@ Salesforce Test Connection
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -4007,7 +4007,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -4062,7 +4062,7 @@ Send a test email for a template.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -4082,7 +4082,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -4144,7 +4144,7 @@ Send a test delivery to the configured webhook URL.
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -4162,7 +4162,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -4217,7 +4217,7 @@ Update tenant revenue recognition config. Creates on first PUT (lazy upsert).
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -4236,7 +4236,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -4294,7 +4294,7 @@ Xero Connect
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -4313,7 +4313,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -4371,7 +4371,7 @@ Xero Disconnect
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -4389,7 +4389,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -4510,7 +4510,7 @@ Xero Test Connection
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -4528,7 +4528,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )

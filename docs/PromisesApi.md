@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **approve_ptp_endpoint**
-> object approve_ptp_endpoint(ptp_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, ptp_approval_request=ptp_approval_request)
+> object approve_ptp_endpoint(ptp_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, ptp_approval_request=ptp_approval_request)
 
 Approve Ptp Endpoint
 
@@ -42,14 +42,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.PromisesApi(api_client)
     ptp_id = 'ptp_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
     ptp_approval_request = moolabs.PTPApprovalRequest() # PTPApprovalRequest |  (optional)
 
     try:
         # Approve Ptp Endpoint
-        api_response = api_instance.approve_ptp_endpoint(ptp_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, ptp_approval_request=ptp_approval_request)
+        api_response = api_instance.approve_ptp_endpoint(ptp_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, ptp_approval_request=ptp_approval_request)
         print("The response of PromisesApi->approve_ptp_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -64,9 +65,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ptp_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
  **ptp_approval_request** | [**PTPApprovalRequest**](PTPApprovalRequest.md)|  | [optional] 
 
 ### Return type
@@ -92,7 +94,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **break_ptp_endpoint_v1_arc**
-> object break_ptp_endpoint_v1_arc(case_id, ptp_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object break_ptp_endpoint_v1_arc(case_id, ptp_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Break Ptp Endpoint
 
@@ -119,13 +121,14 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.PromisesApi(api_client)
     case_id = 'case_id_example' # str | 
     ptp_id = 'ptp_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Break Ptp Endpoint
-        api_response = api_instance.break_ptp_endpoint_v1_arc(case_id, ptp_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.break_ptp_endpoint_v1_arc(case_id, ptp_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PromisesApi->break_ptp_endpoint_v1_arc:\n")
         pprint(api_response)
     except Exception as e:
@@ -141,9 +144,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **ptp_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -168,7 +172,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cancel_ptp_endpoint_v1_arc**
-> object cancel_ptp_endpoint_v1_arc(case_id, ptp_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object cancel_ptp_endpoint_v1_arc(case_id, ptp_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Cancel Ptp Endpoint
 
@@ -195,13 +199,14 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.PromisesApi(api_client)
     case_id = 'case_id_example' # str | 
     ptp_id = 'ptp_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Cancel Ptp Endpoint
-        api_response = api_instance.cancel_ptp_endpoint_v1_arc(case_id, ptp_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.cancel_ptp_endpoint_v1_arc(case_id, ptp_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PromisesApi->cancel_ptp_endpoint_v1_arc:\n")
         pprint(api_response)
     except Exception as e:
@@ -217,9 +222,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **ptp_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -244,7 +250,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_ptp_endpoint_v1_arc**
-> object create_ptp_endpoint_v1_arc(case_id, x_api_key, ptp_create_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object create_ptp_endpoint_v1_arc(case_id, ptp_create_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Create Ptp Endpoint
 
@@ -271,14 +277,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.PromisesApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     ptp_create_request = moolabs.PTPCreateRequest() # PTPCreateRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Create Ptp Endpoint
-        api_response = api_instance.create_ptp_endpoint_v1_arc(case_id, x_api_key, ptp_create_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.create_ptp_endpoint_v1_arc(case_id, ptp_create_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PromisesApi->create_ptp_endpoint_v1_arc:\n")
         pprint(api_response)
     except Exception as e:
@@ -293,10 +300,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **ptp_create_request** | [**PTPCreateRequest**](PTPCreateRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -321,7 +329,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_ptp_payment_link_endpoint_v1_arc_cases**
-> PTPPaymentLinkResponse create_ptp_payment_link_endpoint_v1_arc_cases(case_id, ptp_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> PTPPaymentLinkResponse create_ptp_payment_link_endpoint_v1_arc_cases(case_id, ptp_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Create Ptp Payment Link Endpoint
 
@@ -349,13 +357,14 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.PromisesApi(api_client)
     case_id = 'case_id_example' # str | 
     ptp_id = 'ptp_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Create Ptp Payment Link Endpoint
-        api_response = api_instance.create_ptp_payment_link_endpoint_v1_arc_cases(case_id, ptp_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.create_ptp_payment_link_endpoint_v1_arc_cases(case_id, ptp_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PromisesApi->create_ptp_payment_link_endpoint_v1_arc_cases:\n")
         pprint(api_response)
     except Exception as e:
@@ -371,9 +380,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **ptp_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -398,7 +408,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fulfill_ptp_endpoint_v1_arc**
-> object fulfill_ptp_endpoint_v1_arc(case_id, ptp_id, x_api_key, ptp_fulfill_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object fulfill_ptp_endpoint_v1_arc(case_id, ptp_id, ptp_fulfill_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Fulfill Ptp Endpoint
 
@@ -426,14 +436,15 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.PromisesApi(api_client)
     case_id = 'case_id_example' # str | 
     ptp_id = 'ptp_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     ptp_fulfill_request = moolabs.PTPFulfillRequest() # PTPFulfillRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Fulfill Ptp Endpoint
-        api_response = api_instance.fulfill_ptp_endpoint_v1_arc(case_id, ptp_id, x_api_key, ptp_fulfill_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.fulfill_ptp_endpoint_v1_arc(case_id, ptp_id, ptp_fulfill_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PromisesApi->fulfill_ptp_endpoint_v1_arc:\n")
         pprint(api_response)
     except Exception as e:
@@ -449,10 +460,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **ptp_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **ptp_fulfill_request** | [**PTPFulfillRequest**](PTPFulfillRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -477,7 +489,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_ptps_endpoint_v1_arc**
-> object list_ptps_endpoint_v1_arc(case_id, x_api_key, status=status, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object list_ptps_endpoint_v1_arc(case_id, status=status, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Ptps Endpoint
 
@@ -503,14 +515,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.PromisesApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     status = 'status_example' # str |  (optional)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Ptps Endpoint
-        api_response = api_instance.list_ptps_endpoint_v1_arc(case_id, x_api_key, status=status, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_ptps_endpoint_v1_arc(case_id, status=status, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PromisesApi->list_ptps_endpoint_v1_arc:\n")
         pprint(api_response)
     except Exception as e:
@@ -525,10 +538,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **status** | **str**|  | [optional] 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -553,7 +567,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reject_ptp_endpoint**
-> object reject_ptp_endpoint(ptp_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, ptp_approval_request=ptp_approval_request)
+> object reject_ptp_endpoint(ptp_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, ptp_approval_request=ptp_approval_request)
 
 Reject Ptp Endpoint
 
@@ -580,14 +594,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.PromisesApi(api_client)
     ptp_id = 'ptp_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
     ptp_approval_request = moolabs.PTPApprovalRequest() # PTPApprovalRequest |  (optional)
 
     try:
         # Reject Ptp Endpoint
-        api_response = api_instance.reject_ptp_endpoint(ptp_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, ptp_approval_request=ptp_approval_request)
+        api_response = api_instance.reject_ptp_endpoint(ptp_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, ptp_approval_request=ptp_approval_request)
         print("The response of PromisesApi->reject_ptp_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -602,9 +617,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ptp_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
  **ptp_approval_request** | [**PTPApprovalRequest**](PTPApprovalRequest.md)|  | [optional] 
 
 ### Return type

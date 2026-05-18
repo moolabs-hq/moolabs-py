@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **complete_task**
-> TaskResponse complete_task(task_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, task_complete_request=task_complete_request)
+> TaskResponse complete_task(task_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, task_complete_request=task_complete_request)
 
 Complete Task
 
@@ -39,14 +39,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.TasksApi(api_client)
     task_id = 'task_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
     task_complete_request = moolabs.TaskCompleteRequest() # TaskCompleteRequest |  (optional)
 
     try:
         # Complete Task
-        api_response = api_instance.complete_task(task_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, task_complete_request=task_complete_request)
+        api_response = api_instance.complete_task(task_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, task_complete_request=task_complete_request)
         print("The response of TasksApi->complete_task:\n")
         pprint(api_response)
     except Exception as e:
@@ -61,9 +62,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **task_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
  **task_complete_request** | [**TaskCompleteRequest**](TaskCompleteRequest.md)|  | [optional] 
 
 ### Return type
@@ -89,7 +91,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_task**
-> TaskResponse get_task(task_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> TaskResponse get_task(task_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Task
 
@@ -116,13 +118,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.TasksApi(api_client)
     task_id = 'task_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Task
-        api_response = api_instance.get_task(task_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_task(task_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of TasksApi->get_task:\n")
         pprint(api_response)
     except Exception as e:
@@ -137,9 +140,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **task_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -164,7 +168,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_tasks**
-> TaskListResponse list_tasks(x_api_key, page=page, page_size=page_size, status=status, task_type=task_type, assigned_to=assigned_to, case_id=case_id, search=search, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> TaskListResponse list_tasks(page=page, page_size=page_size, status=status, task_type=task_type, assigned_to=assigned_to, case_id=case_id, search=search, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Tasks
 
@@ -190,7 +194,6 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.TasksApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     page = 1 # int |  (optional) (default to 1)
     page_size = 50 # int |  (optional) (default to 50)
     status = 'status_example' # str |  (optional)
@@ -198,12 +201,14 @@ with moolabs.ApiClient(configuration) as api_client:
     assigned_to = 'assigned_to_example' # str |  (optional)
     case_id = 'case_id_example' # str |  (optional)
     search = 'search_example' # str | Substring match on title/description/customer name (optional)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Tasks
-        api_response = api_instance.list_tasks(x_api_key, page=page, page_size=page_size, status=status, task_type=task_type, assigned_to=assigned_to, case_id=case_id, search=search, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_tasks(page=page, page_size=page_size, status=status, task_type=task_type, assigned_to=assigned_to, case_id=case_id, search=search, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of TasksApi->list_tasks:\n")
         pprint(api_response)
     except Exception as e:
@@ -217,7 +222,6 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **page** | **int**|  | [optional] [default to 1]
  **page_size** | **int**|  | [optional] [default to 50]
  **status** | **str**|  | [optional] 
@@ -225,8 +229,10 @@ Name | Type | Description  | Notes
  **assigned_to** | **str**|  | [optional] 
  **case_id** | **str**|  | [optional] 
  **search** | **str**| Substring match on title/description/customer name | [optional] 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -251,7 +257,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_task**
-> TaskResponse update_task(task_id, x_api_key, task_update, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> TaskResponse update_task(task_id, task_update, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Update Task
 
@@ -279,14 +285,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.TasksApi(api_client)
     task_id = 'task_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     task_update = moolabs.TaskUpdate() # TaskUpdate | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Update Task
-        api_response = api_instance.update_task(task_id, x_api_key, task_update, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.update_task(task_id, task_update, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of TasksApi->update_task:\n")
         pprint(api_response)
     except Exception as e:
@@ -301,10 +308,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **task_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **task_update** | [**TaskUpdate**](TaskUpdate.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 

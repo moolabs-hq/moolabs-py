@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **create_strategy_endpoint**
-> object create_strategy_endpoint(x_api_key, strategy_create_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object create_strategy_endpoint(strategy_create_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Create Strategy Endpoint
 
@@ -46,14 +46,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.GovernanceApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     strategy_create_request = moolabs.StrategyCreateRequest() # StrategyCreateRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Create Strategy Endpoint
-        api_response = api_instance.create_strategy_endpoint(x_api_key, strategy_create_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.create_strategy_endpoint(strategy_create_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of GovernanceApi->create_strategy_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -67,10 +68,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **strategy_create_request** | [**StrategyCreateRequest**](StrategyCreateRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -95,7 +97,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_strategy_endpoint**
-> object delete_strategy_endpoint(strategy_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object delete_strategy_endpoint(strategy_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Delete Strategy Endpoint
 
@@ -121,13 +123,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.GovernanceApi(api_client)
     strategy_id = 'strategy_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Delete Strategy Endpoint
-        api_response = api_instance.delete_strategy_endpoint(strategy_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.delete_strategy_endpoint(strategy_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of GovernanceApi->delete_strategy_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -142,9 +145,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **strategy_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -169,7 +173,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_cash_app_config_endpoint_v1_arc**
-> object get_cash_app_config_endpoint_v1_arc(x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object get_cash_app_config_endpoint_v1_arc(x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Cash App Config Endpoint
 
@@ -194,13 +198,14 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.GovernanceApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Cash App Config Endpoint
-        api_response = api_instance.get_cash_app_config_endpoint_v1_arc(x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_cash_app_config_endpoint_v1_arc(x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of GovernanceApi->get_cash_app_config_endpoint_v1_arc:\n")
         pprint(api_response)
     except Exception as e:
@@ -214,9 +219,10 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -241,7 +247,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_strategy_endpoint**
-> object get_strategy_endpoint(strategy_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object get_strategy_endpoint(strategy_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Strategy Endpoint
 
@@ -267,13 +273,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.GovernanceApi(api_client)
     strategy_id = 'strategy_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Strategy Endpoint
-        api_response = api_instance.get_strategy_endpoint(strategy_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_strategy_endpoint(strategy_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of GovernanceApi->get_strategy_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -288,9 +295,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **strategy_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -315,7 +323,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kill_switch_endpoint_v1_arc**
-> object kill_switch_endpoint_v1_arc(agent_type, x_api_key, kill_switch_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object kill_switch_endpoint_v1_arc(agent_type, kill_switch_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Kill Switch Endpoint
 
@@ -342,14 +350,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.GovernanceApi(api_client)
     agent_type = 'agent_type_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     kill_switch_request = moolabs.KillSwitchRequest() # KillSwitchRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Kill Switch Endpoint
-        api_response = api_instance.kill_switch_endpoint_v1_arc(agent_type, x_api_key, kill_switch_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.kill_switch_endpoint_v1_arc(agent_type, kill_switch_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of GovernanceApi->kill_switch_endpoint_v1_arc:\n")
         pprint(api_response)
     except Exception as e:
@@ -364,10 +373,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **agent_type** | **str**|  | 
- **x_api_key** | **str**|  | 
  **kill_switch_request** | [**KillSwitchRequest**](KillSwitchRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -392,7 +402,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_evaluations_endpoint**
-> object list_evaluations_endpoint(x_api_key, agent_type=agent_type, evaluation_type=evaluation_type, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object list_evaluations_endpoint(agent_type=agent_type, evaluation_type=evaluation_type, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Evaluations Endpoint
 
@@ -417,15 +427,16 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.GovernanceApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     agent_type = 'agent_type_example' # str |  (optional)
     evaluation_type = 'evaluation_type_example' # str |  (optional)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Evaluations Endpoint
-        api_response = api_instance.list_evaluations_endpoint(x_api_key, agent_type=agent_type, evaluation_type=evaluation_type, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_evaluations_endpoint(agent_type=agent_type, evaluation_type=evaluation_type, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of GovernanceApi->list_evaluations_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -439,11 +450,12 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **agent_type** | **str**|  | [optional] 
  **evaluation_type** | **str**|  | [optional] 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -468,7 +480,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_policies_endpoint_v1**
-> object list_policies_endpoint_v1(x_api_key, agent_type=agent_type, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object list_policies_endpoint_v1(agent_type=agent_type, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Policies Endpoint
 
@@ -493,14 +505,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.GovernanceApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     agent_type = 'agent_type_example' # str |  (optional)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Policies Endpoint
-        api_response = api_instance.list_policies_endpoint_v1(x_api_key, agent_type=agent_type, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_policies_endpoint_v1(agent_type=agent_type, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of GovernanceApi->list_policies_endpoint_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -514,10 +527,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **agent_type** | **str**|  | [optional] 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -542,7 +556,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_strategies_endpoint**
-> object list_strategies_endpoint(x_api_key, risk_tier=risk_tier, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object list_strategies_endpoint(risk_tier=risk_tier, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Strategies Endpoint
 
@@ -567,14 +581,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.GovernanceApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     risk_tier = 'risk_tier_example' # str |  (optional)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Strategies Endpoint
-        api_response = api_instance.list_strategies_endpoint(x_api_key, risk_tier=risk_tier, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_strategies_endpoint(risk_tier=risk_tier, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of GovernanceApi->list_strategies_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -588,10 +603,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **risk_tier** | **str**|  | [optional] 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -616,7 +632,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **shadow_mode_endpoint_v1_arc**
-> object shadow_mode_endpoint_v1_arc(agent_type, x_api_key, shadow_mode_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object shadow_mode_endpoint_v1_arc(agent_type, shadow_mode_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Shadow Mode Endpoint
 
@@ -643,14 +659,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.GovernanceApi(api_client)
     agent_type = 'agent_type_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     shadow_mode_request = moolabs.ShadowModeRequest() # ShadowModeRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Shadow Mode Endpoint
-        api_response = api_instance.shadow_mode_endpoint_v1_arc(agent_type, x_api_key, shadow_mode_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.shadow_mode_endpoint_v1_arc(agent_type, shadow_mode_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of GovernanceApi->shadow_mode_endpoint_v1_arc:\n")
         pprint(api_response)
     except Exception as e:
@@ -665,10 +682,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **agent_type** | **str**|  | 
- **x_api_key** | **str**|  | 
  **shadow_mode_request** | [**ShadowModeRequest**](ShadowModeRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -693,7 +711,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **strategy_preview_endpoint_v1**
-> object strategy_preview_endpoint_v1(x_api_key, strategy_preview_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object strategy_preview_endpoint_v1(strategy_preview_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Strategy Preview Endpoint
 
@@ -719,14 +737,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.GovernanceApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     strategy_preview_request = moolabs.StrategyPreviewRequest() # StrategyPreviewRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Strategy Preview Endpoint
-        api_response = api_instance.strategy_preview_endpoint_v1(x_api_key, strategy_preview_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.strategy_preview_endpoint_v1(strategy_preview_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of GovernanceApi->strategy_preview_endpoint_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -740,10 +759,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **strategy_preview_request** | [**StrategyPreviewRequest**](StrategyPreviewRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -768,7 +788,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_cash_app_config_endpoint_v1_arc**
-> object update_cash_app_config_endpoint_v1_arc(x_api_key, cash_app_config_update_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object update_cash_app_config_endpoint_v1_arc(cash_app_config_update_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Update Cash App Config Endpoint
 
@@ -794,14 +814,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.GovernanceApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     cash_app_config_update_request = moolabs.CashAppConfigUpdateRequest() # CashAppConfigUpdateRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Update Cash App Config Endpoint
-        api_response = api_instance.update_cash_app_config_endpoint_v1_arc(x_api_key, cash_app_config_update_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.update_cash_app_config_endpoint_v1_arc(cash_app_config_update_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of GovernanceApi->update_cash_app_config_endpoint_v1_arc:\n")
         pprint(api_response)
     except Exception as e:
@@ -815,10 +836,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **cash_app_config_update_request** | [**CashAppConfigUpdateRequest**](CashAppConfigUpdateRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -843,7 +865,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_policy_endpoint_v1**
-> object update_policy_endpoint_v1(policy_id, x_api_key, policy_update_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object update_policy_endpoint_v1(policy_id, policy_update_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Update Policy Endpoint
 
@@ -870,14 +892,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.GovernanceApi(api_client)
     policy_id = 'policy_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     policy_update_request = moolabs.PolicyUpdateRequest() # PolicyUpdateRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Update Policy Endpoint
-        api_response = api_instance.update_policy_endpoint_v1(policy_id, x_api_key, policy_update_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.update_policy_endpoint_v1(policy_id, policy_update_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of GovernanceApi->update_policy_endpoint_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -892,10 +915,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **policy_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **policy_update_request** | [**PolicyUpdateRequest**](PolicyUpdateRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -920,7 +944,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_strategy_endpoint**
-> object update_strategy_endpoint(strategy_id, x_api_key, strategy_update_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object update_strategy_endpoint(strategy_id, strategy_update_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Update Strategy Endpoint
 
@@ -947,14 +971,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.GovernanceApi(api_client)
     strategy_id = 'strategy_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     strategy_update_request = moolabs.StrategyUpdateRequest() # StrategyUpdateRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Update Strategy Endpoint
-        api_response = api_instance.update_strategy_endpoint(strategy_id, x_api_key, strategy_update_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.update_strategy_endpoint(strategy_id, strategy_update_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of GovernanceApi->update_strategy_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -969,10 +994,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **strategy_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **strategy_update_request** | [**StrategyUpdateRequest**](StrategyUpdateRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 

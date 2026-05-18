@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **create_escalation**
-> EscalationResponse create_escalation(case_id, x_api_key, escalation_create, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> EscalationResponse create_escalation(case_id, escalation_create, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Create Escalation
 
@@ -42,14 +42,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.EscalationsApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     escalation_create = moolabs.EscalationCreate() # EscalationCreate | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Create Escalation
-        api_response = api_instance.create_escalation(case_id, x_api_key, escalation_create, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.create_escalation(case_id, escalation_create, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of EscalationsApi->create_escalation:\n")
         pprint(api_response)
     except Exception as e:
@@ -64,10 +65,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **escalation_create** | [**EscalationCreate**](EscalationCreate.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -92,7 +94,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dismiss_escalation**
-> EscalationResponse dismiss_escalation(case_id, escalation_id, x_api_key, escalation_dismiss_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> EscalationResponse dismiss_escalation(case_id, escalation_id, escalation_dismiss_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Dismiss Escalation
 
@@ -121,14 +123,15 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.EscalationsApi(api_client)
     case_id = 'case_id_example' # str | 
     escalation_id = 'escalation_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     escalation_dismiss_request = moolabs.EscalationDismissRequest() # EscalationDismissRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Dismiss Escalation
-        api_response = api_instance.dismiss_escalation(case_id, escalation_id, x_api_key, escalation_dismiss_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.dismiss_escalation(case_id, escalation_id, escalation_dismiss_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of EscalationsApi->dismiss_escalation:\n")
         pprint(api_response)
     except Exception as e:
@@ -144,10 +147,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **escalation_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **escalation_dismiss_request** | [**EscalationDismissRequest**](EscalationDismissRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -172,7 +176,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dispatch_escalation_action**
-> EscalationActionResponse dispatch_escalation_action(escalation_id, x_api_key, escalation_action_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> EscalationActionResponse dispatch_escalation_action(escalation_id, escalation_action_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Dispatch Escalation Action
 
@@ -200,14 +204,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.EscalationsApi(api_client)
     escalation_id = 'escalation_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     escalation_action_request = moolabs.EscalationActionRequest() # EscalationActionRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Dispatch Escalation Action
-        api_response = api_instance.dispatch_escalation_action(escalation_id, x_api_key, escalation_action_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.dispatch_escalation_action(escalation_id, escalation_action_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of EscalationsApi->dispatch_escalation_action:\n")
         pprint(api_response)
     except Exception as e:
@@ -222,10 +227,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **escalation_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **escalation_action_request** | [**EscalationActionRequest**](EscalationActionRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -250,7 +256,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_escalation**
-> EscalationResponse get_escalation(case_id, escalation_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> EscalationResponse get_escalation(case_id, escalation_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Escalation
 
@@ -278,13 +284,14 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.EscalationsApi(api_client)
     case_id = 'case_id_example' # str | 
     escalation_id = 'escalation_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Escalation
-        api_response = api_instance.get_escalation(case_id, escalation_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_escalation(case_id, escalation_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of EscalationsApi->get_escalation:\n")
         pprint(api_response)
     except Exception as e:
@@ -300,9 +307,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **escalation_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -327,7 +335,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_escalations**
-> EscalationListResponse list_escalations(case_id, x_api_key, page=page, page_size=page_size, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> EscalationListResponse list_escalations(case_id, page=page, page_size=page_size, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Escalations
 
@@ -354,15 +362,16 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.EscalationsApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     page = 1 # int |  (optional) (default to 1)
     page_size = 50 # int |  (optional) (default to 50)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Escalations
-        api_response = api_instance.list_escalations(case_id, x_api_key, page=page, page_size=page_size, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_escalations(case_id, page=page, page_size=page_size, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of EscalationsApi->list_escalations:\n")
         pprint(api_response)
     except Exception as e:
@@ -377,11 +386,12 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **page** | **int**|  | [optional] [default to 1]
  **page_size** | **int**|  | [optional] [default to 50]
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -406,7 +416,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resolve_escalation**
-> EscalationResponse resolve_escalation(case_id, escalation_id, x_api_key, escalation_resolve_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> EscalationResponse resolve_escalation(case_id, escalation_id, escalation_resolve_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Resolve Escalation
 
@@ -435,14 +445,15 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.EscalationsApi(api_client)
     case_id = 'case_id_example' # str | 
     escalation_id = 'escalation_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     escalation_resolve_request = moolabs.EscalationResolveRequest() # EscalationResolveRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Resolve Escalation
-        api_response = api_instance.resolve_escalation(case_id, escalation_id, x_api_key, escalation_resolve_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.resolve_escalation(case_id, escalation_id, escalation_resolve_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of EscalationsApi->resolve_escalation:\n")
         pprint(api_response)
     except Exception as e:
@@ -458,10 +469,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **escalation_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **escalation_resolve_request** | [**EscalationResolveRequest**](EscalationResolveRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -486,7 +498,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_escalation**
-> EscalationResponse update_escalation(case_id, escalation_id, x_api_key, escalation_update, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> EscalationResponse update_escalation(case_id, escalation_id, escalation_update, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Update Escalation
 
@@ -515,14 +527,15 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.EscalationsApi(api_client)
     case_id = 'case_id_example' # str | 
     escalation_id = 'escalation_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     escalation_update = moolabs.EscalationUpdate() # EscalationUpdate | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Update Escalation
-        api_response = api_instance.update_escalation(case_id, escalation_id, x_api_key, escalation_update, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.update_escalation(case_id, escalation_id, escalation_update, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of EscalationsApi->update_escalation:\n")
         pprint(api_response)
     except Exception as e:
@@ -538,10 +551,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **escalation_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **escalation_update** | [**EscalationUpdate**](EscalationUpdate.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 

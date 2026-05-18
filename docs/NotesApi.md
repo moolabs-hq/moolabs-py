@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **create_note**
-> NoteResponse create_note(case_id, x_api_key, note_create, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> NoteResponse create_note(case_id, note_create, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Create Note
 
@@ -39,14 +39,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.NotesApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     note_create = moolabs.NoteCreate() # NoteCreate | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Create Note
-        api_response = api_instance.create_note(case_id, x_api_key, note_create, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.create_note(case_id, note_create, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of NotesApi->create_note:\n")
         pprint(api_response)
     except Exception as e:
@@ -61,10 +62,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **note_create** | [**NoteCreate**](NoteCreate.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -89,7 +91,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_note**
-> delete_note(case_id, note_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> delete_note(case_id, note_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Delete Note
 
@@ -116,13 +118,14 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.NotesApi(api_client)
     case_id = 'case_id_example' # str | 
     note_id = 'note_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Delete Note
-        api_instance.delete_note(case_id, note_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_instance.delete_note(case_id, note_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
     except Exception as e:
         print("Exception when calling NotesApi->delete_note: %s\n" % e)
 ```
@@ -136,9 +139,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **note_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -163,7 +167,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_note**
-> NoteResponse get_note(case_id, note_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> NoteResponse get_note(case_id, note_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Note
 
@@ -191,13 +195,14 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.NotesApi(api_client)
     case_id = 'case_id_example' # str | 
     note_id = 'note_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Note
-        api_response = api_instance.get_note(case_id, note_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_note(case_id, note_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of NotesApi->get_note:\n")
         pprint(api_response)
     except Exception as e:
@@ -213,9 +218,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **note_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -240,7 +246,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_notes**
-> NoteListResponse list_notes(case_id, x_api_key, page=page, page_size=page_size, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> NoteListResponse list_notes(case_id, page=page, page_size=page_size, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Notes
 
@@ -267,15 +273,16 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.NotesApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     page = 1 # int |  (optional) (default to 1)
     page_size = 50 # int |  (optional) (default to 50)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Notes
-        api_response = api_instance.list_notes(case_id, x_api_key, page=page, page_size=page_size, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_notes(case_id, page=page, page_size=page_size, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of NotesApi->list_notes:\n")
         pprint(api_response)
     except Exception as e:
@@ -290,11 +297,12 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **page** | **int**|  | [optional] [default to 1]
  **page_size** | **int**|  | [optional] [default to 50]
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 

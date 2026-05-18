@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **create_account_team_member**
-> AccountTeamMemberOut create_account_team_member(account_id, x_api_key, account_team_member_in, x_tenant_id=x_tenant_id, x_org_id=x_org_id, x_user_id=x_user_id)
+> AccountTeamMemberOut create_account_team_member(account_id, account_team_member_in, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_user_id=x_user_id)
 
 Create Account Team Member
 
@@ -39,15 +39,16 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AccountTeamApi(api_client)
     account_id = 'account_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     account_team_member_in = moolabs.AccountTeamMemberIn() # AccountTeamMemberIn | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
     x_user_id = 'x_user_id_example' # str |  (optional)
 
     try:
         # Create Account Team Member
-        api_response = api_instance.create_account_team_member(account_id, x_api_key, account_team_member_in, x_tenant_id=x_tenant_id, x_org_id=x_org_id, x_user_id=x_user_id)
+        api_response = api_instance.create_account_team_member(account_id, account_team_member_in, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_user_id=x_user_id)
         print("The response of AccountTeamApi->create_account_team_member:\n")
         pprint(api_response)
     except Exception as e:
@@ -62,10 +63,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **account_team_member_in** | [**AccountTeamMemberIn**](AccountTeamMemberIn.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
  **x_user_id** | **str**|  | [optional] 
 
 ### Return type
@@ -91,7 +93,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_account_team_member**
-> delete_account_team_member(account_id, member_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> delete_account_team_member(account_id, member_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Delete Account Team Member
 
@@ -116,13 +118,14 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.AccountTeamApi(api_client)
     account_id = 'account_id_example' # str | 
     member_id = 'member_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Delete Account Team Member
-        api_instance.delete_account_team_member(account_id, member_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_instance.delete_account_team_member(account_id, member_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
     except Exception as e:
         print("Exception when calling AccountTeamApi->delete_account_team_member: %s\n" % e)
 ```
@@ -136,9 +139,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**|  | 
  **member_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -163,7 +167,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_account_team**
-> List[AccountTeamMemberOut] list_account_team(account_id, x_api_key, notify_only=notify_only, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> List[AccountTeamMemberOut] list_account_team(account_id, notify_only=notify_only, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Account Team
 
@@ -190,14 +194,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AccountTeamApi(api_client)
     account_id = 'account_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     notify_only = False # bool |  (optional) (default to False)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Account Team
-        api_response = api_instance.list_account_team(account_id, x_api_key, notify_only=notify_only, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_account_team(account_id, notify_only=notify_only, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of AccountTeamApi->list_account_team:\n")
         pprint(api_response)
     except Exception as e:
@@ -212,10 +217,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **notify_only** | **bool**|  | [optional] [default to False]
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -240,7 +246,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_account_team_member**
-> AccountTeamMemberOut update_account_team_member(account_id, member_id, x_api_key, account_team_member_patch, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> AccountTeamMemberOut update_account_team_member(account_id, member_id, account_team_member_patch, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Update Account Team Member
 
@@ -267,14 +273,15 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.AccountTeamApi(api_client)
     account_id = 'account_id_example' # str | 
     member_id = 'member_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     account_team_member_patch = moolabs.AccountTeamMemberPatch() # AccountTeamMemberPatch | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Update Account Team Member
-        api_response = api_instance.update_account_team_member(account_id, member_id, x_api_key, account_team_member_patch, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.update_account_team_member(account_id, member_id, account_team_member_patch, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of AccountTeamApi->update_account_team_member:\n")
         pprint(api_response)
     except Exception as e:
@@ -290,10 +297,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**|  | 
  **member_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **account_team_member_patch** | [**AccountTeamMemberPatch**](AccountTeamMemberPatch.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 

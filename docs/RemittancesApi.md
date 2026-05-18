@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **create_remittance**
-> RemittanceResponse create_remittance(x_api_key, remittance_create_request, force_create=force_create, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> RemittanceResponse create_remittance(remittance_create_request, force_create=force_create, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Create Remittance
 
@@ -37,15 +37,16 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.RemittancesApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     remittance_create_request = moolabs.RemittanceCreateRequest() # RemittanceCreateRequest | 
     force_create = False # bool |  (optional) (default to False)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Create Remittance
-        api_response = api_instance.create_remittance(x_api_key, remittance_create_request, force_create=force_create, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.create_remittance(remittance_create_request, force_create=force_create, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of RemittancesApi->create_remittance:\n")
         pprint(api_response)
     except Exception as e:
@@ -59,11 +60,12 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **remittance_create_request** | [**RemittanceCreateRequest**](RemittanceCreateRequest.md)|  | 
  **force_create** | **bool**|  | [optional] [default to False]
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -88,7 +90,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_unapplied_cash_v1**
-> List[UnappliedCashResponse] get_unapplied_cash_v1(remittance_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> List[UnappliedCashResponse] get_unapplied_cash_v1(remittance_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Unapplied Cash
 
@@ -115,13 +117,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.RemittancesApi(api_client)
     remittance_id = 'remittance_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Unapplied Cash
-        api_response = api_instance.get_unapplied_cash_v1(remittance_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_unapplied_cash_v1(remittance_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of RemittancesApi->get_unapplied_cash_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -136,9 +139,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **remittance_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -163,7 +167,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resolve_unapplied_endpoint_v1**
-> UnappliedCashResponse resolve_unapplied_endpoint_v1(remittance_id, uc_id, x_api_key, resolve_unapplied_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> UnappliedCashResponse resolve_unapplied_endpoint_v1(remittance_id, uc_id, resolve_unapplied_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Resolve Unapplied Endpoint
 
@@ -192,14 +196,15 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.RemittancesApi(api_client)
     remittance_id = 'remittance_id_example' # str | 
     uc_id = 'uc_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     resolve_unapplied_request = moolabs.ResolveUnappliedRequest() # ResolveUnappliedRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Resolve Unapplied Endpoint
-        api_response = api_instance.resolve_unapplied_endpoint_v1(remittance_id, uc_id, x_api_key, resolve_unapplied_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.resolve_unapplied_endpoint_v1(remittance_id, uc_id, resolve_unapplied_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of RemittancesApi->resolve_unapplied_endpoint_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -215,10 +220,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **remittance_id** | **str**|  | 
  **uc_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **resolve_unapplied_request** | [**ResolveUnappliedRequest**](ResolveUnappliedRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 

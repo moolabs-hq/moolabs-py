@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 
 # **create_account**
-> AccountResponse create_account(x_api_key, account_create, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> AccountResponse create_account(account_create, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Create Account
 
@@ -48,14 +48,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AccountsApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     account_create = moolabs.AccountCreate() # AccountCreate | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Create Account
-        api_response = api_instance.create_account(x_api_key, account_create, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.create_account(account_create, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of AccountsApi->create_account:\n")
         pprint(api_response)
     except Exception as e:
@@ -69,10 +70,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **account_create** | [**AccountCreate**](AccountCreate.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -97,7 +99,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_contact**
-> ContactResponse create_contact(account_id, x_api_key, contact_create, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> ContactResponse create_contact(account_id, contact_create, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Create Contact
 
@@ -125,14 +127,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AccountsApi(api_client)
     account_id = 'account_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     contact_create = moolabs.ContactCreate() # ContactCreate | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Create Contact
-        api_response = api_instance.create_contact(account_id, x_api_key, contact_create, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.create_contact(account_id, contact_create, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of AccountsApi->create_contact:\n")
         pprint(api_response)
     except Exception as e:
@@ -147,10 +150,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **contact_create** | [**ContactCreate**](ContactCreate.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -175,7 +179,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_account**
-> AccountResponse get_account(account_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> AccountResponse get_account(account_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Account
 
@@ -202,13 +206,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AccountsApi(api_client)
     account_id = 'account_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Account
-        api_response = api_instance.get_account(account_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_account(account_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of AccountsApi->get_account:\n")
         pprint(api_response)
     except Exception as e:
@@ -223,9 +228,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -250,7 +256,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_account_filter_options_v1**
-> AccountFilterOptionsResponse get_account_filter_options_v1(x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> AccountFilterOptionsResponse get_account_filter_options_v1(x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Account Filter Options
 
@@ -276,13 +282,14 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AccountsApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Account Filter Options
-        api_response = api_instance.get_account_filter_options_v1(x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_account_filter_options_v1(x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of AccountsApi->get_account_filter_options_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -296,9 +303,10 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -323,7 +331,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_account_overview**
-> AccountOverviewResponse get_account_overview(account_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> AccountOverviewResponse get_account_overview(account_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Account Overview
 
@@ -350,13 +358,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AccountsApi(api_client)
     account_id = 'account_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Account Overview
-        api_response = api_instance.get_account_overview(account_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_account_overview(account_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of AccountsApi->get_account_overview:\n")
         pprint(api_response)
     except Exception as e:
@@ -371,9 +380,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -398,7 +408,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_channel_preferences**
-> ChannelPreferencesResponse get_channel_preferences(contact_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> ChannelPreferencesResponse get_channel_preferences(contact_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Channel Preferences
 
@@ -425,13 +435,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AccountsApi(api_client)
     contact_id = 'contact_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Channel Preferences
-        api_response = api_instance.get_channel_preferences(contact_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_channel_preferences(contact_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of AccountsApi->get_channel_preferences:\n")
         pprint(api_response)
     except Exception as e:
@@ -446,9 +457,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contact_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -473,7 +485,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_account_invoices**
-> AccountInvoiceListResponse list_account_invoices(account_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> AccountInvoiceListResponse list_account_invoices(account_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Account Invoices
 
@@ -500,13 +512,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AccountsApi(api_client)
     account_id = 'account_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Account Invoices
-        api_response = api_instance.list_account_invoices(account_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_account_invoices(account_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of AccountsApi->list_account_invoices:\n")
         pprint(api_response)
     except Exception as e:
@@ -521,9 +534,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -548,7 +562,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_accounts**
-> AccountListResponse list_accounts(x_api_key, page=page, page_size=page_size, customer_id=customer_id, search=search, is_strategic=is_strategic, source_system=source_system, subsidiary=subsidiary, has_open_balance=has_open_balance, sort_by=sort_by, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> AccountListResponse list_accounts(page=page, page_size=page_size, customer_id=customer_id, search=search, is_strategic=is_strategic, source_system=source_system, subsidiary=subsidiary, has_open_balance=has_open_balance, sort_by=sort_by, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Accounts
 
@@ -574,7 +588,6 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AccountsApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     page = 1 # int |  (optional) (default to 1)
     page_size = 50 # int |  (optional) (default to 50)
     customer_id = 'customer_id_example' # str |  (optional)
@@ -584,12 +597,14 @@ with moolabs.ApiClient(configuration) as api_client:
     subsidiary = ['subsidiary_example'] # List[str] | Filter by account subsidiary (optional)
     has_open_balance = True # bool | Filter by account open balance (optional)
     sort_by = 'sort_by_example' # str | created_desc, created_asc, open_balance_desc, open_balance_asc (optional)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Accounts
-        api_response = api_instance.list_accounts(x_api_key, page=page, page_size=page_size, customer_id=customer_id, search=search, is_strategic=is_strategic, source_system=source_system, subsidiary=subsidiary, has_open_balance=has_open_balance, sort_by=sort_by, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_accounts(page=page, page_size=page_size, customer_id=customer_id, search=search, is_strategic=is_strategic, source_system=source_system, subsidiary=subsidiary, has_open_balance=has_open_balance, sort_by=sort_by, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of AccountsApi->list_accounts:\n")
         pprint(api_response)
     except Exception as e:
@@ -603,7 +618,6 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **page** | **int**|  | [optional] [default to 1]
  **page_size** | **int**|  | [optional] [default to 50]
  **customer_id** | **str**|  | [optional] 
@@ -613,8 +627,10 @@ Name | Type | Description  | Notes
  **subsidiary** | [**List[str]**](str.md)| Filter by account subsidiary | [optional] 
  **has_open_balance** | **bool**| Filter by account open balance | [optional] 
  **sort_by** | **str**| created_desc, created_asc, open_balance_desc, open_balance_asc | [optional] 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -639,7 +655,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_contacts**
-> ContactListResponse list_contacts(account_id, x_api_key, page=page, page_size=page_size, role=role, is_active=is_active, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> ContactListResponse list_contacts(account_id, page=page, page_size=page_size, role=role, is_active=is_active, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Contacts
 
@@ -666,17 +682,18 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AccountsApi(api_client)
     account_id = 'account_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     page = 1 # int |  (optional) (default to 1)
     page_size = 50 # int |  (optional) (default to 50)
     role = 'role_example' # str | Filter by contact role (optional)
     is_active = True # bool | Filter by active status (optional)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Contacts
-        api_response = api_instance.list_contacts(account_id, x_api_key, page=page, page_size=page_size, role=role, is_active=is_active, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_contacts(account_id, page=page, page_size=page_size, role=role, is_active=is_active, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of AccountsApi->list_contacts:\n")
         pprint(api_response)
     except Exception as e:
@@ -691,13 +708,14 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **page** | **int**|  | [optional] [default to 1]
  **page_size** | **int**|  | [optional] [default to 50]
  **role** | **str**| Filter by contact role | [optional] 
  **is_active** | **bool**| Filter by active status | [optional] 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -722,7 +740,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **opt_out_v1**
-> OptOutResponse opt_out_v1(contact_id, x_api_key, opt_out_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> OptOutResponse opt_out_v1(contact_id, opt_out_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Opt Out
 
@@ -750,14 +768,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AccountsApi(api_client)
     contact_id = 'contact_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     opt_out_request = moolabs.OptOutRequest() # OptOutRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Opt Out
-        api_response = api_instance.opt_out_v1(contact_id, x_api_key, opt_out_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.opt_out_v1(contact_id, opt_out_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of AccountsApi->opt_out_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -772,10 +791,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contact_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **opt_out_request** | [**OptOutRequest**](OptOutRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -800,7 +820,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resolve_jurisdiction_v1**
-> JurisdictionProfileResponse resolve_jurisdiction_v1(account_id, x_api_key, jurisdiction_resolution_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> JurisdictionProfileResponse resolve_jurisdiction_v1(account_id, jurisdiction_resolution_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Resolve Jurisdiction
 
@@ -828,14 +848,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AccountsApi(api_client)
     account_id = 'account_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     jurisdiction_resolution_request = moolabs.JurisdictionResolutionRequest() # JurisdictionResolutionRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Resolve Jurisdiction
-        api_response = api_instance.resolve_jurisdiction_v1(account_id, x_api_key, jurisdiction_resolution_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.resolve_jurisdiction_v1(account_id, jurisdiction_resolution_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of AccountsApi->resolve_jurisdiction_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -850,10 +871,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **jurisdiction_resolution_request** | [**JurisdictionResolutionRequest**](JurisdictionResolutionRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -878,7 +900,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_account**
-> AccountResponse update_account(account_id, x_api_key, account_update, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> AccountResponse update_account(account_id, account_update, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Update Account
 
@@ -906,14 +928,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AccountsApi(api_client)
     account_id = 'account_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     account_update = moolabs.AccountUpdate() # AccountUpdate | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Update Account
-        api_response = api_instance.update_account(account_id, x_api_key, account_update, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.update_account(account_id, account_update, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of AccountsApi->update_account:\n")
         pprint(api_response)
     except Exception as e:
@@ -928,10 +951,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **account_update** | [**AccountUpdate**](AccountUpdate.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -956,7 +980,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_channel_preferences**
-> ChannelPreferencesResponse update_channel_preferences(contact_id, x_api_key, channel_preference_update, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> ChannelPreferencesResponse update_channel_preferences(contact_id, channel_preference_update, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Update Channel Preferences
 
@@ -984,14 +1008,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AccountsApi(api_client)
     contact_id = 'contact_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     channel_preference_update = moolabs.ChannelPreferenceUpdate() # ChannelPreferenceUpdate | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Update Channel Preferences
-        api_response = api_instance.update_channel_preferences(contact_id, x_api_key, channel_preference_update, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.update_channel_preferences(contact_id, channel_preference_update, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of AccountsApi->update_channel_preferences:\n")
         pprint(api_response)
     except Exception as e:
@@ -1006,10 +1031,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contact_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **channel_preference_update** | [**ChannelPreferenceUpdate**](ChannelPreferenceUpdate.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -1034,7 +1060,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_contact**
-> ContactResponse update_contact(contact_id, x_api_key, contact_update, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> ContactResponse update_contact(contact_id, contact_update, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Update Contact
 
@@ -1062,14 +1088,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AccountsApi(api_client)
     contact_id = 'contact_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     contact_update = moolabs.ContactUpdate() # ContactUpdate | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Update Contact
-        api_response = api_instance.update_contact(contact_id, x_api_key, contact_update, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.update_contact(contact_id, contact_update, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of AccountsApi->update_contact:\n")
         pprint(api_response)
     except Exception as e:
@@ -1084,10 +1111,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contact_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **contact_update** | [**ContactUpdate**](ContactUpdate.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 

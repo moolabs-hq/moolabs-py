@@ -17,7 +17,7 @@ Create commercial overrides for a subscription.  Each call creates a new overrid
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -36,7 +36,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -96,7 +96,7 @@ Get active commercial overrides for a subscription.  Only returns rows with stat
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -114,7 +114,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )

@@ -29,7 +29,7 @@ Method | HTTP request | Description
 
 
 # **backfill_malformed_disputes_v1_arc_admin**
-> BackfillMalformedDisputesResponse backfill_malformed_disputes_v1_arc_admin(x_api_key, backfill_malformed_disputes_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> BackfillMalformedDisputesResponse backfill_malformed_disputes_v1_arc_admin(backfill_malformed_disputes_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Repair AI-classified disputes the pre-T4 router mis-routed
 
@@ -56,14 +56,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     backfill_malformed_disputes_request = moolabs.BackfillMalformedDisputesRequest() # BackfillMalformedDisputesRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Repair AI-classified disputes the pre-T4 router mis-routed
-        api_response = api_instance.backfill_malformed_disputes_v1_arc_admin(x_api_key, backfill_malformed_disputes_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.backfill_malformed_disputes_v1_arc_admin(backfill_malformed_disputes_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->backfill_malformed_disputes_v1_arc_admin:\n")
         pprint(api_response)
     except Exception as e:
@@ -77,10 +78,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **backfill_malformed_disputes_request** | [**BackfillMalformedDisputesRequest**](BackfillMalformedDisputesRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -105,7 +107,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **bulk_replay_endpoint_v1_arc**
-> object bulk_replay_endpoint_v1_arc(x_api_key, bulk_replay_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object bulk_replay_endpoint_v1_arc(bulk_replay_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Bulk Replay Endpoint
 
@@ -131,14 +133,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     bulk_replay_request = moolabs.BulkReplayRequest() # BulkReplayRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Bulk Replay Endpoint
-        api_response = api_instance.bulk_replay_endpoint_v1_arc(x_api_key, bulk_replay_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.bulk_replay_endpoint_v1_arc(bulk_replay_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->bulk_replay_endpoint_v1_arc:\n")
         pprint(api_response)
     except Exception as e:
@@ -152,10 +155,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **bulk_replay_request** | [**BulkReplayRequest**](BulkReplayRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -180,7 +184,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_agent_run_status_v1**
-> object get_agent_run_status_v1(run_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object get_agent_run_status_v1(run_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get agent run status
 
@@ -204,13 +208,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
     run_id = 'run_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get agent run status
-        api_response = api_instance.get_agent_run_status_v1(run_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_agent_run_status_v1(run_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->get_agent_run_status_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -225,9 +230,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **run_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -252,7 +258,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_dead_letters_v1**
-> object get_dead_letters_v1(x_api_key, page=page, page_size=page_size, source=source, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object get_dead_letters_v1(page=page, page_size=page_size, source=source, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Dead Letters
 
@@ -277,16 +283,17 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     page = 1 # int |  (optional) (default to 1)
     page_size = 50 # int |  (optional) (default to 50)
     source = 'source_example' # str |  (optional)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Dead Letters
-        api_response = api_instance.get_dead_letters_v1(x_api_key, page=page, page_size=page_size, source=source, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_dead_letters_v1(page=page, page_size=page_size, source=source, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->get_dead_letters_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -300,12 +307,13 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **page** | **int**|  | [optional] [default to 1]
  **page_size** | **int**|  | [optional] [default to 50]
  **source** | **str**|  | [optional] 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -330,7 +338,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_email_config_v1**
-> EmailConfigOut get_email_config_v1(x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> EmailConfigOut get_email_config_v1(x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Email Config
 
@@ -356,13 +364,14 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Email Config
-        api_response = api_instance.get_email_config_v1(x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_email_config_v1(x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->get_email_config_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -376,9 +385,10 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -403,7 +413,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_outbound_failures_v1**
-> object get_outbound_failures_v1(x_api_key, page=page, page_size=page_size, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object get_outbound_failures_v1(page=page, page_size=page_size, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Outbound Failures
 
@@ -428,15 +438,16 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     page = 1 # int |  (optional) (default to 1)
     page_size = 50 # int |  (optional) (default to 50)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Outbound Failures
-        api_response = api_instance.get_outbound_failures_v1(x_api_key, page=page, page_size=page_size, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_outbound_failures_v1(page=page, page_size=page_size, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->get_outbound_failures_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -450,11 +461,12 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **page** | **int**|  | [optional] [default to 1]
  **page_size** | **int**|  | [optional] [default to 50]
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -479,7 +491,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_potential_duplicates_v1**
-> object get_potential_duplicates_v1(x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object get_potential_duplicates_v1(x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Potential Duplicates
 
@@ -504,13 +516,14 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Potential Duplicates
-        api_response = api_instance.get_potential_duplicates_v1(x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_potential_duplicates_v1(x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->get_potential_duplicates_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -524,9 +537,10 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -551,7 +565,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_tenant_escalation_config_v1_arc**
-> TenantEscalationConfigOut get_tenant_escalation_config_v1_arc(x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> TenantEscalationConfigOut get_tenant_escalation_config_v1_arc(x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Tenant Escalation Config
 
@@ -577,13 +591,14 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Tenant Escalation Config
-        api_response = api_instance.get_tenant_escalation_config_v1_arc(x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_tenant_escalation_config_v1_arc(x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->get_tenant_escalation_config_v1_arc:\n")
         pprint(api_response)
     except Exception as e:
@@ -597,9 +612,10 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -624,7 +640,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_disputes_endpoint**
-> object import_disputes_endpoint(x_api_key, import_disputes_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object import_disputes_endpoint(import_disputes_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Import Disputes Endpoint
 
@@ -650,14 +666,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     import_disputes_request = moolabs.ImportDisputesRequest() # ImportDisputesRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Import Disputes Endpoint
-        api_response = api_instance.import_disputes_endpoint(x_api_key, import_disputes_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.import_disputes_endpoint(import_disputes_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->import_disputes_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -671,10 +688,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **import_disputes_request** | [**ImportDisputesRequest**](ImportDisputesRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -699,7 +717,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_invoices_endpoint**
-> object import_invoices_endpoint(x_api_key, import_invoices_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object import_invoices_endpoint(import_invoices_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Import Invoices Endpoint
 
@@ -725,14 +743,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     import_invoices_request = moolabs.ImportInvoicesRequest() # ImportInvoicesRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Import Invoices Endpoint
-        api_response = api_instance.import_invoices_endpoint(x_api_key, import_invoices_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.import_invoices_endpoint(import_invoices_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->import_invoices_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -746,10 +765,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **import_invoices_request** | [**ImportInvoicesRequest**](ImportInvoicesRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -774,7 +794,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_promises_endpoint**
-> object import_promises_endpoint(x_api_key, import_promises_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object import_promises_endpoint(import_promises_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Import Promises Endpoint
 
@@ -800,14 +820,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     import_promises_request = moolabs.ImportPromisesRequest() # ImportPromisesRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Import Promises Endpoint
-        api_response = api_instance.import_promises_endpoint(x_api_key, import_promises_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.import_promises_endpoint(import_promises_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->import_promises_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -821,10 +842,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **import_promises_request** | [**ImportPromisesRequest**](ImportPromisesRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -849,7 +871,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **merge_remittances_endpoint**
-> object merge_remittances_endpoint(x_api_key, merge_remittances_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object merge_remittances_endpoint(merge_remittances_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Merge Remittances Endpoint
 
@@ -875,14 +897,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     merge_remittances_request = moolabs.MergeRemittancesRequest() # MergeRemittancesRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Merge Remittances Endpoint
-        api_response = api_instance.merge_remittances_endpoint(x_api_key, merge_remittances_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.merge_remittances_endpoint(merge_remittances_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->merge_remittances_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -896,10 +919,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **merge_remittances_request** | [**MergeRemittancesRequest**](MergeRemittancesRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -924,7 +948,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_tenant_escalation_config_v1_arc**
-> TenantEscalationConfigOut patch_tenant_escalation_config_v1_arc(x_api_key, tenant_escalation_config_patch, x_tenant_id=x_tenant_id, x_org_id=x_org_id, x_user_id=x_user_id)
+> TenantEscalationConfigOut patch_tenant_escalation_config_v1_arc(tenant_escalation_config_patch, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_user_id=x_user_id)
 
 Patch Tenant Escalation Config
 
@@ -951,15 +975,16 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     tenant_escalation_config_patch = moolabs.TenantEscalationConfigPatch() # TenantEscalationConfigPatch | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
     x_user_id = 'x_user_id_example' # str |  (optional)
 
     try:
         # Patch Tenant Escalation Config
-        api_response = api_instance.patch_tenant_escalation_config_v1_arc(x_api_key, tenant_escalation_config_patch, x_tenant_id=x_tenant_id, x_org_id=x_org_id, x_user_id=x_user_id)
+        api_response = api_instance.patch_tenant_escalation_config_v1_arc(tenant_escalation_config_patch, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_user_id=x_user_id)
         print("The response of ArcAdminApi->patch_tenant_escalation_config_v1_arc:\n")
         pprint(api_response)
     except Exception as e:
@@ -973,10 +998,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **tenant_escalation_config_patch** | [**TenantEscalationConfigPatch**](TenantEscalationConfigPatch.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
  **x_user_id** | **str**|  | [optional] 
 
 ### Return type
@@ -1002,7 +1028,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reclassify_communication**
-> object reclassify_communication(communication_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object reclassify_communication(communication_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Re-enqueue inbound classification for an existing communication
 
@@ -1028,13 +1054,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
     communication_id = 'communication_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Re-enqueue inbound classification for an existing communication
-        api_response = api_instance.reclassify_communication(communication_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.reclassify_communication(communication_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->reclassify_communication:\n")
         pprint(api_response)
     except Exception as e:
@@ -1049,9 +1076,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **communication_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -1076,7 +1104,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **replay_dead_letter_endpoint_v1**
-> object replay_dead_letter_endpoint_v1(event_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object replay_dead_letter_endpoint_v1(event_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Replay Dead Letter Endpoint
 
@@ -1102,13 +1130,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
     event_id = 'event_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Replay Dead Letter Endpoint
-        api_response = api_instance.replay_dead_letter_endpoint_v1(event_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.replay_dead_letter_endpoint_v1(event_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->replay_dead_letter_endpoint_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -1123,9 +1152,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **event_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -1150,7 +1180,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retry_outbound_failure_endpoint_v1**
-> object retry_outbound_failure_endpoint_v1(event_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object retry_outbound_failure_endpoint_v1(event_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Retry Outbound Failure Endpoint
 
@@ -1176,13 +1206,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
     event_id = 'event_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Retry Outbound Failure Endpoint
-        api_response = api_instance.retry_outbound_failure_endpoint_v1(event_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.retry_outbound_failure_endpoint_v1(event_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->retry_outbound_failure_endpoint_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -1197,9 +1228,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **event_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -1224,7 +1256,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rotate_inbound_secret_v1_arc**
-> EmailConfigOut rotate_inbound_secret_v1_arc(x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> EmailConfigOut rotate_inbound_secret_v1_arc(x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Rotate Inbound Secret
 
@@ -1250,13 +1282,14 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Rotate Inbound Secret
-        api_response = api_instance.rotate_inbound_secret_v1_arc(x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.rotate_inbound_secret_v1_arc(x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->rotate_inbound_secret_v1_arc:\n")
         pprint(api_response)
     except Exception as e:
@@ -1270,9 +1303,10 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -1297,7 +1331,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **run_agent_sync**
-> object run_agent_sync(agent_type, x_api_key, case_id=case_id, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object run_agent_sync(agent_type, case_id=case_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Run Agent Synchronously
 
@@ -1323,14 +1357,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
     agent_type = 'agent_type_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     case_id = 'case_id_example' # str | Optional: run only for this case (optional)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Run Agent Synchronously
-        api_response = api_instance.run_agent_sync(agent_type, x_api_key, case_id=case_id, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.run_agent_sync(agent_type, case_id=case_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->run_agent_sync:\n")
         pprint(api_response)
     except Exception as e:
@@ -1345,10 +1380,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **agent_type** | **str**|  | 
- **x_api_key** | **str**|  | 
  **case_id** | **str**| Optional: run only for this case | [optional] 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -1373,7 +1409,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **seed_tenant_endpoint**
-> object seed_tenant_endpoint(x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object seed_tenant_endpoint(x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Seed Tenant Endpoint
 
@@ -1398,13 +1434,14 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Seed Tenant Endpoint
-        api_response = api_instance.seed_tenant_endpoint(x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.seed_tenant_endpoint(x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->seed_tenant_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -1418,9 +1455,10 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -1445,7 +1483,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upsert_email_config_v1**
-> EmailConfigOut upsert_email_config_v1(x_api_key, email_config_upsert, force_secret_overwrite=force_secret_overwrite, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> EmailConfigOut upsert_email_config_v1(email_config_upsert, force_secret_overwrite=force_secret_overwrite, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Upsert Email Config
 
@@ -1472,15 +1510,16 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     email_config_upsert = moolabs.EmailConfigUpsert() # EmailConfigUpsert | 
     force_secret_overwrite = False # bool | Break-glass: allow this PUT to overwrite an existing non-empty ``inbound_secret`` with a different value. Without this flag the server returns 409 to prevent the smoke-harness drift that silently breaks inbound webhooks for real tenants. Use POST /email-config/rotate-secret for the production rotation flow. (optional) (default to False)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Upsert Email Config
-        api_response = api_instance.upsert_email_config_v1(x_api_key, email_config_upsert, force_secret_overwrite=force_secret_overwrite, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.upsert_email_config_v1(email_config_upsert, force_secret_overwrite=force_secret_overwrite, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->upsert_email_config_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -1494,11 +1533,12 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **email_config_upsert** | [**EmailConfigUpsert**](EmailConfigUpsert.md)|  | 
  **force_secret_overwrite** | **bool**| Break-glass: allow this PUT to overwrite an existing non-empty &#x60;&#x60;inbound_secret&#x60;&#x60; with a different value. Without this flag the server returns 409 to prevent the smoke-harness drift that silently breaks inbound webhooks for real tenants. Use POST /email-config/rotate-secret for the production rotation flow. | [optional] [default to False]
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -1523,7 +1563,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **verify_email_config_v1**
-> EmailConfigOut verify_email_config_v1(x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> EmailConfigOut verify_email_config_v1(x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Verify Email Config
 
@@ -1549,13 +1589,14 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Verify Email Config
-        api_response = api_instance.verify_email_config_v1(x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.verify_email_config_v1(x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->verify_email_config_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -1569,9 +1610,10 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -1596,7 +1638,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **void_remittance_endpoint**
-> object void_remittance_endpoint(remittance_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object void_remittance_endpoint(remittance_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Void Remittance Endpoint
 
@@ -1622,13 +1664,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ArcAdminApi(api_client)
     remittance_id = 'remittance_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Void Remittance Endpoint
-        api_response = api_instance.void_remittance_endpoint(remittance_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.void_remittance_endpoint(remittance_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ArcAdminApi->void_remittance_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -1643,9 +1686,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **remittance_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 

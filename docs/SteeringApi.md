@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **approve_task**
-> ApproveResponse approve_task(task_id, x_api_key, approve_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id, x_acting_user=x_acting_user)
+> ApproveResponse approve_task(task_id, approve_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_acting_user=x_acting_user)
 
 Approve Task
 
@@ -38,15 +38,16 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.SteeringApi(api_client)
     task_id = 'task_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     approve_request = moolabs.ApproveRequest() # ApproveRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
     x_acting_user = 'x_acting_user_example' # str |  (optional)
 
     try:
         # Approve Task
-        api_response = api_instance.approve_task(task_id, x_api_key, approve_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id, x_acting_user=x_acting_user)
+        api_response = api_instance.approve_task(task_id, approve_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_acting_user=x_acting_user)
         print("The response of SteeringApi->approve_task:\n")
         pprint(api_response)
     except Exception as e:
@@ -61,10 +62,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **task_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **approve_request** | [**ApproveRequest**](ApproveRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
  **x_acting_user** | **str**|  | [optional] 
 
 ### Return type
@@ -90,7 +92,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **steer_ask_customer_v1**
-> AskCustomerResponse steer_ask_customer_v1(task_id, x_api_key, ask_customer_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id, x_acting_user=x_acting_user)
+> AskCustomerResponse steer_ask_customer_v1(task_id, ask_customer_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_acting_user=x_acting_user)
 
 Steer Ask Customer
 
@@ -116,15 +118,16 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.SteeringApi(api_client)
     task_id = 'task_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     ask_customer_request = moolabs.AskCustomerRequest() # AskCustomerRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
     x_acting_user = 'x_acting_user_example' # str |  (optional)
 
     try:
         # Steer Ask Customer
-        api_response = api_instance.steer_ask_customer_v1(task_id, x_api_key, ask_customer_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id, x_acting_user=x_acting_user)
+        api_response = api_instance.steer_ask_customer_v1(task_id, ask_customer_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_acting_user=x_acting_user)
         print("The response of SteeringApi->steer_ask_customer_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -139,10 +142,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **task_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **ask_customer_request** | [**AskCustomerRequest**](AskCustomerRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
  **x_acting_user** | **str**|  | [optional] 
 
 ### Return type
@@ -168,7 +172,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **steer_escalate**
-> EscalateResponse steer_escalate(task_id, x_api_key, escalate_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id, x_acting_user=x_acting_user)
+> EscalateResponse steer_escalate(task_id, escalate_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_acting_user=x_acting_user)
 
 Steer Escalate
 
@@ -194,15 +198,16 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.SteeringApi(api_client)
     task_id = 'task_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     escalate_request = moolabs.EscalateRequest() # EscalateRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
     x_acting_user = 'x_acting_user_example' # str |  (optional)
 
     try:
         # Steer Escalate
-        api_response = api_instance.steer_escalate(task_id, x_api_key, escalate_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id, x_acting_user=x_acting_user)
+        api_response = api_instance.steer_escalate(task_id, escalate_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_acting_user=x_acting_user)
         print("The response of SteeringApi->steer_escalate:\n")
         pprint(api_response)
     except Exception as e:
@@ -217,10 +222,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **task_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **escalate_request** | [**EscalateRequest**](EscalateRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
  **x_acting_user** | **str**|  | [optional] 
 
 ### Return type
@@ -246,7 +252,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **steer_override**
-> OverrideResponse steer_override(task_id, x_api_key, override_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id, x_acting_user=x_acting_user)
+> OverrideResponse steer_override(task_id, override_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_acting_user=x_acting_user)
 
 Steer Override
 
@@ -272,15 +278,16 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.SteeringApi(api_client)
     task_id = 'task_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     override_request = moolabs.OverrideRequest() # OverrideRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
     x_acting_user = 'x_acting_user_example' # str |  (optional)
 
     try:
         # Steer Override
-        api_response = api_instance.steer_override(task_id, x_api_key, override_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id, x_acting_user=x_acting_user)
+        api_response = api_instance.steer_override(task_id, override_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_acting_user=x_acting_user)
         print("The response of SteeringApi->steer_override:\n")
         pprint(api_response)
     except Exception as e:
@@ -295,10 +302,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **task_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **override_request** | [**OverrideRequest**](OverrideRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
  **x_acting_user** | **str**|  | [optional] 
 
 ### Return type
@@ -324,7 +332,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **steer_reattempt**
-> ReattemptResponse steer_reattempt(task_id, x_api_key, reattempt_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id, x_acting_user=x_acting_user)
+> ReattemptResponse steer_reattempt(task_id, reattempt_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_acting_user=x_acting_user)
 
 Steer Reattempt
 
@@ -350,15 +358,16 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.SteeringApi(api_client)
     task_id = 'task_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     reattempt_request = moolabs.ReattemptRequest() # ReattemptRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
     x_acting_user = 'x_acting_user_example' # str |  (optional)
 
     try:
         # Steer Reattempt
-        api_response = api_instance.steer_reattempt(task_id, x_api_key, reattempt_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id, x_acting_user=x_acting_user)
+        api_response = api_instance.steer_reattempt(task_id, reattempt_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_acting_user=x_acting_user)
         print("The response of SteeringApi->steer_reattempt:\n")
         pprint(api_response)
     except Exception as e:
@@ -373,10 +382,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **task_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **reattempt_request** | [**ReattemptRequest**](ReattemptRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
  **x_acting_user** | **str**|  | [optional] 
 
 ### Return type

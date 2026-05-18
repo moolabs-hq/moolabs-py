@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **apply_credit_memo_v1**
-> CreditMemoResponse apply_credit_memo_v1(memo_id, x_api_key, credit_memo_apply_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CreditMemoResponse apply_credit_memo_v1(memo_id, credit_memo_apply_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Apply Credit Memo
 
@@ -42,14 +42,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CreditMemosApi(api_client)
     memo_id = 'memo_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     credit_memo_apply_request = moolabs.CreditMemoApplyRequest() # CreditMemoApplyRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Apply Credit Memo
-        api_response = api_instance.apply_credit_memo_v1(memo_id, x_api_key, credit_memo_apply_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.apply_credit_memo_v1(memo_id, credit_memo_apply_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CreditMemosApi->apply_credit_memo_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -64,10 +65,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **memo_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **credit_memo_apply_request** | [**CreditMemoApplyRequest**](CreditMemoApplyRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -92,7 +94,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **approve_credit_memo_v1**
-> CreditMemoResponse approve_credit_memo_v1(memo_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CreditMemoResponse approve_credit_memo_v1(memo_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Approve Credit Memo
 
@@ -119,13 +121,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CreditMemosApi(api_client)
     memo_id = 'memo_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Approve Credit Memo
-        api_response = api_instance.approve_credit_memo_v1(memo_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.approve_credit_memo_v1(memo_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CreditMemosApi->approve_credit_memo_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -140,9 +143,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **memo_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -167,7 +171,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_credit_memo_v1**
-> CreditMemoResponse create_credit_memo_v1(x_api_key, credit_memo_create, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CreditMemoResponse create_credit_memo_v1(credit_memo_create, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Create Credit Memo
 
@@ -194,14 +198,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CreditMemosApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     credit_memo_create = moolabs.CreditMemoCreate() # CreditMemoCreate | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Create Credit Memo
-        api_response = api_instance.create_credit_memo_v1(x_api_key, credit_memo_create, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.create_credit_memo_v1(credit_memo_create, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CreditMemosApi->create_credit_memo_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -215,10 +220,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **credit_memo_create** | [**CreditMemoCreate**](CreditMemoCreate.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -243,7 +249,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_credit_memo_v1**
-> CreditMemoResponse get_credit_memo_v1(memo_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CreditMemoResponse get_credit_memo_v1(memo_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Credit Memo
 
@@ -270,13 +276,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CreditMemosApi(api_client)
     memo_id = 'memo_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Credit Memo
-        api_response = api_instance.get_credit_memo_v1(memo_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_credit_memo_v1(memo_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CreditMemosApi->get_credit_memo_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -291,9 +298,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **memo_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -318,7 +326,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_credit_memos_v1_get**
-> CreditMemoListResponse list_credit_memos_v1_get(x_api_key, account_id=account_id, status=status, page=page, page_size=page_size, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CreditMemoListResponse list_credit_memos_v1_get(account_id=account_id, status=status, page=page, page_size=page_size, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Credit Memos
 
@@ -344,17 +352,18 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CreditMemosApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     account_id = 'account_id_example' # str |  (optional)
     status = 'status_example' # str |  (optional)
     page = 1 # int |  (optional) (default to 1)
     page_size = 50 # int |  (optional) (default to 50)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Credit Memos
-        api_response = api_instance.list_credit_memos_v1_get(x_api_key, account_id=account_id, status=status, page=page, page_size=page_size, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_credit_memos_v1_get(account_id=account_id, status=status, page=page, page_size=page_size, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CreditMemosApi->list_credit_memos_v1_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -368,13 +377,14 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **account_id** | **str**|  | [optional] 
  **status** | **str**|  | [optional] 
  **page** | **int**|  | [optional] [default to 1]
  **page_size** | **int**|  | [optional] [default to 50]
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -399,7 +409,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_credit_memo_v1**
-> CreditMemoResponse update_credit_memo_v1(memo_id, x_api_key, credit_memo_update, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CreditMemoResponse update_credit_memo_v1(memo_id, credit_memo_update, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Update Credit Memo
 
@@ -427,14 +437,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CreditMemosApi(api_client)
     memo_id = 'memo_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     credit_memo_update = moolabs.CreditMemoUpdate() # CreditMemoUpdate | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Update Credit Memo
-        api_response = api_instance.update_credit_memo_v1(memo_id, x_api_key, credit_memo_update, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.update_credit_memo_v1(memo_id, credit_memo_update, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CreditMemosApi->update_credit_memo_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -449,10 +460,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **memo_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **credit_memo_update** | [**CreditMemoUpdate**](CreditMemoUpdate.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -477,7 +489,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **void_credit_memo_v1**
-> CreditMemoResponse void_credit_memo_v1(memo_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CreditMemoResponse void_credit_memo_v1(memo_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Void Credit Memo
 
@@ -504,13 +516,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CreditMemosApi(api_client)
     memo_id = 'memo_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Void Credit Memo
-        api_response = api_instance.void_credit_memo_v1(memo_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.void_credit_memo_v1(memo_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CreditMemosApi->void_credit_memo_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -525,9 +538,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **memo_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 

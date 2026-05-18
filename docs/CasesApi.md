@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 
 # **create_case**
-> CaseResponse create_case(x_api_key, case_create, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CaseResponse create_case(case_create, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Create Case
 
@@ -48,14 +48,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CasesApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     case_create = moolabs.CaseCreate() # CaseCreate | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Create Case
-        api_response = api_instance.create_case(x_api_key, case_create, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.create_case(case_create, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CasesApi->create_case:\n")
         pprint(api_response)
     except Exception as e:
@@ -69,10 +70,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **case_create** | [**CaseCreate**](CaseCreate.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -97,7 +99,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dunning_history_v1**
-> object dunning_history_v1(case_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object dunning_history_v1(case_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Dunning History
 
@@ -123,13 +125,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CasesApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Dunning History
-        api_response = api_instance.dunning_history_v1(case_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.dunning_history_v1(case_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CasesApi->dunning_history_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -144,9 +147,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -171,7 +175,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **escalate_case**
-> CaseResponse escalate_case(case_id, x_api_key, case_escalate_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CaseResponse escalate_case(case_id, case_escalate_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Escalate Case
 
@@ -199,14 +203,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CasesApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     case_escalate_request = moolabs.CaseEscalateRequest() # CaseEscalateRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Escalate Case
-        api_response = api_instance.escalate_case(case_id, x_api_key, case_escalate_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.escalate_case(case_id, case_escalate_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CasesApi->escalate_case:\n")
         pprint(api_response)
     except Exception as e:
@@ -221,10 +226,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **case_escalate_request** | [**CaseEscalateRequest**](CaseEscalateRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -249,7 +255,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **flag_disputed_v1**
-> FlagDisputedResponse flag_disputed_v1(case_id, invoice_id, x_api_key, flag_disputed_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> FlagDisputedResponse flag_disputed_v1(case_id, invoice_id, flag_disputed_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Flag Disputed
 
@@ -278,14 +284,15 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.CasesApi(api_client)
     case_id = 'case_id_example' # str | 
     invoice_id = 'invoice_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     flag_disputed_request = moolabs.FlagDisputedRequest() # FlagDisputedRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Flag Disputed
-        api_response = api_instance.flag_disputed_v1(case_id, invoice_id, x_api_key, flag_disputed_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.flag_disputed_v1(case_id, invoice_id, flag_disputed_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CasesApi->flag_disputed_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -301,10 +308,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **invoice_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **flag_disputed_request** | [**FlagDisputedRequest**](FlagDisputedRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -329,7 +337,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_case**
-> CaseResponse get_case(case_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CaseResponse get_case(case_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Case
 
@@ -356,13 +364,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CasesApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Case
-        api_response = api_instance.get_case(case_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_case(case_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CasesApi->get_case:\n")
         pprint(api_response)
     except Exception as e:
@@ -377,9 +386,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -404,7 +414,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_case_tasks**
-> TaskListResponse list_case_tasks(case_id, x_api_key, page=page, page_size=page_size, status=status, task_type=task_type, assigned_to=assigned_to, search=search, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> TaskListResponse list_case_tasks(case_id, page=page, page_size=page_size, status=status, task_type=task_type, assigned_to=assigned_to, search=search, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Case Tasks
 
@@ -431,19 +441,20 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CasesApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     page = 1 # int |  (optional) (default to 1)
     page_size = 50 # int |  (optional) (default to 50)
     status = 'status_example' # str |  (optional)
     task_type = 'task_type_example' # str |  (optional)
     assigned_to = 'assigned_to_example' # str |  (optional)
     search = 'search_example' # str | Substring match on title/description/customer name (optional)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Case Tasks
-        api_response = api_instance.list_case_tasks(case_id, x_api_key, page=page, page_size=page_size, status=status, task_type=task_type, assigned_to=assigned_to, search=search, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_case_tasks(case_id, page=page, page_size=page_size, status=status, task_type=task_type, assigned_to=assigned_to, search=search, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CasesApi->list_case_tasks:\n")
         pprint(api_response)
     except Exception as e:
@@ -458,15 +469,16 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **page** | **int**|  | [optional] [default to 1]
  **page_size** | **int**|  | [optional] [default to 50]
  **status** | **str**|  | [optional] 
  **task_type** | **str**|  | [optional] 
  **assigned_to** | **str**|  | [optional] 
  **search** | **str**| Substring match on title/description/customer name | [optional] 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -491,7 +503,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_cases**
-> CaseListResponse list_cases(x_api_key, page=page, page_size=page_size, status=status, risk_tier=risk_tier, aging_bucket=aging_bucket, account_id=account_id, customer_id=customer_id, q=q, search=search, has_ptp=has_ptp, sort_by=sort_by, include_invoices=include_invoices, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CaseListResponse list_cases(page=page, page_size=page_size, status=status, risk_tier=risk_tier, aging_bucket=aging_bucket, account_id=account_id, customer_id=customer_id, q=q, search=search, has_ptp=has_ptp, sort_by=sort_by, include_invoices=include_invoices, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Cases
 
@@ -517,7 +529,6 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CasesApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     page = 1 # int |  (optional) (default to 1)
     page_size = 50 # int |  (optional) (default to 50)
     status = ['status_example'] # List[str] |  (optional)
@@ -530,12 +541,14 @@ with moolabs.ApiClient(configuration) as api_client:
     has_ptp = True # bool | When true, only cases with at least one open PTP; when false, only cases without. Drives the PTP dashboard tile. (optional)
     sort_by = 'sort_by_example' # str | Sort order. Accepted values: created-desc (newest first, default), created-asc (oldest first), amount-desc (highest outstanding first), amount-asc (lowest outstanding first), risk-desc (high risk first). Unknown values fall back to the default active-cases-first ordering. (optional)
     include_invoices = False # bool | Include embedded invoices in each list item (optional) (default to False)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Cases
-        api_response = api_instance.list_cases(x_api_key, page=page, page_size=page_size, status=status, risk_tier=risk_tier, aging_bucket=aging_bucket, account_id=account_id, customer_id=customer_id, q=q, search=search, has_ptp=has_ptp, sort_by=sort_by, include_invoices=include_invoices, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_cases(page=page, page_size=page_size, status=status, risk_tier=risk_tier, aging_bucket=aging_bucket, account_id=account_id, customer_id=customer_id, q=q, search=search, has_ptp=has_ptp, sort_by=sort_by, include_invoices=include_invoices, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CasesApi->list_cases:\n")
         pprint(api_response)
     except Exception as e:
@@ -549,7 +562,6 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **page** | **int**|  | [optional] [default to 1]
  **page_size** | **int**|  | [optional] [default to 50]
  **status** | [**List[str]**](str.md)|  | [optional] 
@@ -562,8 +574,10 @@ Name | Type | Description  | Notes
  **has_ptp** | **bool**| When true, only cases with at least one open PTP; when false, only cases without. Drives the PTP dashboard tile. | [optional] 
  **sort_by** | **str**| Sort order. Accepted values: created-desc (newest first, default), created-asc (oldest first), amount-desc (highest outstanding first), amount-asc (lowest outstanding first), risk-desc (high risk first). Unknown values fall back to the default active-cases-first ordering. | [optional] 
  **include_invoices** | **bool**| Include embedded invoices in each list item | [optional] [default to False]
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -588,7 +602,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **open_from_scope_v1_arc**
-> CaseResponse open_from_scope_v1_arc(x_api_key, open_from_scope_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CaseResponse open_from_scope_v1_arc(open_from_scope_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Open From Scope
 
@@ -615,14 +629,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CasesApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     open_from_scope_request = moolabs.OpenFromScopeRequest() # OpenFromScopeRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Open From Scope
-        api_response = api_instance.open_from_scope_v1_arc(x_api_key, open_from_scope_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.open_from_scope_v1_arc(open_from_scope_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CasesApi->open_from_scope_v1_arc:\n")
         pprint(api_response)
     except Exception as e:
@@ -636,10 +651,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **open_from_scope_request** | [**OpenFromScopeRequest**](OpenFromScopeRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -664,7 +680,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pause_case**
-> CaseResponse pause_case(case_id, x_api_key, case_pause_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CaseResponse pause_case(case_id, case_pause_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Pause Case
 
@@ -692,14 +708,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CasesApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     case_pause_request = moolabs.CasePauseRequest() # CasePauseRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Pause Case
-        api_response = api_instance.pause_case(case_id, x_api_key, case_pause_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.pause_case(case_id, case_pause_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CasesApi->pause_case:\n")
         pprint(api_response)
     except Exception as e:
@@ -714,10 +731,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **case_pause_request** | [**CasePauseRequest**](CasePauseRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -742,7 +760,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **re_scope_case_v1**
-> CaseResponse re_scope_case_v1(case_id, x_api_key, re_scope_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CaseResponse re_scope_case_v1(case_id, re_scope_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Re Scope Case
 
@@ -770,14 +788,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CasesApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     re_scope_request = moolabs.ReScopeRequest() # ReScopeRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Re Scope Case
-        api_response = api_instance.re_scope_case_v1(case_id, x_api_key, re_scope_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.re_scope_case_v1(case_id, re_scope_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CasesApi->re_scope_case_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -792,10 +811,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **re_scope_request** | [**ReScopeRequest**](ReScopeRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -820,7 +840,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **recompute_strategy_v1**
-> CaseResponse recompute_strategy_v1(case_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CaseResponse recompute_strategy_v1(case_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Recompute Strategy
 
@@ -847,13 +867,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CasesApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Recompute Strategy
-        api_response = api_instance.recompute_strategy_v1(case_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.recompute_strategy_v1(case_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CasesApi->recompute_strategy_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -868,9 +889,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -895,7 +917,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resume_case**
-> CaseResponse resume_case(case_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CaseResponse resume_case(case_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Resume Case
 
@@ -922,13 +944,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CasesApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Resume Case
-        api_response = api_instance.resume_case(case_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.resume_case(case_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CasesApi->resume_case:\n")
         pprint(api_response)
     except Exception as e:
@@ -943,9 +966,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -970,7 +994,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_case**
-> CaseResponse update_case(case_id, x_api_key, case_update, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CaseResponse update_case(case_id, case_update, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Update Case
 
@@ -998,14 +1022,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CasesApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     case_update = moolabs.CaseUpdate() # CaseUpdate | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Update Case
-        api_response = api_instance.update_case(case_id, x_api_key, case_update, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.update_case(case_id, case_update, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CasesApi->update_case:\n")
         pprint(api_response)
     except Exception as e:
@@ -1020,10 +1045,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **case_update** | [**CaseUpdate**](CaseUpdate.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -1048,7 +1074,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **write_off_case_v1**
-> CaseResponse write_off_case_v1(case_id, x_api_key, case_write_off_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> CaseResponse write_off_case_v1(case_id, case_write_off_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Write Off Case
 
@@ -1076,14 +1102,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.CasesApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     case_write_off_request = moolabs.CaseWriteOffRequest() # CaseWriteOffRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Write Off Case
-        api_response = api_instance.write_off_case_v1(case_id, x_api_key, case_write_off_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.write_off_case_v1(case_id, case_write_off_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of CasesApi->write_off_case_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -1098,10 +1125,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **case_write_off_request** | [**CaseWriteOffRequest**](CaseWriteOffRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 

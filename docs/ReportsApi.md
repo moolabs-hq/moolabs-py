@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **create_report_endpoint**
-> ReportCreateResponse create_report_endpoint(x_api_key, report_create_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id, x_user_id=x_user_id, x_arc_roles=x_arc_roles)
+> ReportCreateResponse create_report_endpoint(report_create_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_user_id=x_user_id, x_arc_roles=x_arc_roles)
 
 Create Report Endpoint
 
@@ -34,16 +34,17 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ReportsApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     report_create_request = moolabs.ReportCreateRequest() # ReportCreateRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
     x_user_id = 'x_user_id_example' # str |  (optional)
     x_arc_roles = 'x_arc_roles_example' # str |  (optional)
 
     try:
         # Create Report Endpoint
-        api_response = api_instance.create_report_endpoint(x_api_key, report_create_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id, x_user_id=x_user_id, x_arc_roles=x_arc_roles)
+        api_response = api_instance.create_report_endpoint(report_create_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_user_id=x_user_id, x_arc_roles=x_arc_roles)
         print("The response of ReportsApi->create_report_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -57,10 +58,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **report_create_request** | [**ReportCreateRequest**](ReportCreateRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
  **x_user_id** | **str**|  | [optional] 
  **x_arc_roles** | **str**|  | [optional] 
 
@@ -87,7 +89,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_report_endpoint**
-> object download_report_endpoint(report_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object download_report_endpoint(report_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Download Report Endpoint
 
@@ -111,13 +113,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.ReportsApi(api_client)
     report_id = 'report_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Download Report Endpoint
-        api_response = api_instance.download_report_endpoint(report_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.download_report_endpoint(report_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of ReportsApi->download_report_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -132,9 +135,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **report_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 

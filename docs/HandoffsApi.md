@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **approve_handoff_endpoint**
-> object approve_handoff_endpoint(case_id, handoff_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object approve_handoff_endpoint(case_id, handoff_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Approve Handoff Endpoint
 
@@ -40,13 +40,14 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.HandoffsApi(api_client)
     case_id = 'case_id_example' # str | 
     handoff_id = 'handoff_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Approve Handoff Endpoint
-        api_response = api_instance.approve_handoff_endpoint(case_id, handoff_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.approve_handoff_endpoint(case_id, handoff_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of HandoffsApi->approve_handoff_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -62,9 +63,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **handoff_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -89,7 +91,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_handoff_endpoint**
-> object create_handoff_endpoint(case_id, x_api_key, handoff_create_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object create_handoff_endpoint(case_id, handoff_create_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Create Handoff Endpoint
 
@@ -116,14 +118,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.HandoffsApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     handoff_create_request = moolabs.HandoffCreateRequest() # HandoffCreateRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Create Handoff Endpoint
-        api_response = api_instance.create_handoff_endpoint(case_id, x_api_key, handoff_create_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.create_handoff_endpoint(case_id, handoff_create_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of HandoffsApi->create_handoff_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -138,10 +141,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **handoff_create_request** | [**HandoffCreateRequest**](HandoffCreateRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -166,7 +170,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_events_endpoint**
-> object list_events_endpoint(case_id, handoff_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object list_events_endpoint(case_id, handoff_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Events Endpoint
 
@@ -193,13 +197,14 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.HandoffsApi(api_client)
     case_id = 'case_id_example' # str | 
     handoff_id = 'handoff_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Events Endpoint
-        api_response = api_instance.list_events_endpoint(case_id, handoff_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_events_endpoint(case_id, handoff_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of HandoffsApi->list_events_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -215,9 +220,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **handoff_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -242,7 +248,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_handoffs_endpoint**
-> object list_handoffs_endpoint(case_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object list_handoffs_endpoint(case_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Handoffs Endpoint
 
@@ -268,13 +274,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.HandoffsApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Handoffs Endpoint
-        api_response = api_instance.list_handoffs_endpoint(case_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_handoffs_endpoint(case_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of HandoffsApi->list_handoffs_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -289,9 +296,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -316,7 +324,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **recall_handoff_endpoint**
-> object recall_handoff_endpoint(case_id, handoff_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, recall_request=recall_request)
+> object recall_handoff_endpoint(case_id, handoff_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, recall_request=recall_request)
 
 Recall Handoff Endpoint
 
@@ -344,14 +352,15 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.HandoffsApi(api_client)
     case_id = 'case_id_example' # str | 
     handoff_id = 'handoff_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
     recall_request = moolabs.RecallRequest() # RecallRequest |  (optional)
 
     try:
         # Recall Handoff Endpoint
-        api_response = api_instance.recall_handoff_endpoint(case_id, handoff_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, recall_request=recall_request)
+        api_response = api_instance.recall_handoff_endpoint(case_id, handoff_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, recall_request=recall_request)
         print("The response of HandoffsApi->recall_handoff_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -367,9 +376,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **handoff_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
  **recall_request** | [**RecallRequest**](RecallRequest.md)|  | [optional] 
 
 ### Return type
@@ -395,7 +405,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_handoff_endpoint**
-> object send_handoff_endpoint(case_id, handoff_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> object send_handoff_endpoint(case_id, handoff_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Send Handoff Endpoint
 
@@ -422,13 +432,14 @@ with moolabs.ApiClient(configuration) as api_client:
     api_instance = moolabs.HandoffsApi(api_client)
     case_id = 'case_id_example' # str | 
     handoff_id = 'handoff_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Send Handoff Endpoint
-        api_response = api_instance.send_handoff_endpoint(case_id, handoff_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.send_handoff_endpoint(case_id, handoff_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of HandoffsApi->send_handoff_endpoint:\n")
         pprint(api_response)
     except Exception as e:
@@ -444,9 +455,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
  **handoff_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 

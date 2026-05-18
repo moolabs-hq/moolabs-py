@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **get_payment_allocations**
-> AllocationsListResponse get_payment_allocations(payment_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> AllocationsListResponse get_payment_allocations(payment_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Get Payment Allocations
 
@@ -41,13 +41,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.PaymentsApi(api_client)
     payment_id = 'payment_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Get Payment Allocations
-        api_response = api_instance.get_payment_allocations(payment_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.get_payment_allocations(payment_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PaymentsApi->get_payment_allocations:\n")
         pprint(api_response)
     except Exception as e:
@@ -62,9 +63,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payment_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -89,7 +91,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_account_payments_v1**
-> List[PaymentResponse] list_account_payments_v1(account_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> List[PaymentResponse] list_account_payments_v1(account_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Account Payments
 
@@ -116,13 +118,14 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.PaymentsApi(api_client)
     account_id = 'account_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Account Payments
-        api_response = api_instance.list_account_payments_v1(account_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_account_payments_v1(account_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PaymentsApi->list_account_payments_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -137,9 +140,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -164,7 +168,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_case_payments_v1**
-> PaymentListResponse list_case_payments_v1(case_id, x_api_key, page=page, page_size=page_size, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> PaymentListResponse list_case_payments_v1(case_id, page=page, page_size=page_size, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 List Case Payments
 
@@ -191,15 +195,16 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.PaymentsApi(api_client)
     case_id = 'case_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     page = 1 # int |  (optional) (default to 1)
     page_size = 50 # int |  (optional) (default to 50)
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # List Case Payments
-        api_response = api_instance.list_case_payments_v1(case_id, x_api_key, page=page, page_size=page_size, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.list_case_payments_v1(case_id, page=page, page_size=page_size, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PaymentsApi->list_case_payments_v1:\n")
         pprint(api_response)
     except Exception as e:
@@ -214,11 +219,12 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **page** | **int**|  | [optional] [default to 1]
  **page_size** | **int**|  | [optional] [default to 50]
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -243,7 +249,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **match_payment**
-> PaymentResponse match_payment(payment_id, x_api_key, payment_match_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> PaymentResponse match_payment(payment_id, payment_match_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Match Payment
 
@@ -271,14 +277,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.PaymentsApi(api_client)
     payment_id = 'payment_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
     payment_match_request = moolabs.PaymentMatchRequest() # PaymentMatchRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Match Payment
-        api_response = api_instance.match_payment(payment_id, x_api_key, payment_match_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.match_payment(payment_id, payment_match_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PaymentsApi->match_payment:\n")
         pprint(api_response)
     except Exception as e:
@@ -293,10 +300,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payment_id** | **str**|  | 
- **x_api_key** | **str**|  | 
  **payment_match_request** | [**PaymentMatchRequest**](PaymentMatchRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -321,7 +329,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **record_payment**
-> PaymentResponse record_payment(x_api_key, payment_create, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> PaymentResponse record_payment(payment_create, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Record Payment
 
@@ -348,14 +356,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.PaymentsApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     payment_create = moolabs.PaymentCreate() # PaymentCreate | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Record Payment
-        api_response = api_instance.record_payment(x_api_key, payment_create, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.record_payment(payment_create, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PaymentsApi->record_payment:\n")
         pprint(api_response)
     except Exception as e:
@@ -369,10 +378,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **payment_create** | [**PaymentCreate**](PaymentCreate.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 
@@ -397,7 +407,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reverse_payment**
-> PaymentResponse reverse_payment(payment_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, payment_reversal_request=payment_reversal_request)
+> PaymentResponse reverse_payment(payment_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, payment_reversal_request=payment_reversal_request)
 
 Reverse Payment
 
@@ -425,14 +435,15 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.PaymentsApi(api_client)
     payment_id = 'payment_id_example' # str | 
-    x_api_key = 'x_api_key_example' # str | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
     payment_reversal_request = moolabs.PaymentReversalRequest() # PaymentReversalRequest |  (optional)
 
     try:
         # Reverse Payment
-        api_response = api_instance.reverse_payment(payment_id, x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, payment_reversal_request=payment_reversal_request)
+        api_response = api_instance.reverse_payment(payment_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, payment_reversal_request=payment_reversal_request)
         print("The response of PaymentsApi->reverse_payment:\n")
         pprint(api_response)
     except Exception as e:
@@ -447,9 +458,10 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payment_id** | **str**|  | 
- **x_api_key** | **str**|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
  **payment_reversal_request** | [**PaymentReversalRequest**](PaymentReversalRequest.md)|  | [optional] 
 
 ### Return type
@@ -475,7 +487,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **settle_hosted_checkout_v1_arc**
-> HostedCheckoutSettlementResponse settle_hosted_checkout_v1_arc(x_api_key, hosted_checkout_settlement_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+> HostedCheckoutSettlementResponse settle_hosted_checkout_v1_arc(hosted_checkout_settlement_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
 
 Settle Hosted Checkout
 
@@ -502,14 +514,15 @@ configuration = moolabs.Configuration(
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.PaymentsApi(api_client)
-    x_api_key = 'x_api_key_example' # str | 
     hosted_checkout_settlement_request = moolabs.HostedCheckoutSettlementRequest() # HostedCheckoutSettlementRequest | 
+    x_api_key = 'x_api_key_example' # str |  (optional)
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
+    authorization = 'authorization_example' # str |  (optional)
 
     try:
         # Settle Hosted Checkout
-        api_response = api_instance.settle_hosted_checkout_v1_arc(x_api_key, hosted_checkout_settlement_request, x_tenant_id=x_tenant_id, x_org_id=x_org_id)
+        api_response = api_instance.settle_hosted_checkout_v1_arc(hosted_checkout_settlement_request, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization)
         print("The response of PaymentsApi->settle_hosted_checkout_v1_arc:\n")
         pprint(api_response)
     except Exception as e:
@@ -523,10 +536,11 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_api_key** | **str**|  | 
  **hosted_checkout_settlement_request** | [**HostedCheckoutSettlementRequest**](HostedCheckoutSettlementRequest.md)|  | 
+ **x_api_key** | **str**|  | [optional] 
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
+ **authorization** | **str**|  | [optional] 
 
 ### Return type
 

@@ -27,7 +27,7 @@ Allocate credits from source wallet to target wallet.  Server-side validation: -
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -46,7 +46,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -319,7 +319,7 @@ Get wallet activity (journal entries) for a specific wallet.  Returns ALL journa
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -337,7 +337,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -553,7 +553,7 @@ List wallets with optional filters.  - If subscription_id is provided, finds wal
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -571,7 +571,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -647,7 +647,7 @@ Fetch wallet balances for multiple subjects in a single request.  Tenant is deri
 
 ### Example
 
-* Bearer Authentication (HTTPBearer):
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -666,7 +666,7 @@ configuration = moolabs.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: HTTPBearer
+# Configure Bearer authorization (opaque): HTTPBearer
 configuration = moolabs.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )

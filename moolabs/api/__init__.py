@@ -36,6 +36,7 @@ from moolabs.api.auto_topup_api import AutoTopupApi
 from moolabs.api.batch_api import BatchApi
 from moolabs.api.billing_api import BillingApi
 from moolabs.api.budgets_api import BudgetsApi
+from moolabs.api.buyer_quotes_api import BuyerQuotesApi
 from moolabs.api.cases_api import CasesApi
 from moolabs.api.cash_credits_api import CashCreditsApi
 from moolabs.api.chat_api import ChatApi
@@ -74,6 +75,8 @@ from moolabs.api.plans_api import PlansApi
 from moolabs.api.pools_api import PoolsApi
 from moolabs.api.portal_api import PortalApi
 from moolabs.api.promises_api import PromisesApi
+from moolabs.api.quote_sessions_api import QuoteSessionsApi
+from moolabs.api.quotes_api import QuotesApi
 from moolabs.api.rate_cards_api import RateCardsApi
 from moolabs.api.rate_catalog_api import RateCatalogApi
 from moolabs.api.rating_api import RatingApi

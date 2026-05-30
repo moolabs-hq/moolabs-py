@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **effective_at** | **datetime** |  | [optional] 
 **subscription** | **Dict[str, object]** |  | 
 **commercial_overrides** | [**CommercialOverridesPayload**](CommercialOverridesPayload.md) |  | [optional] 
+**quote_origin_key** | **str** |  | [optional] 
 
 ## Example
 

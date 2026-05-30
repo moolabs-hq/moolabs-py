@@ -10,8 +10,12 @@ Name | Type | Description | Notes
 **from_address** | **str** |  | 
 **resend_domain_id** | **str** |  | 
 **verification_status** | **str** |  | 
+**reply_domain** | **str** |  | 
+**reply_resend_domain_id** | **str** |  | 
+**reply_verification_status** | **str** |  | 
 **inbound_secret_last4** | **str** |  | 
 **dns_records** | **List[Dict[str, object]]** |  | [optional] 
+**reply_dns_records** | **List[Dict[str, object]]** |  | [optional] 
 
 ## Example
 

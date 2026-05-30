@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sender_domain** | **str** |  | 
 **from_address** | **str** |  | [optional] 
+**reply_domain** | **str** |  | [optional] 
 **inbound_secret** | **str** |  | [optional] 
 
 ## Example

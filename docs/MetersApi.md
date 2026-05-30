@@ -834,11 +834,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **test_meter_event**
-> TestMeterEvent200Response test_meter_event(meter_id_or_slug, test_meter_event_request)
+> MeterTestEventResponse test_meter_event(meter_id_or_slug, meter_test_event_request)
 
 Validate a sample event payload against the meter
 
-Validate a sample event payload against the meter's local JSONPath extraction rules.
+Validate a sample event payload against the meter.
 
 ### Example
 
@@ -846,8 +846,8 @@ Validate a sample event payload against the meter's local JSONPath extraction ru
 
 ```python
 import moolabs
-from moolabs.models.test_meter_event200_response import TestMeterEvent200Response
-from moolabs.models.test_meter_event_request import TestMeterEventRequest
+from moolabs.models.meter_test_event_request import MeterTestEventRequest
+from moolabs.models.meter_test_event_response import MeterTestEventResponse
 from moolabs.rest import ApiException
 from pprint import pprint
 
@@ -872,11 +872,11 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.MetersApi(api_client)
     meter_id_or_slug = 'meter_id_or_slug_example' # str | 
-    test_meter_event_request = moolabs.TestMeterEventRequest() # TestMeterEventRequest | 
+    meter_test_event_request = moolabs.MeterTestEventRequest() # MeterTestEventRequest | 
 
     try:
         # Validate a sample event payload against the meter
-        api_response = api_instance.test_meter_event(meter_id_or_slug, test_meter_event_request)
+        api_response = api_instance.test_meter_event(meter_id_or_slug, meter_test_event_request)
         print("The response of MetersApi->test_meter_event:\n")
         pprint(api_response)
     except Exception as e:
@@ -891,11 +891,11 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **meter_id_or_slug** | **str**|  | 
- **test_meter_event_request** | [**TestMeterEventRequest**](TestMeterEventRequest.md)|  | 
+ **meter_test_event_request** | [**MeterTestEventRequest**](MeterTestEventRequest.md)|  | 
 
 ### Return type
 
-[**TestMeterEvent200Response**](TestMeterEvent200Response.md)
+[**MeterTestEventResponse**](MeterTestEventResponse.md)
 
 ### Authorization
 

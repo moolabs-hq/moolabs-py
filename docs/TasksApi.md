@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **complete_task**
-> TaskResponse complete_task(task_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, task_complete_request=task_complete_request)
+> TaskResponse complete_task(task_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_acting_user=x_acting_user, task_complete_request=task_complete_request)
 
 Complete Task
 
@@ -43,11 +43,12 @@ with moolabs.ApiClient(configuration) as api_client:
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
     authorization = 'authorization_example' # str |  (optional)
+    x_acting_user = 'x_acting_user_example' # str |  (optional)
     task_complete_request = moolabs.TaskCompleteRequest() # TaskCompleteRequest |  (optional)
 
     try:
         # Complete Task
-        api_response = api_instance.complete_task(task_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, task_complete_request=task_complete_request)
+        api_response = api_instance.complete_task(task_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_acting_user=x_acting_user, task_complete_request=task_complete_request)
         print("The response of TasksApi->complete_task:\n")
         pprint(api_response)
     except Exception as e:
@@ -66,6 +67,7 @@ Name | Type | Description  | Notes
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
  **authorization** | **str**|  | [optional] 
+ **x_acting_user** | **str**|  | [optional] 
  **task_complete_request** | [**TaskCompleteRequest**](TaskCompleteRequest.md)|  | [optional] 
 
 ### Return type

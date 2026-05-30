@@ -24,6 +24,8 @@ Name | Type | Description | Notes
 **pro_rating_config** | [**ProRatingConfig**](ProRatingConfig.md) | The pro-rating configuration for the subscriptions. | [optional] [readonly] 
 **billing_anchor** | **datetime** | The normalizedbilling anchor of the subscription. | [readonly] 
 **commercial_overrides** | [**CommercialOverrides**](CommercialOverrides.md) | Commercial terms for this subscription (discounts, pool overrides, wallet policy). | [optional] [readonly] 
+**quote_origin_key** | **str** | Idempotency key linking this subscription to the accepted quote version that created it. | [optional] [readonly] 
+**grants_status** | **str** | Transient grant activation status returned by create and quote-origin duplicate recovery flows. | [optional] [readonly] 
 **alignment** | [**SubscriptionAlignment**](SubscriptionAlignment.md) | Alignment details enriched with the current billing period. | [optional] 
 **phases** | [**List[SubscriptionPhaseExpanded]**](SubscriptionPhaseExpanded.md) | The phases of the subscription. | 
 

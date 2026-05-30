@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**get_integrations_mapping**](TenantApi.md#get_integrations_mapping) | **GET** /v1/tenant/integrations/mapping | Get Integrations Mapping
 [**get_moometer_namespace_id_v1**](TenantApi.md#get_moometer_namespace_id_v1) | **GET** /v1/tenant/moometer-namespace | Get Moometer Namespace Id
 [**get_portal_tokens_v1**](TenantApi.md#get_portal_tokens_v1) | **GET** /v1/tenant/portal-tokens | Get Portal Tokens
+[**get_quote_settings_v1**](TenantApi.md#get_quote_settings_v1) | **GET** /v1/tenant/quote-settings | Get Quote Settings
 [**get_revenue_recognition_v1**](TenantApi.md#get_revenue_recognition_v1) | **GET** /v1/tenant/revenue-recognition | Get Revenue Recognition
 [**get_sender**](TenantApi.md#get_sender) | **GET** /v1/tenant/communications/sender | Get Sender
 [**get_template**](TenantApi.md#get_template) | **GET** /v1/tenant/communications/templates/{template_id} | Get Template
@@ -43,6 +44,7 @@ Method | HTTP request | Description
 [**put_domain**](TenantApi.md#put_domain) | **PUT** /v1/tenant/communications/domain | Put Domain
 [**put_feature_flag_v1**](TenantApi.md#put_feature_flag_v1) | **PUT** /v1/tenant/audit/feature-flags/{flag_id} | Put Feature Flag
 [**put_integration**](TenantApi.md#put_integration) | **PUT** /v1/tenant/integrations/{provider} | Put Integration
+[**put_quote_settings_v1**](TenantApi.md#put_quote_settings_v1) | **PUT** /v1/tenant/quote-settings | Put Quote Settings
 [**put_sender**](TenantApi.md#put_sender) | **PUT** /v1/tenant/communications/sender | Put Sender
 [**put_template**](TenantApi.md#put_template) | **PUT** /v1/tenant/communications/templates/{template_id} | Put Template
 [**put_webhook**](TenantApi.md#put_webhook) | **PUT** /v1/tenant/communications/webhook | Put Webhook
@@ -1031,6 +1033,78 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**List[PortalTokenItem]**](PortalTokenItem.md)
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_quote_settings_v1**
+> QuoteSettingsResponse get_quote_settings_v1()
+
+Get Quote Settings
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.quote_settings_response import QuoteSettingsResponse
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.TenantApi(api_client)
+
+    try:
+        # Get Quote Settings
+        api_response = api_instance.get_quote_settings_v1()
+        print("The response of TenantApi->get_quote_settings_v1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TenantApi->get_quote_settings_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**QuoteSettingsResponse**](QuoteSettingsResponse.md)
 
 ### Authorization
 
@@ -2985,6 +3059,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ConnectorItem**](ConnectorItem.md)
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_quote_settings_v1**
+> QuoteSettingsResponse put_quote_settings_v1(update_quote_settings_request)
+
+Put Quote Settings
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.quote_settings_response import QuoteSettingsResponse
+from moolabs.models.update_quote_settings_request import UpdateQuoteSettingsRequest
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.TenantApi(api_client)
+    update_quote_settings_request = moolabs.UpdateQuoteSettingsRequest() # UpdateQuoteSettingsRequest | 
+
+    try:
+        # Put Quote Settings
+        api_response = api_instance.put_quote_settings_v1(update_quote_settings_request)
+        print("The response of TenantApi->put_quote_settings_v1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TenantApi->put_quote_settings_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **update_quote_settings_request** | [**UpdateQuoteSettingsRequest**](UpdateQuoteSettingsRequest.md)|  | 
+
+### Return type
+
+[**QuoteSettingsResponse**](QuoteSettingsResponse.md)
 
 ### Authorization
 

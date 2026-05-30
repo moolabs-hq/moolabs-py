@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **customer_id** | **str** | The ID of the customer. Provide either the key or ID. Has presedence over the key. | [optional] 
 **customer_key** | **str** | The key of the customer. Provide either the key or ID. | [optional] 
 **billing_anchor** | **datetime** | The billing anchor of the subscription. The provided date will be normalized according to the billing cadence to the nearest recurrence before start time. If not provided, the subscription start time will be used. | [optional] 
+**quote_origin_key** | **str** | Idempotency key supplied by quote acceptance for new-subscription creates. | [optional] 
 
 ## Example
 

@@ -261,7 +261,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reject_communication**
-> ApprovalActionResponse reject_communication(case_id, comm_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, approval_action_request=approval_action_request)
+> ApprovalActionResponse reject_communication(case_id, comm_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_acting_user=x_acting_user, x_user_id=x_user_id, x_arc_proxy_secret=x_arc_proxy_secret, approval_action_request=approval_action_request)
 
 Reject Communication
 
@@ -294,11 +294,14 @@ with moolabs.ApiClient(configuration) as api_client:
     x_tenant_id = 'x_tenant_id_example' # str |  (optional)
     x_org_id = 'x_org_id_example' # str |  (optional)
     authorization = 'authorization_example' # str |  (optional)
+    x_acting_user = 'x_acting_user_example' # str |  (optional)
+    x_user_id = 'x_user_id_example' # str |  (optional)
+    x_arc_proxy_secret = 'x_arc_proxy_secret_example' # str |  (optional)
     approval_action_request = moolabs.ApprovalActionRequest() # ApprovalActionRequest |  (optional)
 
     try:
         # Reject Communication
-        api_response = api_instance.reject_communication(case_id, comm_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, approval_action_request=approval_action_request)
+        api_response = api_instance.reject_communication(case_id, comm_id, x_api_key=x_api_key, x_tenant_id=x_tenant_id, x_org_id=x_org_id, authorization=authorization, x_acting_user=x_acting_user, x_user_id=x_user_id, x_arc_proxy_secret=x_arc_proxy_secret, approval_action_request=approval_action_request)
         print("The response of ArcCommunicationsApi->reject_communication:\n")
         pprint(api_response)
     except Exception as e:
@@ -318,6 +321,9 @@ Name | Type | Description  | Notes
  **x_tenant_id** | **str**|  | [optional] 
  **x_org_id** | **str**|  | [optional] 
  **authorization** | **str**|  | [optional] 
+ **x_acting_user** | **str**|  | [optional] 
+ **x_user_id** | **str**|  | [optional] 
+ **x_arc_proxy_secret** | **str**|  | [optional] 
  **approval_action_request** | [**ApprovalActionRequest**](ApprovalActionRequest.md)|  | [optional] 
 
 ### Return type

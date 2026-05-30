@@ -44,6 +44,7 @@ moolabs/api/batch_api.py
 moolabs/api/billing_api.py
 moolabs/api/bom_api.py
 moolabs/api/budgets_api.py
+moolabs/api/buyer_quotes_api.py
 moolabs/api/cases_api.py
 moolabs/api/cash_credits_api.py
 moolabs/api/chat_api.py
@@ -94,6 +95,8 @@ moolabs/api/pools_api.py
 moolabs/api/portal_api.py
 moolabs/api/product_catalog_api.py
 moolabs/api/promises_api.py
+moolabs/api/quote_sessions_api.py
+moolabs/api/quotes_api.py
 moolabs/api/rate_cards_api.py
 moolabs/api/rate_catalog_api.py
 moolabs/api/rating_api.py
@@ -251,6 +254,14 @@ moolabs/models/budget_update.py
 moolabs/models/budget_with_utilization.py
 moolabs/models/bulk_action_request.py
 moolabs/models/bulk_replay_request.py
+moolabs/models/buyer_accept_request.py
+moolabs/models/buyer_otp_request_response.py
+moolabs/models/buyer_otp_verify_request.py
+moolabs/models/buyer_otp_verify_response.py
+moolabs/models/buyer_quote_line_item.py
+moolabs/models/buyer_quote_pricing.py
+moolabs/models/buyer_quote_projection.py
+moolabs/models/buyer_reject_request.py
 moolabs/models/cancel_subscription_request.py
 moolabs/models/card_type.py
 moolabs/models/case_create.py
@@ -314,8 +325,10 @@ moolabs/models/create_fx_rate_request.py
 moolabs/models/create_grant_request.py
 moolabs/models/create_mapping_request.py
 moolabs/models/create_portal_token_response.py
+moolabs/models/create_quote_request.py
 moolabs/models/create_rate_card_request.py
 moolabs/models/create_reconstruction_run_request.py
+moolabs/models/create_session_response.py
 moolabs/models/create_snapshot_request.py
 moolabs/models/create_stripe_checkout_session_billing_address_collection.py
 moolabs/models/create_stripe_checkout_session_consent_collection.py
@@ -608,6 +621,8 @@ moolabs/models/meter_order_by.py
 moolabs/models/meter_query_request.py
 moolabs/models/meter_query_result.py
 moolabs/models/meter_query_row.py
+moolabs/models/meter_test_event_request.py
+moolabs/models/meter_test_event_response.py
 moolabs/models/meter_update.py
 moolabs/models/meter_usage_summary_item.py
 moolabs/models/meter_usage_summary_response.py
@@ -682,6 +697,7 @@ moolabs/models/paginated_customers.py
 moolabs/models/paginated_invoices.py
 moolabs/models/paginated_payments.py
 moolabs/models/paginated_sync_runs.py
+moolabs/models/patch_session_request.py
 moolabs/models/payment_allocation_response.py
 moolabs/models/payment_create.py
 moolabs/models/payment_due_date.py
@@ -732,6 +748,7 @@ moolabs/models/portal_ptp_request.py
 moolabs/models/portal_token.py
 moolabs/models/portal_token_item.py
 moolabs/models/price_payment_term.py
+moolabs/models/price_session_response.py
 moolabs/models/price_tier.py
 moolabs/models/price_tier_payload.py
 moolabs/models/priority.py
@@ -751,6 +768,13 @@ moolabs/models/ptp_summary_response.py
 moolabs/models/quantity.py
 moolabs/models/quick_action.py
 moolabs/models/quick_books_connect_request.py
+moolabs/models/quote_approval_decision_request.py
+moolabs/models/quote_approval_response.py
+moolabs/models/quote_line_item_input.py
+moolabs/models/quote_list_response.py
+moolabs/models/quote_response.py
+moolabs/models/quote_settings_response.py
+moolabs/models/quote_version_response.py
 moolabs/models/rate_bulk_import_request.py
 moolabs/models/rate_bulk_import_response.py
 moolabs/models/rate_card.py
@@ -907,8 +931,6 @@ moolabs/models/tenant_config_response.py
 moolabs/models/tenant_escalation_config_out.py
 moolabs/models/tenant_escalation_config_patch.py
 moolabs/models/tenant_provision_request.py
-moolabs/models/test_meter_event200_response.py
-moolabs/models/test_meter_event_request.py
 moolabs/models/tiered_price_mode.py
 moolabs/models/tiered_price_with_commitments.py
 moolabs/models/tiered_pricing_payload.py
@@ -928,6 +950,7 @@ moolabs/models/unit_price_with_commitments.py
 moolabs/models/unitamount.py
 moolabs/models/update_auto_topup_rule_request.py
 moolabs/models/update_credit_pool_request.py
+moolabs/models/update_quote_settings_request.py
 moolabs/models/update_threshold_request.py
 moolabs/models/update_wallet_settings_request.py
 moolabs/models/update_wallet_thresholds_request.py
@@ -1115,6 +1138,15 @@ test/test_budget_with_utilization.py
 test/test_budgets_api.py
 test/test_bulk_action_request.py
 test/test_bulk_replay_request.py
+test/test_buyer_accept_request.py
+test/test_buyer_otp_request_response.py
+test/test_buyer_otp_verify_request.py
+test/test_buyer_otp_verify_response.py
+test/test_buyer_quote_line_item.py
+test/test_buyer_quote_pricing.py
+test/test_buyer_quote_projection.py
+test/test_buyer_quotes_api.py
+test/test_buyer_reject_request.py
 test/test_cancel_subscription_request.py
 test/test_card_type.py
 test/test_case_create.py
@@ -1183,8 +1215,10 @@ test/test_create_fx_rate_request.py
 test/test_create_grant_request.py
 test/test_create_mapping_request.py
 test/test_create_portal_token_response.py
+test/test_create_quote_request.py
 test/test_create_rate_card_request.py
 test/test_create_reconstruction_run_request.py
+test/test_create_session_response.py
 test/test_create_snapshot_request.py
 test/test_create_stripe_checkout_session_billing_address_collection.py
 test/test_create_stripe_checkout_session_consent_collection.py
@@ -1506,6 +1540,8 @@ test/test_meter_query_request.py
 test/test_meter_query_result.py
 test/test_meter_query_row.py
 test/test_meter_subscriptions_api.py
+test/test_meter_test_event_request.py
+test/test_meter_test_event_response.py
 test/test_meter_update.py
 test/test_meter_usage_summary_item.py
 test/test_meter_usage_summary_response.py
@@ -1589,6 +1625,7 @@ test/test_paginated_customers.py
 test/test_paginated_invoices.py
 test/test_paginated_payments.py
 test/test_paginated_sync_runs.py
+test/test_patch_session_request.py
 test/test_payment_allocation_response.py
 test/test_payment_create.py
 test/test_payment_due_date.py
@@ -1644,6 +1681,7 @@ test/test_portal_ptp_request.py
 test/test_portal_token.py
 test/test_portal_token_item.py
 test/test_price_payment_term.py
+test/test_price_session_response.py
 test/test_price_tier.py
 test/test_price_tier_payload.py
 test/test_priority.py
@@ -1665,6 +1703,15 @@ test/test_ptp_summary_response.py
 test/test_quantity.py
 test/test_quick_action.py
 test/test_quick_books_connect_request.py
+test/test_quote_approval_decision_request.py
+test/test_quote_approval_response.py
+test/test_quote_line_item_input.py
+test/test_quote_list_response.py
+test/test_quote_response.py
+test/test_quote_sessions_api.py
+test/test_quote_settings_response.py
+test/test_quote_version_response.py
+test/test_quotes_api.py
 test/test_rate_bulk_import_request.py
 test/test_rate_bulk_import_response.py
 test/test_rate_card.py
@@ -1838,8 +1885,6 @@ test/test_tenant_config_response.py
 test/test_tenant_escalation_config_out.py
 test/test_tenant_escalation_config_patch.py
 test/test_tenant_provision_request.py
-test/test_test_meter_event200_response.py
-test/test_test_meter_event_request.py
 test/test_tiered_price_mode.py
 test/test_tiered_price_with_commitments.py
 test/test_tiered_pricing_payload.py
@@ -1861,6 +1906,7 @@ test/test_unitamount.py
 test/test_unpriced_api.py
 test/test_update_auto_topup_rule_request.py
 test/test_update_credit_pool_request.py
+test/test_update_quote_settings_request.py
 test/test_update_threshold_request.py
 test/test_update_wallet_settings_request.py
 test/test_update_wallet_thresholds_request.py

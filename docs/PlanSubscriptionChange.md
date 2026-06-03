@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **metadata** | **Dict[str, str]** | Arbitrary metadata associated with the subscription. | [optional] 
 **commercial_overrides** | [**CommercialOverrides**](CommercialOverrides.md) | Commercial terms for this subscription (replaces prior overrides when set on change). | [optional] 
 **plan** | [**PlanReferenceInput**](PlanReferenceInput.md) | The plan reference to change to. | 
+**quote_origin_key** | **str** | Idempotency key supplied by accepted quote activation for subscription create or change requests. | [optional] 
 **starting_phase** | **str** | The key of the phase to start the subscription in. If not provided, the subscription will start in the first phase of the plan. | [optional] 
 **name** | **str** | The name of the Subscription. If not provided the plan name is used. | [optional] 
 **description** | **str** | Description for the Subscription. | [optional] 

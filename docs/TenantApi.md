@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**get_audit_traces**](TenantApi.md#get_audit_traces) | **GET** /v1/tenant/audit/traces | Get Audit Traces
 [**get_audit_warnings**](TenantApi.md#get_audit_warnings) | **GET** /v1/tenant/audit/warnings | Get Audit Warnings
 [**get_domain**](TenantApi.md#get_domain) | **GET** /v1/tenant/communications/domain | Get Domain
+[**get_effective_permissions_endpoint**](TenantApi.md#get_effective_permissions_endpoint) | **GET** /v1/tenant/permissions/effective | Get Effective Permissions Endpoint
 [**get_feature_flags_v1**](TenantApi.md#get_feature_flags_v1) | **GET** /v1/tenant/audit/feature-flags | Get Feature Flags
 [**get_integrations**](TenantApi.md#get_integrations) | **GET** /v1/tenant/integrations | Get Integrations
 [**get_integrations_health**](TenantApi.md#get_integrations_health) | **GET** /v1/tenant/integrations/health | Get Integrations Health
@@ -591,6 +592,78 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**DomainResponse**](DomainResponse.md)
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_effective_permissions_endpoint**
+> EffectivePermissionsResponse get_effective_permissions_endpoint()
+
+Get Effective Permissions Endpoint
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.effective_permissions_response import EffectivePermissionsResponse
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.TenantApi(api_client)
+
+    try:
+        # Get Effective Permissions Endpoint
+        api_response = api_instance.get_effective_permissions_endpoint()
+        print("The response of TenantApi->get_effective_permissions_endpoint:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TenantApi->get_effective_permissions_endpoint: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**EffectivePermissionsResponse**](EffectivePermissionsResponse.md)
 
 ### Authorization
 

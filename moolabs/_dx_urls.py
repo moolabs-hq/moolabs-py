@@ -28,6 +28,7 @@ the same resolver and won't race the cache.
 
 from __future__ import annotations
 
+import os
 import threading
 import time
 from dataclasses import dataclass
@@ -293,6 +294,23 @@ class IngestUrlResolver:
         self._region = region
         self._config = config or IngestResolverConfig()
         self._clock = clock
+
+        # MOOLABS_INGEST_HOST env var override — short-circuits the F2 chain.
+        # Customers running in single-region self-hosted or non-standard
+        # cloud deployments (e.g., a regional ingest subdomain that hasn't
+        # been provisioned yet) can pin the ingest host explicitly. Set
+        # this BEFORE the resolver runs through steps 2-4; the value
+        # populates _cached_url so step-1 returns it verbatim.
+        #
+        # Accepts either a bare host (``meter.dev.moolabs.com``,
+        # ``https://meter.dev.moolabs.com``) or a full URL — the path-
+        # doubling guard in _make_client_at_url normalizes either form.
+        _ingest_host_env = os.environ.get("MOOLABS_INGEST_HOST")
+        if _ingest_host_env:
+            # Ensure scheme prefix; bare hostnames are accepted for ergonomics
+            # but get an https:// prefix.
+            if not _ingest_host_env.startswith(("http://", "https://")):
+                _ingest_host_env = "https://" + _ingest_host_env
         # Use RLock to allow nested acquire from helpers (and to interoperate
         # with the Condition variable for singleflight discovery below).
         self._lock = threading.RLock()
@@ -304,8 +322,19 @@ class IngestUrlResolver:
         self._discovery_in_flight: bool = False
 
         # Cached regional ingest URL from a successful discovery (None until
-        # the first successful step-2 call).
-        self._cached_url: Optional[str] = None
+        # the first successful step-2 call). MOOLABS_INGEST_HOST populates
+        # this at construction time so get_ingest_url short-circuits to a
+        # step-1 cache hit on every call.
+        self._cached_url: Optional[str] = _ingest_host_env if _ingest_host_env else None
+
+        # Stickiness for the env-var pin (Phase 2 review 2026-06-03 Finding 3):
+        # report_post_outcome clears _cached_url when post_failure_threshold
+        # is breached. Without tracking the env-pinned URL separately, the
+        # explicit pin becomes a one-shot init value that silently degrades
+        # after N transient failures. Store the env pin so report_post_outcome
+        # can restore it instead of falling through to the F2 chain
+        # (which would derive a possibly-dead regional host).
+        self._env_pinned_url: Optional[str] = _ingest_host_env if _ingest_host_env else None
 
         # Timestamp until which discovery should be skipped after a failure.
         self._discovery_blocked_until: float = 0.0
@@ -407,7 +436,20 @@ class IngestUrlResolver:
             if count >= self._config.post_failure_threshold:
                 # Invalidate cache + mark URL as recently failed.
                 if self._cached_url == url:
-                    self._cached_url = None
+                    # Env-pinned URL is sticky (Phase 2 review Finding 3):
+                    # if the operator explicitly set MOOLABS_INGEST_HOST,
+                    # don't fall through to the F2 chain (which would
+                    # derive a possibly-dead regional host). Restore the
+                    # pin so the next call uses it again. The downstream
+                    # _recently_failed mark below still applies so we
+                    # don't HAMMER the host immediately — but at least
+                    # subsequent calls AFTER the TTL hit the pinned host,
+                    # not a different one.
+                    if self._env_pinned_url and url == self._env_pinned_url:
+                        # Keep _cached_url == env_pinned_url; don't clear.
+                        pass
+                    else:
+                        self._cached_url = None
                 self._recently_failed[url] = (
                     self._clock() + self._config.recently_failed_ttl_sec
                 )

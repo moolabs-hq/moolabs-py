@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **account_ref** | **Dict[str, object]** |  | 
 **deal_ref** | **Dict[str, object]** |  | 
 **buyer_contact_ref** | **Dict[str, object]** |  | 
+**quote_type** | **str** |  | [optional] [default to 'new_subscription']
 **owner_user_id** | **str** |  | 
 **current_version** | **int** |  | 
 **state** | **str** |  | 

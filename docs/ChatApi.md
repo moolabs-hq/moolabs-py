@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**act_on_template_confirmation_card_v1_chat**](ChatApi.md#act_on_template_confirmation_card_v1_chat) | **POST** /v1/chat/template-confirmation-cards/{card_id}/actions | Act On Template Confirmation Card
 [**chat**](ChatApi.md#chat) | **POST** /v1/chat | Chat
 [**delete_session**](ChatApi.md#delete_session) | **DELETE** /v1/chat/sessions/{session_id} | Delete Session
 [**download_arc_report**](ChatApi.md#download_arc_report) | **GET** /v1/chat/reports/{report_id}/download | Download Arc Report
@@ -12,6 +13,85 @@ Method | HTTP request | Description
 [**list_sessions**](ChatApi.md#list_sessions) | **GET** /v1/chat/sessions | List Sessions
 [**update_session**](ChatApi.md#update_session) | **PATCH** /v1/chat/sessions/{session_id} | Update Session
 
+
+# **act_on_template_confirmation_card_v1_chat**
+> object act_on_template_confirmation_card_v1_chat(card_id, template_card_action_request)
+
+Act On Template Confirmation Card
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.template_card_action_request import TemplateCardActionRequest
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.ChatApi(api_client)
+    card_id = 'card_id_example' # str | 
+    template_card_action_request = moolabs.TemplateCardActionRequest() # TemplateCardActionRequest | 
+
+    try:
+        # Act On Template Confirmation Card
+        api_response = api_instance.act_on_template_confirmation_card_v1_chat(card_id, template_card_action_request)
+        print("The response of ChatApi->act_on_template_confirmation_card_v1_chat:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ChatApi->act_on_template_confirmation_card_v1_chat: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **card_id** | **str**|  | 
+ **template_card_action_request** | [**TemplateCardActionRequest**](TemplateCardActionRequest.md)|  | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **chat**
 > object chat(chat_request)

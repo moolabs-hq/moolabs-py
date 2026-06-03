@@ -58,7 +58,7 @@ def _noop_logger(_msg: str, _fields: dict) -> None:
     """
 
 from ._dx_buffer import IngestBuffer, IngestBufferConfig
-from ._dx_namespaces import _Namespace, make_namespace
+from ._dx_namespaces import _EventsNamespace, _Namespace, make_namespace
 from ._dx_routing import CAPABILITY_ORDER, SUBDOMAIN_MAP
 from ._dx_urls import (
     IngestResolverConfig,
@@ -78,6 +78,25 @@ if TYPE_CHECKING:
 # direction (per requirements §C2): derive region from API key payload,
 # fall back to this hostname.
 _DEFAULT_BASE_URL = "moolabs.com"
+
+
+def _strip_path(host_or_url: str) -> str:
+    """Strip path / query / fragment from a URL, returning only scheme + host.
+
+    The F2 IngestUrlResolver emits full URLs like
+    ``https://meter.moolabs.com/api/v1/events``, but openapi-generator's
+    Configuration treats ``host=`` as a base path and re-appends the
+    operation path from the spec, producing a doubled
+    ``/api/v1/events/api/v1/events``. Collapsing to scheme + host before
+    handing the value to Configuration is the single-source-of-truth fix.
+
+    A bare host like ``https://meter.moolabs.com`` is preserved verbatim.
+    """
+    from urllib.parse import urlsplit, urlunsplit
+
+    parts = urlsplit(host_or_url)
+    # urlunsplit drops empty path/query/fragment cleanly.
+    return urlunsplit((parts.scheme, parts.netloc, "", "", ""))
 
 
 def _pascal_to_snake(name: str) -> str:
@@ -238,6 +257,13 @@ class Moolabs:
         # property accessors.
         self._namespaces: dict[str, _Namespace] = {}
 
+        # US-004: the ``events`` capability is special — it's not in the
+        # CAPABILITY_MAP (no backing API classes; it's a pure wrapper over
+        # the unified meter endpoint exposed via EventsApi). Cached
+        # separately from ``_namespaces`` so the generic dispatch loop
+        # doesn't try to look it up via CAPABILITY_MAP.
+        self._events_namespace: Optional[_EventsNamespace] = None
+
     # ── Public capability properties ────────────────────────────────────
 
     # Eleven capability namespaces (contracts §3.2). Each lazily constructs
@@ -289,6 +315,32 @@ class Moolabs:
     def notifications(self) -> "_Namespace":
         return self._ns("notifications")
 
+    @property
+    def events(self) -> "_EventsNamespace":
+        """Unified-surface events namespace (US-004).
+
+        Provides ``client.events.ingest(...)`` — a single method that can
+        emit a CloudEvent carrying BOTH a usage lane (meter_slug + value)
+        AND a cost lane (spans) in one envelope, when a customer has
+        both at the same call site.
+
+        For single-lane customers, prefer the dedicated entry points
+        (``client.usage.ingest_event`` or ``client.cost.ingest_event``) —
+        their required-kwargs signatures make the lane intent explicit
+        at the call site.
+
+        Lazy: the namespace is constructed on first access and cached
+        for the lifetime of the ``Moolabs`` instance.
+        """
+        if self._events_namespace is None:
+            self._events_namespace = _EventsNamespace(
+                ingest_resolver=self._ingest_resolver,
+                ingest_buffer=self._lazy_ingest_buffer(),
+                make_client_at_url=self._make_client_at_url,
+                import_api_class=_import_api_class,
+            )
+        return self._events_namespace
+
     # ── Lifecycle ────────────────────────────────────────────────────────
 
     def close(self) -> None:
@@ -325,6 +377,10 @@ class Moolabs:
                 pass
         self._clients.clear()
         self._namespaces.clear()
+        # US-004: release the events namespace cache so subsequent access
+        # would reconstruct (it'd then fail on the buffer being closed —
+        # consistent with the per-capability namespace behavior post-close).
+        self._events_namespace = None
 
     def __enter__(self) -> "Moolabs":
         return self
@@ -343,8 +399,14 @@ class Moolabs:
             return cached
 
         kwargs: dict[str, Any] = {}
-        if capability == "usage":
-            # Wire F2 + G5 hooks
+        if capability == "usage" or capability == "cost":
+            # Wire F2 + G5 hooks. US-003: cost capability also receives the
+            # F2 resolver + buffer for the new ergonomic
+            # client.cost.ingest_event(...) method that routes via the
+            # unified meter endpoint (NOT acute). Legacy cost methods
+            # (ingest_events_batch, ingest_sdk_spans, submit_adjustment)
+            # continue to use the normal per-backend ApiClient and are
+            # untouched by this wiring.
             kwargs["ingest_resolver"] = self._ingest_resolver
             kwargs["ingest_buffer"] = self._lazy_ingest_buffer()
             kwargs["make_client_at_url"] = self._make_client_at_url
@@ -379,10 +441,23 @@ class Moolabs:
         from the key — the SDK never sends OM-Namespace or any other
         tenant-discriminating header. If a backend fails to derive
         tenant from a valid key, the fix is server-side.
+
+        **Path-doubling guard:** the F2 IngestUrlResolver returns full
+        URLs INCLUDING the ``/api/v1/events`` suffix (see
+        ``_dx_urls._METER_INGEST_PATH``), but openapi-generator's
+        Configuration treats ``host`` as a base path AND re-appends the
+        operation path from the spec — emitting
+        ``/api/v1/events/api/v1/events`` and DNS-resolving against the
+        same regional host. Strip the path off the input here so any
+        full URL (host+path) collapses to a bare host. Verified by the
+        2026-06-02 dev.moolabs.com live test where the doubled-path bug
+        sent requests to a nonexistent endpoint.
         """
         # Import the generated layer lazily so `import moolabs` is fast.
         from moolabs.api_client import ApiClient
         from moolabs.configuration import Configuration
+
+        host = _strip_path(host)
 
         return ApiClient(
             Configuration(host=host, access_token=self._api_key)
@@ -411,36 +486,85 @@ class Moolabs:
         404) DISCARD the batch — retrying with the same key/body fails
         identically; keeping these in the buffer forever is the silent-
         data-loss bug. Logs at WARN so the operator sees the drop.
+
+        Sibling of US-001's fix for the strict-sync ``_ingest_events``
+        path. The openapi-generated ``EventsApi.ingest_events`` takes
+        ``event: Event`` (a SINGLE Event), not a list. Calling it with a
+        list raises pydantic ValidationError — which the caller's
+        ``_is_terminal_error`` check classifies as terminal, silently
+        dropping the entire batch via ``record_terminal_drop``. Customer
+        never sees an error because their call already returned with
+        ``transport='buffered'``. This is the silent-data-loss bug US-001
+        fixed for strict-sync; the drain callback was missed. Verified
+        against dev.moolabs.com on 2026-06-02: pre-fix, 0/3 buffered
+        events landed; post-fix, 3/3 land.
         """
         url = self._ingest_resolver.get_ingest_url()
+        # Partial-iteration accounting (Phase 2 review 2026-06-03 Finding 1,
+        # round 2 Finding A): the singular endpoint accepts one event at a
+        # time. If event N of a multi-event batch throws mid-iteration,
+        # events [0..N) are already accepted by the server. Without per-event
+        # accounting, the outer `except` would either silently re-classify
+        # all N+ remaining events as terminal_drop (overcounting loss) or
+        # return 0 (forcing the buffer to re-front all N delivered ones —
+        # producing duplicates).
+        #
+        # `delivered_so_far` is FUNCTION-SCOPE (not instance-scope) so
+        # concurrent drain callbacks — possible when close() timeout fires
+        # and both the worker thread and close-caller thread invoke
+        # _drain_once → _buffer_drain_callback — get independent counters.
+        delivered_so_far = 0
         try:
             client = self._make_client_at_url(url)
             EventsApi = _import_api_class("EventsApi")
-            EventsApi(client).ingest_events(events)
+            api = EventsApi(client)
+            # Unwrap single-element batches to the singular call; iterate
+            # multi-element batches event-by-event. Mirrors US-001 fix in
+            # _dx_namespaces.py:_UsageNamespace._ingest_events.
+            if len(events) == 1:
+                api.ingest_events(event=events[0])
+                delivered_so_far = 1
+            else:
+                for ev in events:
+                    api.ingest_events(event=ev)
+                    delivered_so_far += 1
             self._ingest_resolver.report_post_outcome(url, success=True)
             return len(events)
         except Exception as exc:
             # Lazy import to avoid namespace cycle at module load
             from ._dx_namespaces import _is_terminal_error
+            undelivered = max(0, len(events) - delivered_so_far)
             if _is_terminal_error(exc):
-                # Drop the batch — retry will fail identically. Bump the
-                # terminal-drop counter (always; cheap, polling-friendly)
-                # AND emit a per-event log (only if customer provided
-                # a logger). Counter alone tells you HOW MUCH; logger
-                # gives you WHICH status + WHICH error per event.
-                if self._ingest_buffer is not None:
-                    self._ingest_buffer.record_terminal_drop(len(events))
+                # Terminal: only the UNDELIVERED tail is dropped — events
+                # [0..delivered_so_far) were already accepted by the server
+                # and should NOT be counted as terminal_drop. The delivered
+                # prefix counts as `delivered` for the buffer's pop-from-front.
+                if self._ingest_buffer is not None and undelivered > 0:
+                    self._ingest_buffer.record_terminal_drop(undelivered)
                 self._logger(
                     "moolabs.ingest_buffer.terminal_drop",
                     {
                         "status": getattr(exc, "status", None),
-                        "count": len(events),
+                        "count": undelivered,
+                        "delivered_before_error": delivered_so_far,
                         "error": str(exc),
                     },
                 )
+                # Pop ALL len(events) from buffer's front:
+                # - first delivered_so_far were sent successfully
+                # - remaining undelivered were terminally dropped
+                # Either way they leave the queue.
                 return len(events)
             self._ingest_resolver.report_post_outcome(url, success=False)
-            return 0   # transient; events stay queued for next tick
+            # Transient: events [0..delivered_so_far) ARE on the server
+            # already. Returning `delivered_so_far` tells the buffer to
+            # pop only those from the front; events [delivered_so_far..]
+            # stay queued and retry on the next tick. This is the
+            # at-least-once contract for the delivered prefix — a server
+            # that doesn't dedup by event id will see duplicates of the
+            # delivered prefix. Servers that DO dedup (moo-meter does via
+            # CloudEvent id) coalesce them silently.
+            return delivered_so_far
 
     def _discover_tenant_config(self) -> dict:
         """Call ``GET /tenant/config`` on the BFF for the F2 resolver.

@@ -46,6 +46,7 @@ from moolabs.api.credit_memos_api import CreditMemosApi
 from moolabs.api.dashboard_api import DashboardApi
 from moolabs.api.default_api import DefaultApi
 from moolabs.api.disputes_api import DisputesApi
+from moolabs.api.dunning_templates_api import DunningTemplatesApi
 from moolabs.api.escalations_api import EscalationsApi
 from moolabs.api.fx_rates_api import FxRatesApi
 from moolabs.api.governance_api import GovernanceApi
@@ -75,6 +76,7 @@ from moolabs.api.plans_api import PlansApi
 from moolabs.api.pools_api import PoolsApi
 from moolabs.api.portal_api import PortalApi
 from moolabs.api.promises_api import PromisesApi
+from moolabs.api.quote_agents_api import QuoteAgentsApi
 from moolabs.api.quote_sessions_api import QuoteSessionsApi
 from moolabs.api.quotes_api import QuotesApi
 from moolabs.api.rate_cards_api import RateCardsApi

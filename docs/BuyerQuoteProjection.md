@@ -8,10 +8,12 @@ Name | Type | Description | Notes
 **quote_id** | **str** |  | 
 **version** | **int** |  | 
 **status** | **str** |  | 
+**quote_type** | **str** |  | [optional] [default to 'new_subscription']
 **buyer_contact** | **Dict[str, object]** |  | 
 **line_items** | [**List[BuyerQuoteLineItem]**](BuyerQuoteLineItem.md) |  | 
 **commercial_terms** | **Dict[str, object]** |  | 
 **credit_terms** | **Dict[str, object]** |  | 
+**lifecycle_terms** | **Dict[str, object]** |  | [optional] 
 **pricing** | [**BuyerQuotePricing**](BuyerQuotePricing.md) |  | 
 
 ## Example

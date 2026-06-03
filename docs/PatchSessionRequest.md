@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **scratchpad** | **Dict[str, object]** |  | [optional] 
 **line_items** | [**List[QuoteLineItemInput]**](QuoteLineItemInput.md) |  | [optional] 
+**commercial_terms** | **Dict[str, object]** |  | [optional] 
+**credit_terms** | **Dict[str, object]** |  | [optional] 
 
 ## Example
 

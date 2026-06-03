@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **billing_anchor** | **datetime** | The billing anchor of the subscription. The provided date will be normalized according to the billing cadence to the nearest recurrence before start time. If not provided, the previous subscription billing anchor will be used. | [optional] 
 **commercial_overrides** | [**CommercialOverrides**](CommercialOverrides.md) | Commercial terms for this subscription change. | [optional] 
 **custom_plan** | [**CustomPlanInput**](CustomPlanInput.md) | The custom plan description which defines the Subscription. | 
+**quote_origin_key** | **str** | Idempotency key supplied by accepted quote activation for subscription create or change requests. | [optional] 
 
 ## Example
 

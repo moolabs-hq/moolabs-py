@@ -12,6 +12,13 @@ Name | Type | Description | Notes
 **line_items** | **List[Dict[str, object]]** |  | 
 **commercial_terms** | **Dict[str, object]** |  | 
 **credit_terms** | **Dict[str, object]** |  | 
+**lifecycle_metadata** | **Dict[str, object]** |  | [optional] 
+**target_subscription_ref** | **Dict[str, object]** |  | [optional] 
+**current_contract_snapshot_digest** | **str** |  | [optional] 
+**effective_date** | **str** |  | [optional] 
+**co_term_behavior** | **str** |  | [optional] 
+**proration_basis** | **Dict[str, object]** |  | [optional] 
+**change_reason** | **str** |  | [optional] 
 **source_versions** | **Dict[str, object]** |  | [optional] 
 **pricing_snapshot_id** | **str** |  | 
 **quote_version_digest** | **str** |  | [optional] 

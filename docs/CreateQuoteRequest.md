@@ -9,6 +9,12 @@ Name | Type | Description | Notes
 **deal_ref** | **Dict[str, object]** |  | [optional] 
 **buyer_contact_ref** | **Dict[str, object]** |  | [optional] 
 **quote_type** | **str** |  | [optional] [default to 'new_subscription']
+**target_subscription_ref** | **Dict[str, object]** |  | [optional] 
+**current_contract_snapshot_digest** | **str** |  | [optional] 
+**effective_date** | **date** |  | [optional] 
+**co_term_behavior** | **str** |  | [optional] 
+**proration_basis** | **Dict[str, object]** |  | [optional] 
+**change_reason** | **str** |  | [optional] 
 
 ## Example
 

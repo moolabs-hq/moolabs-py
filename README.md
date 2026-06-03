@@ -99,6 +99,111 @@ client.meter.events.ingest_events([
 ])
 ```
 
+### Unified ergonomic ingest (recommended)
+
+The unified surface added in PR #439 lets you emit events with named
+kwargs instead of hand-rolling CloudEvent envelopes. The SDK builds the
+envelope, validates required fields synchronously (FR-6), and routes
+through the same buffer + retry path. Three methods cover the three
+shapes of event the platform accepts:
+
+```python
+# Usage-lane event — meter_slug + value required.
+client.usage.ingest_event(
+    event_type="ai.chat",
+    customer_id="cust_42",
+    entity_id="req_abc",           # threads to data.request_id on the wire
+    meter_slug="llm_tokens",
+    value=724,
+    source="my-app/v2.3.1",        # optional; defaults to "moolabs-sdk"
+    meta={"feature": "ai_chat"},   # optional; lands at data.meta nested
+)
+
+# Cost-lane event — per-span breakdown for AI cost intelligence.
+client.cost.ingest_event(
+    event_type="ai.chat.cost",
+    customer_id="cust_42",
+    entity_id="req_abc",           # same entity_id correlates the two
+    spans=[
+        {"span_id": "sp_chat", "model": "gpt-4o-mini", "tokens": 724,
+         "cost": 0.000724},
+    ],
+)
+
+# Dual-lane event — usage + cost emitted in one call.
+client.events.ingest(
+    event_type="ai.chat",
+    customer_id="cust_42",
+    entity_id="req_abc",
+    meter_slug="llm_tokens",
+    value=844,
+    spans=[{"span_id": "sp_embed", "model": "text-embedding-3-small",
+            "tokens": 120, "cost": 0.00000018}],
+)
+```
+
+Each returns an `IngestResult` with `event_id`, `transport` (`"buffered"`
+when the G5 buffer enqueued the call non-blocking, `"sync"` when strict-
+sync mode posted inline), and a client-side `accepted_at` timestamp.
+
+`tenant_id` is intentionally NOT a kwarg — the server derives tenant
+identity from the API key.
+
+#### Canonical well-known data fields
+
+These seven AI-event fields are first-class kwargs and land at
+`data.<key>` directly on the wire (snake_case). Use them — don't bury
+them in `meta=`. Free-form fields keep going through `meta=` and nest
+at `data.meta.<key>`.
+
+| kwarg | wire | example |
+|---|---|---|
+| `provider` | `data.provider` | `"openai"` |
+| `model` | `data.model` | `"gpt-4o"` |
+| `total_input_tokens` | `data.total_input_tokens` | `1250` |
+| `total_output_tokens` | `data.total_output_tokens` | `3800` |
+| `total_tokens` | `data.total_tokens` | `5050` |
+| `latency_ms` | `data.latency_ms` | `2340` |
+| `status` | `data.status` | `"success"` |
+
+```python
+client.usage.ingest_event(
+    event_type="ai.completion",
+    customer_id="cust_acme_42",
+    entity_id="req_a1b2c3d4",
+    meter_slug="ai_tokens",
+    value=1,
+    provider="openai",
+    model="gpt-4o",
+    total_input_tokens=1250,
+    total_output_tokens=3800,
+    total_tokens=5050,
+    latency_ms=2340,
+    status="success",
+    meta={"feature_key": "ai_chat"},   # customer-defined → data.meta.feature_key
+)
+```
+
+Spans on the cost lane use `span_id` (snake_case) as the dedup grain
+moo-acute reads. Always emit `span_id` — not `spanId`.
+
+### Pointing the SDK at a non-default ingest host
+
+For self-hosted deployments, preview environments, or hybrid setups
+where the ingest endpoint differs from the canonical apex, set
+`MOOLABS_INGEST_HOST` and the SDK will use it instead of the F2 region
+fallback:
+
+```bash
+export MOOLABS_INGEST_HOST=meter.dev.moolabs.com     # bare host (https:// added)
+# OR
+export MOOLABS_INGEST_HOST=https://my-relay.example.com
+```
+
+Accepts a bare hostname (https:// auto-prefixed) or a full URL. Mirrored
+on TypeScript (`process.env.MOOLABS_INGEST_HOST`) and Go (`os.Getenv`).
+Empty string is treated as unset and the F2 chain runs normally.
+
 ### Check entitlement
 
 ```python

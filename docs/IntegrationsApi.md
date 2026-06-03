@@ -6,9 +6,14 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**customer_upsert_v1**](IntegrationsApi.md#customer_upsert_v1) | **POST** /v1/integrations/netsuite-sim/events/customer | Customer Upsert
 [**enqueue_arc_transaction_v1_integrations**](IntegrationsApi.md#enqueue_arc_transaction_v1_integrations) | **POST** /v1/integrations/netsuite-sim/arc-transactions | Enqueue Arc Transaction
+[**get_crm_quote_record_card**](IntegrationsApi.md#get_crm_quote_record_card) | **GET** /v1/integrations/crm/quotes/{provider}/cards/{quote_id} | Get Crm Quote Record Card
 [**invoice_upsert_v1**](IntegrationsApi.md#invoice_upsert_v1) | **POST** /v1/integrations/netsuite-sim/events/invoice | Invoice Upsert
 [**openmeter_webhook**](IntegrationsApi.md#openmeter_webhook) | **POST** /v1/integrations/moometer/webhooks/moometer | Openmeter Webhook
 [**openmeter_webhook_batch**](IntegrationsApi.md#openmeter_webhook_batch) | **POST** /v1/integrations/moometer/webhooks/moometer/batch | Openmeter Webhook Batch
+[**post_crm_quote_context**](IntegrationsApi.md#post_crm_quote_context) | **POST** /v1/integrations/crm/quotes/{provider}/context | Post Crm Quote Context
+[**post_crm_quote_draft**](IntegrationsApi.md#post_crm_quote_draft) | **POST** /v1/integrations/crm/quotes/{provider}/draft | Post Crm Quote Draft
+[**post_google_chat_quote_event_v1**](IntegrationsApi.md#post_google_chat_quote_event_v1) | **POST** /v1/integrations/google-chat/quotes/events | Post Google Chat Quote Event
+[**post_slack_quote_command**](IntegrationsApi.md#post_slack_quote_command) | **POST** /v1/integrations/slack/quotes/commands | Post Slack Quote Command
 [**process_pending_v1_integrations**](IntegrationsApi.md#process_pending_v1_integrations) | **POST** /v1/integrations/netsuite-sim/process-pending | Process Pending
 [**readiness_v1**](IntegrationsApi.md#readiness_v1) | **GET** /v1/integrations/netsuite-sim/readiness | Readiness
 
@@ -167,6 +172,91 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_crm_quote_record_card**
+> CrmQuoteRecordCardResponse get_crm_quote_record_card(provider, quote_id, quote_version=quote_version, record_type=record_type, record_id=record_id)
+
+Get Crm Quote Record Card
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.crm_quote_record_card_response import CrmQuoteRecordCardResponse
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.IntegrationsApi(api_client)
+    provider = 'provider_example' # str | 
+    quote_id = 'quote_id_example' # str | 
+    quote_version = 56 # int |  (optional)
+    record_type = 'record_type_example' # str |  (optional)
+    record_id = 'record_id_example' # str |  (optional)
+
+    try:
+        # Get Crm Quote Record Card
+        api_response = api_instance.get_crm_quote_record_card(provider, quote_id, quote_version=quote_version, record_type=record_type, record_id=record_id)
+        print("The response of IntegrationsApi->get_crm_quote_record_card:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IntegrationsApi->get_crm_quote_record_card: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **provider** | **str**|  | 
+ **quote_id** | **str**|  | 
+ **quote_version** | **int**|  | [optional] 
+ **record_type** | **str**|  | [optional] 
+ **record_id** | **str**|  | [optional] 
+
+### Return type
+
+[**CrmQuoteRecordCardResponse**](CrmQuoteRecordCardResponse.md)
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -387,6 +477,290 @@ No authorization required
 |-------------|-------------|------------------|
 **201** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_crm_quote_context**
+> CrmQuoteContextResponse post_crm_quote_context(provider, crm_quote_context_request)
+
+Post Crm Quote Context
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.crm_quote_context_request import CrmQuoteContextRequest
+from moolabs.models.crm_quote_context_response import CrmQuoteContextResponse
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.IntegrationsApi(api_client)
+    provider = 'provider_example' # str | 
+    crm_quote_context_request = moolabs.CrmQuoteContextRequest() # CrmQuoteContextRequest | 
+
+    try:
+        # Post Crm Quote Context
+        api_response = api_instance.post_crm_quote_context(provider, crm_quote_context_request)
+        print("The response of IntegrationsApi->post_crm_quote_context:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IntegrationsApi->post_crm_quote_context: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **provider** | **str**|  | 
+ **crm_quote_context_request** | [**CrmQuoteContextRequest**](CrmQuoteContextRequest.md)|  | 
+
+### Return type
+
+[**CrmQuoteContextResponse**](CrmQuoteContextResponse.md)
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_crm_quote_draft**
+> CrmQuoteDraftResponse post_crm_quote_draft(provider, crm_quote_draft_request)
+
+Post Crm Quote Draft
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.crm_quote_draft_request import CrmQuoteDraftRequest
+from moolabs.models.crm_quote_draft_response import CrmQuoteDraftResponse
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.IntegrationsApi(api_client)
+    provider = 'provider_example' # str | 
+    crm_quote_draft_request = moolabs.CrmQuoteDraftRequest() # CrmQuoteDraftRequest | 
+
+    try:
+        # Post Crm Quote Draft
+        api_response = api_instance.post_crm_quote_draft(provider, crm_quote_draft_request)
+        print("The response of IntegrationsApi->post_crm_quote_draft:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IntegrationsApi->post_crm_quote_draft: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **provider** | **str**|  | 
+ **crm_quote_draft_request** | [**CrmQuoteDraftRequest**](CrmQuoteDraftRequest.md)|  | 
+
+### Return type
+
+[**CrmQuoteDraftResponse**](CrmQuoteDraftResponse.md)
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_google_chat_quote_event_v1**
+> GoogleChatQuoteResponse post_google_chat_quote_event_v1()
+
+Post Google Chat Quote Event
+
+### Example
+
+
+```python
+import moolabs
+from moolabs.models.google_chat_quote_response import GoogleChatQuoteResponse
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.IntegrationsApi(api_client)
+
+    try:
+        # Post Google Chat Quote Event
+        api_response = api_instance.post_google_chat_quote_event_v1()
+        print("The response of IntegrationsApi->post_google_chat_quote_event_v1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IntegrationsApi->post_google_chat_quote_event_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GoogleChatQuoteResponse**](GoogleChatQuoteResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_slack_quote_command**
+> SlackQuoteCommandResponse post_slack_quote_command()
+
+Post Slack Quote Command
+
+### Example
+
+
+```python
+import moolabs
+from moolabs.models.slack_quote_command_response import SlackQuoteCommandResponse
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.IntegrationsApi(api_client)
+
+    try:
+        # Post Slack Quote Command
+        api_response = api_instance.post_slack_quote_command()
+        print("The response of IntegrationsApi->post_slack_quote_command:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IntegrationsApi->post_slack_quote_command: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SlackQuoteCommandResponse**](SlackQuoteCommandResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -15,6 +15,9 @@ Name | Type | Description | Notes
 **credit_terms** | **Dict[str, object]** |  | 
 **lifecycle_terms** | **Dict[str, object]** |  | [optional] 
 **pricing** | [**BuyerQuotePricing**](BuyerQuotePricing.md) |  | 
+**seller_branding** | **Dict[str, object]** |  | [optional] 
+**terms_and_conditions** | **str** |  | [optional] 
+**buyer_request_status** | **str** |  | [optional] [default to 'none']
 
 ## Example
 

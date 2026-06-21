@@ -37,14 +37,15 @@ from urllib.parse import urlparse
 
 from ._dx_routing import (
     DEFAULT_REGION,
-    REGION_INGEST_MAP,
     SUBDOMAIN_MAP,
 )
 
 
 # Path appended to ``meter.{base_url}`` for the F2 step-4 last-resort fallback
-# (the always-derivable non-regional event endpoint). Used when discovery has
-# failed AND the region-map fallback URL is unreachable / unknown.
+# (the always-derivable non-regional event endpoint). Used whenever the
+# discovery cache is empty — discovery off, discovery in cooldown, discovery
+# returned an error, or discovery returned a URL the SDK has marked
+# recently-failed.
 _METER_INGEST_PATH = "/api/v1/events"
 
 # Path on the BFF for SDK auto-discovery of the regional ingest URL.
@@ -245,8 +246,8 @@ class IngestResolverConfig:
     """
 
     # Bounded TTL on a failed ``/tenant/config`` discovery attempt. Within
-    # this window the SDK skips re-trying discovery and goes straight to
-    # the region-map fallback.
+    # this window the SDK skips re-trying discovery and routes to step 4
+    # (``meter.{base}``) directly.
     discovery_retry_ttl_sec: float = 60.0
 
     # How many consecutive POST failures to a cached ingest URL before the
@@ -278,7 +279,7 @@ class IngestUrlResolver:
     The resolver does NOT perform HTTP itself — ``discovery_fn`` is a caller-
     supplied callback that returns the parsed ``/tenant/config`` response
     (a dict like ``{"endpoints": {"ingest": "...", ...}}``). On exception,
-    discovery is marked failed and step 3 is used.
+    discovery is marked failed and step 4 (``meter.{base}``) is used.
     """
 
     def __init__(
@@ -332,8 +333,8 @@ class IngestUrlResolver:
         # is breached. Without tracking the env-pinned URL separately, the
         # explicit pin becomes a one-shot init value that silently degrades
         # after N transient failures. Store the env pin so report_post_outcome
-        # can restore it instead of falling through to the F2 chain
-        # (which would derive a possibly-dead regional host).
+        # can restore it instead of falling through to step 4 (which would
+        # silently substitute ``meter.{base}`` for the operator's explicit pin).
         self._env_pinned_url: Optional[str] = _ingest_host_env if _ingest_host_env else None
 
         # Timestamp until which discovery should be skipped after a failure.
@@ -341,7 +342,7 @@ class IngestUrlResolver:
 
         # URL → timestamp the "recently failed" mark expires at.
         # Discovery returning a URL in this set causes the resolver to skip
-        # the discovered URL and fall through to step 3.
+        # the discovered URL and fall through to step 4 (``meter.{base}``).
         self._recently_failed: dict[str, float] = {}
 
         # Consecutive POST-failure counter per URL — when this reaches the
@@ -353,9 +354,9 @@ class IngestUrlResolver:
     def get_ingest_url(self) -> str:
         """Run the F2 chain and return a URL to POST events to.
 
-        Always returns a URL. Discovery failures fall through to step 3/4
-        rather than raising — the customer's ingest call should keep working
-        through transient backend outages.
+        Always returns a URL. Discovery failures fall through to step 4
+        (``meter.{base}``) rather than raising — the customer's ingest call
+        should keep working through transient backend outages.
 
         **Singleflight discovery** (post-PR #395 review I3): the 10s HTTP
         discovery call is made WITHOUT holding the resolver lock so other
@@ -382,7 +383,7 @@ class IngestUrlResolver:
                 and self._discovery_blocked_until <= self._clock()
             )
             if not should_discover:
-                # Step 3 — region-map fallback (no discovery this call).
+                # Step 4 — meter host (no discovery this call).
                 return self._region_fallback_url_locked()
 
             if self._discovery_in_flight:
@@ -393,7 +394,8 @@ class IngestUrlResolver:
                 self._discovery_cv.wait(timeout=self._config.discovery_retry_ttl_sec)
                 if self._cached_url is not None:
                     return self._cached_url
-                # Discoverer gave up; we fall through to step 3 ourselves.
+                # Discoverer gave up; we fall through to step 4 (meter host)
+                # ourselves.
                 return self._region_fallback_url_locked()
 
             # We own this discovery. Set the in-flight flag and release
@@ -424,7 +426,7 @@ class IngestUrlResolver:
         On failure: increment; if it reaches the threshold AND the URL is
         the cached one, invalidate the cache and record the URL as recently
         failed (so a subsequent discovery returning the same URL falls
-        through to step 3).
+        through to step 4, ``meter.{base}``).
         """
         with self._lock:
             if success:
@@ -438,13 +440,13 @@ class IngestUrlResolver:
                 if self._cached_url == url:
                     # Env-pinned URL is sticky (Phase 2 review Finding 3):
                     # if the operator explicitly set MOOLABS_INGEST_HOST,
-                    # don't fall through to the F2 chain (which would
-                    # derive a possibly-dead regional host). Restore the
-                    # pin so the next call uses it again. The downstream
-                    # _recently_failed mark below still applies so we
-                    # don't HAMMER the host immediately — but at least
-                    # subsequent calls AFTER the TTL hit the pinned host,
-                    # not a different one.
+                    # don't fall through to step 4 (which would silently
+                    # substitute ``meter.{base}`` for the operator's pin).
+                    # Restore the pin so the next call uses it again. The
+                    # downstream _recently_failed mark below still applies
+                    # so we don't HAMMER the host immediately — but at
+                    # least subsequent calls AFTER the TTL hit the pinned
+                    # host, not the meter default.
                     if self._env_pinned_url and url == self._env_pinned_url:
                         # Keep _cached_url == env_pinned_url; don't clear.
                         pass
@@ -461,7 +463,7 @@ class IngestUrlResolver:
                 self._cap_recently_failed_locked(64)
                 self._cap_post_failures_locked(64)
 
-    # ── Step 3/4 composition (callable for tests) ──
+    # ── Step 4 composition (callable for tests) ──
 
     def step4_last_resort_url(self) -> str:
         """The always-derivable last-resort URL: ``meter.{base}/api/v1/events``.
@@ -539,25 +541,35 @@ class IngestUrlResolver:
                     )
 
     def _region_fallback_url_locked(self) -> str:
-        """Compose ``https://ingest.{region_code}.{base_url}{path}`` from the
-        SDK's region map; if the region resolves to no entry, fall through
-        to step 4 (``meter.{base}/api/v1/events``)."""
-        region_code = REGION_INGEST_MAP.get(self._region)
-        if region_code is None:
-            # Unknown region marker — final fallback to the always-derivable
-            # meter host. Per contracts §3.5a this is also the steady-state
-            # route for single-region self-hosted customers.
-            return self.step4_last_resort_url()
+        """Return ``meter.{base_url}/api/v1/events`` — the single source of
+        truth for ingest when discovery (step 2) is unavailable or has failed.
 
-        candidate = (
-            f"https://ingest.{region_code}.{self._base_url}{_METER_INGEST_PATH}"
-        )
-        # If the regional URL itself is recently-failed (rare but possible
-        # if a previous discovery returned the same regional host), fall
-        # through to step 4.
-        if candidate in self._recently_failed:
-            return self.step4_last_resort_url()
-        return candidate
+        Earlier versions of this method tried to construct regional ingest
+        hosts (``https://ingest.{region_code}.{base_url}/api/v1/events``)
+        from the SDK's local region map. Two problems with that:
+
+        1. **Wrong URL for non-apex base_urls.** For ``dev.moolabs.com`` or
+           any customer-chosen env root, there is no
+           ``ingest.{region}.{root}`` subdomain — DNS doesn't resolve, the
+           POST fails. The first N events per process lifetime would be
+           silently lost before the recently_failed mark caused the SDK to
+           fall through.
+
+        2. **Local region construction is a guess.** The right place to
+           learn the customer's regional ingest URL is BFF discovery
+           (step 2 via ``/v1/tenant/config``). When discovery is enabled
+           and reachable, it returns the authoritative URL; the SDK should
+           NEVER guess from a local region map. When discovery is
+           unavailable, ``meter.{base_url}`` is the always-derivable
+           steady-state route for env-rooted and self-hosted bases per
+           contracts §3.5a.
+
+        Result: every call routes to ``meter.{base_url}/api/v1/events``
+        from #1 onward — no lossy preamble, no regional URL guessing.
+        Multi-region routing still works via discovery (step 2) when the
+        customer opts in via ``enable_ingest_discovery=True``.
+        """
+        return self.step4_last_resort_url()
 
     def _expire_recently_failed_locked(self) -> None:
         """Drop any "recently failed" entries whose TTL has passed."""

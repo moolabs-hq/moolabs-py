@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **quote_version_digest** | **str** |  | [optional] 
 **booking_trigger** | **str** |  | [optional] 
 **locked_at** | **str** |  | [optional] 
+**approval** | [**QuoteApprovalResponse**](QuoteApprovalResponse.md) |  | [optional] 
 
 ## Example
 

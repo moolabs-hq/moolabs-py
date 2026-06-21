@@ -20,6 +20,11 @@ Name | Type | Description | Notes
 **accepted_at** | **str** |  | [optional] 
 **resulting_quote_version** | **int** |  | [optional] 
 **created_at** | **str** |  | [optional] 
+**clause_family** | **str** |  | [optional] 
+**verdict** | **str** |  | [optional] 
+**matched_tier** | **str** |  | [optional] 
+**cited_span** | **Dict[str, object]** |  | [optional] 
+**confidence** | **float** |  | [optional] 
 
 ## Example
 

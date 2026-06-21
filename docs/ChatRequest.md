@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **messages** | [**List[ChatMessageIn]**](ChatMessageIn.md) |  | 
 **session_id** | **str** |  | [optional] 
 **stream** | **bool** |  | [optional] [default to True]
+**quote_id** | **str** |  | [optional] 
 
 ## Example
 

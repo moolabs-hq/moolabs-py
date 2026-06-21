@@ -4,8 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**create_template_v1**](TenantApi.md#create_template_v1) | **POST** /v1/tenant/quote-templates | Create Template
 [**delete_portal_token_v1**](TenantApi.md#delete_portal_token_v1) | **DELETE** /v1/tenant/portal-tokens/{token_id} | Delete Portal Token
+[**delete_template_v1**](TenantApi.md#delete_template_v1) | **DELETE** /v1/tenant/quote-templates/{template_id} | Delete Template
 [**get_api_keys_v1**](TenantApi.md#get_api_keys_v1) | **GET** /v1/tenant/api-keys | Get Api Keys
+[**get_approval_policy_history_v1**](TenantApi.md#get_approval_policy_history_v1) | **GET** /v1/tenant/approval-policy/history | Get Approval Policy History
+[**get_approval_policy_v1**](TenantApi.md#get_approval_policy_v1) | **GET** /v1/tenant/approval-policy | Get Approval Policy
 [**get_audit_changes**](TenantApi.md#get_audit_changes) | **GET** /v1/tenant/audit/changes | Get Audit Changes
 [**get_audit_evidence**](TenantApi.md#get_audit_evidence) | **GET** /v1/tenant/audit/evidence | Get Audit Evidence
 [**get_audit_traces**](TenantApi.md#get_audit_traces) | **GET** /v1/tenant/audit/traces | Get Audit Traces
@@ -27,12 +31,15 @@ Method | HTTP request | Description
 [**get_webhook**](TenantApi.md#get_webhook) | **GET** /v1/tenant/communications/webhook | Get Webhook
 [**get_webhook_logs**](TenantApi.md#get_webhook_logs) | **GET** /v1/tenant/webhook/logs | Get Webhook Logs
 [**get_webhook_metrics**](TenantApi.md#get_webhook_metrics) | **GET** /v1/tenant/webhook/metrics | Get Webhook Metrics
+[**grant_arc_dunning_template_admin_endpoint_v1_tenant_permissions**](TenantApi.md#grant_arc_dunning_template_admin_endpoint_v1_tenant_permissions) | **POST** /v1/tenant/permissions/arc-dunning-template-admin/grants | Grant Arc Dunning Template Admin Endpoint
 [**hubspot_connect**](TenantApi.md#hubspot_connect) | **POST** /v1/tenant/integrations/hubspot/connect | Hubspot Connect
 [**hubspot_disconnect**](TenantApi.md#hubspot_disconnect) | **POST** /v1/tenant/integrations/hubspot/disconnect | Hubspot Disconnect
 [**hubspot_oauth_callback**](TenantApi.md#hubspot_oauth_callback) | **GET** /v1/tenant/integrations/hubspot/oauth/callback | Hubspot Oauth Callback
 [**hubspot_test_connection**](TenantApi.md#hubspot_test_connection) | **POST** /v1/tenant/integrations/hubspot/test | Hubspot Test Connection
 [**issue_integration_key**](TenantApi.md#issue_integration_key) | **POST** /v1/tenant/integrations/{provider}/keys | Issue Integration Key
+[**list_arc_dunning_template_admin_users_endpoint_v1_tenant_permissions**](TenantApi.md#list_arc_dunning_template_admin_users_endpoint_v1_tenant_permissions) | **GET** /v1/tenant/permissions/arc-dunning-template-admin/users | List Arc Dunning Template Admin Users Endpoint
 [**list_templates**](TenantApi.md#list_templates) | **GET** /v1/tenant/communications/templates | List Templates
+[**list_templates_v1**](TenantApi.md#list_templates_v1) | **GET** /v1/tenant/quote-templates | List Templates
 [**netsuite_connect**](TenantApi.md#netsuite_connect) | **POST** /v1/tenant/integrations/netsuite/connect | Netsuite Connect
 [**netsuite_disconnect**](TenantApi.md#netsuite_disconnect) | **POST** /v1/tenant/integrations/netsuite/disconnect | Netsuite Disconnect
 [**netsuite_oauth_callback**](TenantApi.md#netsuite_oauth_callback) | **GET** /v1/tenant/integrations/netsuite/oauth/callback | Netsuite Oauth Callback
@@ -42,6 +49,7 @@ Method | HTTP request | Description
 [**post_portal_token_v1**](TenantApi.md#post_portal_token_v1) | **POST** /v1/tenant/portal-tokens | Post Portal Token
 [**post_revoke_api_key_v1**](TenantApi.md#post_revoke_api_key_v1) | **POST** /v1/tenant/api-keys/{key_id}/revoke | Post Revoke Api Key
 [**preview_template**](TenantApi.md#preview_template) | **POST** /v1/tenant/communications/templates/{template_id}/preview | Preview Template
+[**put_approval_policy_v1**](TenantApi.md#put_approval_policy_v1) | **PUT** /v1/tenant/approval-policy | Put Approval Policy
 [**put_domain**](TenantApi.md#put_domain) | **PUT** /v1/tenant/communications/domain | Put Domain
 [**put_feature_flag_v1**](TenantApi.md#put_feature_flag_v1) | **PUT** /v1/tenant/audit/feature-flags/{flag_id} | Put Feature Flag
 [**put_integration**](TenantApi.md#put_integration) | **PUT** /v1/tenant/integrations/{provider} | Put Integration
@@ -56,6 +64,7 @@ Method | HTTP request | Description
 [**retry_failed_deliveries**](TenantApi.md#retry_failed_deliveries) | **POST** /v1/tenant/webhook/retry | Retry Failed Deliveries
 [**revoke_all_api_keys_v1_tenant_danger**](TenantApi.md#revoke_all_api_keys_v1_tenant_danger) | **POST** /v1/tenant/danger/revoke-all-api-keys | Revoke All Api Keys
 [**revoke_all_portal_tokens_v1_tenant_danger**](TenantApi.md#revoke_all_portal_tokens_v1_tenant_danger) | **POST** /v1/tenant/danger/revoke-all-portal-tokens | Revoke All Portal Tokens
+[**revoke_arc_dunning_template_admin_endpoint_v1_tenant_permissions**](TenantApi.md#revoke_arc_dunning_template_admin_endpoint_v1_tenant_permissions) | **POST** /v1/tenant/permissions/arc-dunning-template-admin/grants/{grant_id}/revoke | Revoke Arc Dunning Template Admin Endpoint
 [**salesforce_connect**](TenantApi.md#salesforce_connect) | **POST** /v1/tenant/integrations/salesforce/connect | Salesforce Connect
 [**salesforce_disconnect**](TenantApi.md#salesforce_disconnect) | **POST** /v1/tenant/integrations/salesforce/disconnect | Salesforce Disconnect
 [**salesforce_oauth_callback**](TenantApi.md#salesforce_oauth_callback) | **GET** /v1/tenant/integrations/salesforce/oauth/callback | Salesforce Oauth Callback
@@ -63,11 +72,90 @@ Method | HTTP request | Description
 [**test_send_template_v1**](TenantApi.md#test_send_template_v1) | **POST** /v1/tenant/communications/templates/{template_id}/test-send | Test Send Template
 [**test_webhook**](TenantApi.md#test_webhook) | **POST** /v1/tenant/communications/webhook/test | Test Webhook
 [**update_revenue_recognition_v1**](TenantApi.md#update_revenue_recognition_v1) | **PUT** /v1/tenant/revenue-recognition | Update Revenue Recognition
+[**update_template_v1**](TenantApi.md#update_template_v1) | **PUT** /v1/tenant/quote-templates/{template_id} | Update Template
 [**xero_connect**](TenantApi.md#xero_connect) | **POST** /v1/tenant/integrations/xero/connect | Xero Connect
 [**xero_disconnect**](TenantApi.md#xero_disconnect) | **POST** /v1/tenant/integrations/xero/disconnect | Xero Disconnect
 [**xero_oauth_callback**](TenantApi.md#xero_oauth_callback) | **GET** /v1/tenant/integrations/xero/oauth/callback | Xero Oauth Callback
 [**xero_test_connection**](TenantApi.md#xero_test_connection) | **POST** /v1/tenant/integrations/xero/test | Xero Test Connection
 
+
+# **create_template_v1**
+> QuoteTemplateResponse create_template_v1(create_quote_template_request)
+
+Create Template
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.create_quote_template_request import CreateQuoteTemplateRequest
+from moolabs.models.quote_template_response import QuoteTemplateResponse
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.TenantApi(api_client)
+    create_quote_template_request = moolabs.CreateQuoteTemplateRequest() # CreateQuoteTemplateRequest | 
+
+    try:
+        # Create Template
+        api_response = api_instance.create_template_v1(create_quote_template_request)
+        print("The response of TenantApi->create_template_v1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TenantApi->create_template_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_quote_template_request** | [**CreateQuoteTemplateRequest**](CreateQuoteTemplateRequest.md)|  | 
+
+### Return type
+
+[**QuoteTemplateResponse**](QuoteTemplateResponse.md)
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_portal_token_v1**
 > object delete_portal_token_v1(token_id, revoke_portal_token_request=revoke_portal_token_request)
@@ -150,6 +238,80 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_template_v1**
+> delete_template_v1(template_id)
+
+Delete Template
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.TenantApi(api_client)
+    template_id = 'template_id_example' # str | 
+
+    try:
+        # Delete Template
+        api_instance.delete_template_v1(template_id)
+    except Exception as e:
+        print("Exception when calling TenantApi->delete_template_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **template_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_api_keys_v1**
 > List[ApiKeyItem] get_api_keys_v1()
 
@@ -206,6 +368,149 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**List[ApiKeyItem]**](ApiKeyItem.md)
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_approval_policy_history_v1**
+> object get_approval_policy_history_v1()
+
+Get Approval Policy History
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.TenantApi(api_client)
+
+    try:
+        # Get Approval Policy History
+        api_response = api_instance.get_approval_policy_history_v1()
+        print("The response of TenantApi->get_approval_policy_history_v1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TenantApi->get_approval_policy_history_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**object**
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_approval_policy_v1**
+> ApprovalPolicyResponse get_approval_policy_v1()
+
+Get Approval Policy
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.approval_policy_response import ApprovalPolicyResponse
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.TenantApi(api_client)
+
+    try:
+        # Get Approval Policy
+        api_response = api_instance.get_approval_policy_v1()
+        print("The response of TenantApi->get_approval_policy_v1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TenantApi->get_approval_policy_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ApprovalPolicyResponse**](ApprovalPolicyResponse.md)
 
 ### Authorization
 
@@ -1784,6 +2089,84 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **grant_arc_dunning_template_admin_endpoint_v1_tenant_permissions**
+> ArcDunningTemplateAdminGrantResponse grant_arc_dunning_template_admin_endpoint_v1_tenant_permissions(arc_dunning_template_admin_grant_request)
+
+Grant Arc Dunning Template Admin Endpoint
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.arc_dunning_template_admin_grant_request import ArcDunningTemplateAdminGrantRequest
+from moolabs.models.arc_dunning_template_admin_grant_response import ArcDunningTemplateAdminGrantResponse
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.TenantApi(api_client)
+    arc_dunning_template_admin_grant_request = moolabs.ArcDunningTemplateAdminGrantRequest() # ArcDunningTemplateAdminGrantRequest | 
+
+    try:
+        # Grant Arc Dunning Template Admin Endpoint
+        api_response = api_instance.grant_arc_dunning_template_admin_endpoint_v1_tenant_permissions(arc_dunning_template_admin_grant_request)
+        print("The response of TenantApi->grant_arc_dunning_template_admin_endpoint_v1_tenant_permissions:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TenantApi->grant_arc_dunning_template_admin_endpoint_v1_tenant_permissions: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **arc_dunning_template_admin_grant_request** | [**ArcDunningTemplateAdminGrantRequest**](ArcDunningTemplateAdminGrantRequest.md)|  | 
+
+### Return type
+
+[**ArcDunningTemplateAdminGrantResponse**](ArcDunningTemplateAdminGrantResponse.md)
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **hubspot_connect**
 > object hubspot_connect(hub_spot_connect_request)
 
@@ -2149,6 +2532,78 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **list_arc_dunning_template_admin_users_endpoint_v1_tenant_permissions**
+> ArcDunningTemplateAdminUsersResponse list_arc_dunning_template_admin_users_endpoint_v1_tenant_permissions()
+
+List Arc Dunning Template Admin Users Endpoint
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.arc_dunning_template_admin_users_response import ArcDunningTemplateAdminUsersResponse
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.TenantApi(api_client)
+
+    try:
+        # List Arc Dunning Template Admin Users Endpoint
+        api_response = api_instance.list_arc_dunning_template_admin_users_endpoint_v1_tenant_permissions()
+        print("The response of TenantApi->list_arc_dunning_template_admin_users_endpoint_v1_tenant_permissions:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TenantApi->list_arc_dunning_template_admin_users_endpoint_v1_tenant_permissions: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ArcDunningTemplateAdminUsersResponse**](ArcDunningTemplateAdminUsersResponse.md)
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_templates**
 > List[TemplateItem] list_templates()
 
@@ -2205,6 +2660,78 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**List[TemplateItem]**](TemplateItem.md)
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_templates_v1**
+> QuoteTemplateListResponse list_templates_v1()
+
+List Templates
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.quote_template_list_response import QuoteTemplateListResponse
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.TenantApi(api_client)
+
+    try:
+        # List Templates
+        api_response = api_instance.list_templates_v1()
+        print("The response of TenantApi->list_templates_v1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TenantApi->list_templates_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**QuoteTemplateListResponse**](QuoteTemplateListResponse.md)
 
 ### Authorization
 
@@ -2888,6 +3415,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TemplatePreviewResponse**](TemplatePreviewResponse.md)
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_approval_policy_v1**
+> ApprovalPolicyResponse put_approval_policy_v1(update_approval_policy_request)
+
+Put Approval Policy
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.approval_policy_response import ApprovalPolicyResponse
+from moolabs.models.update_approval_policy_request import UpdateApprovalPolicyRequest
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.TenantApi(api_client)
+    update_approval_policy_request = moolabs.UpdateApprovalPolicyRequest() # UpdateApprovalPolicyRequest | 
+
+    try:
+        # Put Approval Policy
+        api_response = api_instance.put_approval_policy_v1(update_approval_policy_request)
+        print("The response of TenantApi->put_approval_policy_v1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TenantApi->put_approval_policy_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **update_approval_policy_request** | [**UpdateApprovalPolicyRequest**](UpdateApprovalPolicyRequest.md)|  | 
+
+### Return type
+
+[**ApprovalPolicyResponse**](ApprovalPolicyResponse.md)
 
 ### Authorization
 
@@ -3991,6 +4596,86 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **revoke_arc_dunning_template_admin_endpoint_v1_tenant_permissions**
+> ArcDunningTemplateAdminGrantResponse revoke_arc_dunning_template_admin_endpoint_v1_tenant_permissions(grant_id, arc_dunning_template_admin_revoke_request)
+
+Revoke Arc Dunning Template Admin Endpoint
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.arc_dunning_template_admin_grant_response import ArcDunningTemplateAdminGrantResponse
+from moolabs.models.arc_dunning_template_admin_revoke_request import ArcDunningTemplateAdminRevokeRequest
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.TenantApi(api_client)
+    grant_id = 'grant_id_example' # str | 
+    arc_dunning_template_admin_revoke_request = moolabs.ArcDunningTemplateAdminRevokeRequest() # ArcDunningTemplateAdminRevokeRequest | 
+
+    try:
+        # Revoke Arc Dunning Template Admin Endpoint
+        api_response = api_instance.revoke_arc_dunning_template_admin_endpoint_v1_tenant_permissions(grant_id, arc_dunning_template_admin_revoke_request)
+        print("The response of TenantApi->revoke_arc_dunning_template_admin_endpoint_v1_tenant_permissions:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TenantApi->revoke_arc_dunning_template_admin_endpoint_v1_tenant_permissions: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **grant_id** | **str**|  | 
+ **arc_dunning_template_admin_revoke_request** | [**ArcDunningTemplateAdminRevokeRequest**](ArcDunningTemplateAdminRevokeRequest.md)|  | 
+
+### Return type
+
+[**ArcDunningTemplateAdminGrantResponse**](ArcDunningTemplateAdminGrantResponse.md)
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **salesforce_connect**
 > object salesforce_connect(salesforce_connect_request)
 
@@ -4493,6 +5178,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 **object**
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_template_v1**
+> QuoteTemplateResponse update_template_v1(template_id, update_quote_template_request)
+
+Update Template
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.models.quote_template_response import QuoteTemplateResponse
+from moolabs.models.update_quote_template_request import UpdateQuoteTemplateRequest
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.TenantApi(api_client)
+    template_id = 'template_id_example' # str | 
+    update_quote_template_request = moolabs.UpdateQuoteTemplateRequest() # UpdateQuoteTemplateRequest | 
+
+    try:
+        # Update Template
+        api_response = api_instance.update_template_v1(template_id, update_quote_template_request)
+        print("The response of TenantApi->update_template_v1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TenantApi->update_template_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **template_id** | **str**|  | 
+ **update_quote_template_request** | [**UpdateQuoteTemplateRequest**](UpdateQuoteTemplateRequest.md)|  | 
+
+### Return type
+
+[**QuoteTemplateResponse**](QuoteTemplateResponse.md)
 
 ### Authorization
 

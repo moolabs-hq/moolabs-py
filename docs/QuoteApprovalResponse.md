@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **approval_basis_digest** | **str** |  | [optional] 
 **reasons** | **List[Dict[str, object]]** |  | [optional] 
 **approval_id** | **str** |  | [optional] 
+**chain** | **Dict[str, object]** |  | [optional] 
 
 ## Example
 

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **plan_id** | **str** |  | 
 **plan** | **Dict[str, object]** |  | [optional] 
 **effective_at** | **datetime** |  | [optional] 
+**pricing_shape** | **str** |  | [optional] 
 
 ## Example
 

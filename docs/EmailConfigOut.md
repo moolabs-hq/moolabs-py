@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **reply_domain** | **str** |  | 
 **reply_resend_domain_id** | **str** |  | 
 **reply_verification_status** | **str** |  | 
+**internal_contact_domains** | **List[str]** |  | 
 **inbound_secret_last4** | **str** |  | 
 **dns_records** | **List[Dict[str, object]]** |  | [optional] 
 **reply_dns_records** | **List[Dict[str, object]]** |  | [optional] 

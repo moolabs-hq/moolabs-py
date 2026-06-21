@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**diagnose_subscription**](AdminApi.md#diagnose_subscription) | **GET** /v1/admin/diagnostics/subscription/{subscription_id} | Diagnose Subscription
+[**get_ingest_dead_letter_endpoint_v1**](AdminApi.md#get_ingest_dead_letter_endpoint_v1) | **GET** /v1/admin/ingest/dead-letters/{dead_letter_id} | Get Ingest Dead Letter Endpoint
 [**get_ingest_dead_letters_v1**](AdminApi.md#get_ingest_dead_letters_v1) | **GET** /v1/admin/ingest/dead-letters | Get Ingest Dead Letters
 [**get_ledger_audit_get**](AdminApi.md#get_ledger_audit_get) | **GET** /v1/admin/ledger/audit | Get Ledger Audit
 [**get_ledger_balance_get**](AdminApi.md#get_ledger_balance_get) | **GET** /v1/admin/ledger/balance | Get Ledger Balance
@@ -25,6 +26,7 @@ Diagnose subscription sync and grant creation status.  Returns:     Dictionary w
 
 ### Example
 
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -37,6 +39,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -70,7 +81,85 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_ingest_dead_letter_endpoint_v1**
+> object get_ingest_dead_letter_endpoint_v1(dead_letter_id)
+
+Get Ingest Dead Letter Endpoint
+
+Return one ingest dead-letter record including raw payload and stack trace.  Authentication is enforced subtree-wide by `dependencies=[Depends(try_portal_or_apikey)]` on the `/admin` mount in `app/api/v1/router.py`. This handler additionally takes the resolved `auth` context as a parameter so we can derive the caller's `tenant_id` SERVER-SIDE -- it is *not* read from a client-supplied header (an earlier iteration of this PR used `X-Org-Id`; round-3 adversarial review proved that input was unverified user-input and could be spoofed by harvesting `tenant_id` from the list endpoint).  Cross-tenant guard: the row's ``tenant_id`` must match ``auth.tenant_id`` OR be NULL (untenanted poison-pill events). Mismatch returns 404 -- not 403 -- so the endpoint never leaks the existence of a row in another tenant.
+
+### Example
+
+* Bearer (opaque) Authentication (HTTPBearer):
+
+```python
+import moolabs
+from moolabs.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = moolabs.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with moolabs.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = moolabs.AdminApi(api_client)
+    dead_letter_id = 'dead_letter_id_example' # str | Dead-letter row identifier
+
+    try:
+        # Get Ingest Dead Letter Endpoint
+        api_response = api_instance.get_ingest_dead_letter_endpoint_v1(dead_letter_id)
+        print("The response of AdminApi->get_ingest_dead_letter_endpoint_v1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->get_ingest_dead_letter_endpoint_v1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dead_letter_id** | **str**| Dead-letter row identifier | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
 
 ### HTTP request headers
 
@@ -91,10 +180,11 @@ No authorization required
 
 Get Ingest Dead Letters
 
-List durable ingest dead-letter records.
+List durable ingest dead-letter records.  Cross-tenant enumeration guard (PR #632 round-6 HIGH):  `try_portal_or_apikey` accepts per-tenant customer API keys (the same keys SDK customers use to submit events). Without forcing the tenant scope server-side, a customer of tenant A could omit the `tenant_id` query parameter -- or supply tenant B's id -- and enumerate all dead letters across all tenants (cloud_event_id, reason_detail, source_topic, kafka coords). The round-6 review correctly escalated this from MEDIUM residue to HIGH because the auth dep IS reachable by customer keys.  Fix mirrors the detail endpoint: the caller's auth-derived tenant scope is forced as the filter, overriding any client-supplied ``tenant_id`` query parameter. In production all three AuthContext subclasses (`ApiKeyContext`, `PortalTokenContext`, `OIDCJWTContext`) require ``tenant_id`` at construction, so the fall-through branch where ``auth.tenant_id is None`` honors the client-supplied filter is unreachable today -- it remains as defensive code in case a future staff-key path produces an untenanted context.
 
 ### Example
 
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -107,12 +197,21 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.AdminApi(api_client)
-    tenant_id = 'tenant_id_example' # str | Optional tenant filter (optional)
+    tenant_id = 'tenant_id_example' # str | Optional tenant filter (ignored for per-tenant auth) (optional)
     pool_id = 'pool_id_example' # str | Optional pool filter (optional)
     replay_status = 'replay_status_example' # str | Optional replay status filter: PENDING/REPLAYED/FAILED (optional)
     reason_code = 'reason_code_example' # str | Optional reason code filter (optional)
@@ -134,7 +233,7 @@ with moolabs.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**| Optional tenant filter | [optional] 
+ **tenant_id** | **str**| Optional tenant filter (ignored for per-tenant auth) | [optional] 
  **pool_id** | **str**| Optional pool filter | [optional] 
  **replay_status** | **str**| Optional replay status filter: PENDING/REPLAYED/FAILED | [optional] 
  **reason_code** | **str**| Optional reason code filter | [optional] 
@@ -146,7 +245,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[HTTPBearer](../README.md#HTTPBearer)
 
 ### HTTP request headers
 
@@ -171,6 +270,7 @@ Explain ledger audit trace.  This provides a detailed audit trail of journal ent
 
 ### Example
 
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -183,6 +283,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -228,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[HTTPBearer](../README.md#HTTPBearer)
 
 ### HTTP request headers
 
@@ -253,6 +362,7 @@ Get ledger balance at a specific point in time (time travel query).  This calcul
 
 ### Example
 
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -265,6 +375,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -304,7 +423,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[HTTPBearer](../README.md#HTTPBearer)
 
 ### HTTP request headers
 
@@ -329,6 +448,7 @@ Break-glass first_ingress_at override.  This endpoint requires DB role/session p
 
 ### Example
 
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -342,6 +462,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -373,7 +502,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[HTTPBearer](../README.md#HTTPBearer)
 
 ### HTTP request headers
 
@@ -398,6 +527,7 @@ Manually process an existing lifecycle event.  This directly calls the worker's 
 
 ### Example
 
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -410,6 +540,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -443,7 +582,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[HTTPBearer](../README.md#HTTPBearer)
 
 ### HTTP request headers
 
@@ -464,10 +603,11 @@ No authorization required
 
 Replay Ingest Dead Letter Endpoint
 
-Replay a dead-letter event back through normalization + usage ingest.
+Replay a dead-letter event back through normalization + usage ingest.  Cross-tenant guard (PR #632 round-7 review): the replay is state-changing (rolls forward usage events, marks the row REPLAYED, can assign a tenant via ``tenant_id_override``). Without this guard, a per-tenant customer key holder who passes the subtree auth gate could replay any tenant's poison-pill rows or assign their replay to another tenant. Round 7 surfaced this sibling-to-detail-endpoint hole that earlier rounds missed.
 
 ### Example
 
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -481,6 +621,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -514,7 +663,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[HTTPBearer](../README.md#HTTPBearer)
 
 ### HTTP request headers
 
@@ -539,6 +688,7 @@ Retry an UNPRICED usage event.  This resets the event to PENDING status so it ca
 
 ### Example
 
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -553,6 +703,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -584,7 +743,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[HTTPBearer](../README.md#HTTPBearer)
 
 ### HTTP request headers
 
@@ -609,6 +768,7 @@ Review a QUARANTINED usage event.  Actions: - \"retry\": Reset to PENDING for re
 
 ### Example
 
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -623,6 +783,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -654,7 +823,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[HTTPBearer](../README.md#HTTPBearer)
 
 ### HTTP request headers
 
@@ -679,6 +848,7 @@ Manually trigger subscription sync and lifecycle event publishing.  This endpoin
 
 ### Example
 
+* Bearer (opaque) Authentication (HTTPBearer):
 
 ```python
 import moolabs
@@ -691,6 +861,15 @@ configuration = moolabs.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (opaque): HTTPBearer
+configuration = moolabs.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with moolabs.ApiClient(configuration) as api_client:
@@ -722,7 +901,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[HTTPBearer](../README.md#HTTPBearer)
 
 ### HTTP request headers
 

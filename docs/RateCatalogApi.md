@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_rate_entry**
-> RateCatalogResponse create_rate_entry(rate_catalog_create)
+> RateCatalogResponse create_rate_entry(rate_catalog_create, idempotency_key=idempotency_key)
 
 Create Rate Entry
 
@@ -146,10 +146,11 @@ with moolabs.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = moolabs.RateCatalogApi(api_client)
     rate_catalog_create = moolabs.RateCatalogCreate() # RateCatalogCreate | 
+    idempotency_key = 'idempotency_key_example' # str |  (optional)
 
     try:
         # Create Rate Entry
-        api_response = api_instance.create_rate_entry(rate_catalog_create)
+        api_response = api_instance.create_rate_entry(rate_catalog_create, idempotency_key=idempotency_key)
         print("The response of RateCatalogApi->create_rate_entry:\n")
         pprint(api_response)
     except Exception as e:
@@ -164,6 +165,7 @@ with moolabs.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rate_catalog_create** | [**RateCatalogCreate**](RateCatalogCreate.md)|  | 
+ **idempotency_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -362,7 +364,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rate_history**
-> List[RateCatalogResponse] rate_history(tenant_id=tenant_id, provider=provider, model=model, metric_type=metric_type)
+> List[RateCatalogResponse] rate_history(tenant_id=tenant_id, provider=provider, model=model, metric_type=metric_type, effective_from_after=effective_from_after, effective_from_before=effective_from_before)
 
 Rate History
 
@@ -409,10 +411,12 @@ with moolabs.ApiClient(configuration) as api_client:
     provider = 'provider_example' # str |  (optional)
     model = 'model_example' # str |  (optional)
     metric_type = 'metric_type_example' # str |  (optional)
+    effective_from_after = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
+    effective_from_before = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
 
     try:
         # Rate History
-        api_response = api_instance.rate_history(tenant_id=tenant_id, provider=provider, model=model, metric_type=metric_type)
+        api_response = api_instance.rate_history(tenant_id=tenant_id, provider=provider, model=model, metric_type=metric_type, effective_from_after=effective_from_after, effective_from_before=effective_from_before)
         print("The response of RateCatalogApi->rate_history:\n")
         pprint(api_response)
     except Exception as e:
@@ -430,6 +434,8 @@ Name | Type | Description  | Notes
  **provider** | **str**|  | [optional] 
  **model** | **str**|  | [optional] 
  **metric_type** | **str**|  | [optional] 
+ **effective_from_after** | **datetime**|  | [optional] 
+ **effective_from_before** | **datetime**|  | [optional] 
 
 ### Return type
 

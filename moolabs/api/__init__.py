@@ -40,7 +40,9 @@ from moolabs.api.buyer_quotes_api import BuyerQuotesApi
 from moolabs.api.cases_api import CasesApi
 from moolabs.api.cash_credits_api import CashCreditsApi
 from moolabs.api.chat_api import ChatApi
+from moolabs.api.clause_packs_api import ClausePacksApi
 from moolabs.api.cloud_billing_api import CloudBillingApi
+from moolabs.api.contract_editor_api import ContractEditorApi
 from moolabs.api.cost_events_api import CostEventsApi
 from moolabs.api.credit_memos_api import CreditMemosApi
 from moolabs.api.dashboard_api import DashboardApi
@@ -77,6 +79,8 @@ from moolabs.api.pools_api import PoolsApi
 from moolabs.api.portal_api import PortalApi
 from moolabs.api.promises_api import PromisesApi
 from moolabs.api.quote_agents_api import QuoteAgentsApi
+from moolabs.api.quote_contract_webhooks_api import QuoteContractWebhooksApi
+from moolabs.api.quote_contracts_api import QuoteContractsApi
 from moolabs.api.quote_sessions_api import QuoteSessionsApi
 from moolabs.api.quotes_api import QuotesApi
 from moolabs.api.rate_cards_api import RateCardsApi
@@ -100,4 +104,5 @@ from moolabs.api.unpriced_api import UnpricedApi
 from moolabs.api.usage_api import UsageApi
 from moolabs.api.wallets_api import WalletsApi
 from moolabs.api.webhooks_api import WebhooksApi
+from moolabs.api.word_addin_api import WordAddinApi
 

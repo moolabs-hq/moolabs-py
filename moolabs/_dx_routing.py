@@ -6,8 +6,9 @@ back each customer-facing capability namespace. The DX layer reads it to:
   1. Construct capability namespace objects with the right backing classes.
   2. Derive the per-class backend (bff / meter / arc) so each call goes to
      the right host via the SUBDOMAIN_MAP.
-  3. Resolve the regional ingest URL in the F2 fallback chain via the
-     REGION_INGEST_MAP.
+  3. Carry the REGION_INGEST_MAP as forward-compat metadata mirroring BFF's
+     own REGION_INGEST_MAP (the SDK no longer composes regional ingest URLs
+     locally — see contracts §3.5 historical note for the 2026-06-20 removal).
 
 Adding a new capability or new backing class:
   - Append to ``CAPABILITY_MAP`` with the correct ``BackingClass(name, backend)``.
@@ -69,14 +70,17 @@ SUBDOMAIN_MAP: dict[str, str] = {
 
 # ── Region → ingest-host subdomain ────────────────────────────────────────
 #
-# F2 fallback chain (contracts §3.5) step 3: if ``/tenant/config`` discovery
-# fails for the event-ingest hot path, the SDK uses this map plus a region
-# source (today: hardcoded ``"us"``; future: extracted from the API key) to
-# compose ``https://ingest.{region_code}.{base_url}``.
+# Retained for cross-language parity and as forward-compat metadata for
+# discovery-returned regional URLs. The SDK no longer composes
+# ``https://ingest.{region_code}.{base_url}`` locally — regional URL
+# selection is BFF's responsibility (the F2 chain's step 2 discovery).
+# When discovery is unavailable or fails, the SDK falls through directly to
+# ``meter.{base_url}/api/v1/events`` (see ``_dx_urls.py`` step 4 and
+# contracts §3.5 historical note).
 #
 # Mirrors BFF's ``REGION_INGEST_MAP`` in
 # ``services/moolabs-app/bff/app/api/v1/tenant_config.py``. Drift between
-# the two would surface as wrong-region ingest during a BFF outage; the
+# the two would still surface as wrong-region ingest in discovery responses;
 # values are kept identical by convention. Update both sides together.
 REGION_INGEST_MAP: dict[str, str] = {
     "us-east-1":      "us",

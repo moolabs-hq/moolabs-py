@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **model** | **str** |  | 
 **metric_type** | **str** |  | 
 **tier** | **str** |  | 
-**rate_per_unit** | **float** |  | 
+**rate_per_unit** | **str** |  | 
 **rate_unit_scale** | **int** |  | 
 **currency** | **str** |  | 
 **source** | **str** |  | 

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **effective_from** | **datetime** | Effective from timestamp | 
 **effective_to** | **datetime** | Effective to timestamp (None &#x3D; indefinite) | [optional] 
 **pricing_model** | **Dict[str, object]** | Pricing model (JSON object) | 
+**pricing_shape** | **str** | Frozen plan pricing shape (usage|seat|hybrid|flat) | [optional] 
 
 ## Example
 

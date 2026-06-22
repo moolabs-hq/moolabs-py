@@ -105,6 +105,38 @@ def _check_spans_have_span_ids(spans: list[dict]) -> None:
             )
 
 
+def _check_cost_spans_have_provider_and_model(spans: list[dict]) -> None:
+    """Every cost-lane span MUST carry a non-empty ``provider`` and ``model``.
+
+    Acute's cost-enricher rejects spans without both via a silent ``continue``
+    at ``services/moo-acute/app/workers/cost_enricher.py``; events with all-
+    invalid spans produce NO log line at acute, making the drop invisible to
+    operators. Reject up front so the failure surfaces at the call site rather
+    than as a downstream "cost event silently disappeared" investigation.
+
+    The validator accepts a per-span ``provider``/``model`` OR a span_id-only
+    span when the top-level ``provider``/``model`` kwargs on ``cost.ingest_event``
+    are set (the canonical wire shape supports both). The call site decides
+    which form to accept; this function checks the per-span form.
+    """
+    for i, span in enumerate(spans):
+        if not isinstance(span, dict):
+            # Caught by _check_spans_have_span_ids already; defensive only.
+            continue
+        if not span.get("provider"):
+            raise ValueError(
+                f"spans[{i}].provider must be a non-empty string — spans without "
+                "provider are silently dropped during downstream cost processing, "
+                "resulting in missing cost-attribution data"
+            )
+        if not span.get("model"):
+            raise ValueError(
+                f"spans[{i}].model must be a non-empty string — spans without "
+                "model are silently dropped during downstream cost processing, "
+                "resulting in missing cost-attribution data"
+            )
+
+
 def _check_meta_is_json_serializable(meta: dict) -> None:
     """Verify ``meta`` round-trips through JSON BEFORE buffer enqueue.
 
@@ -195,6 +227,23 @@ def _build_envelope(
         _check_value_is_finite(value)
     if spans is not None:
         _check_spans_have_span_ids(spans)
+        # Lane discriminator: USAGE envelopes carry meter_slug+value and may
+        # optionally include spans as supplemental context (e.g. event lineage
+        # or per-span breakdown attached to a usage emit). Those spans don't
+        # flow through the downstream cost-enrichment pipeline and don't need
+        # provider/model. COST envelopes carry ONLY spans (no meter_slug, no
+        # value) and DO flow to the cost-enrichment pipeline, which silently
+        # drops spans without provider+model. The provider+model check fires
+        # only on the cost lane.
+        #
+        # Empty string is treated as equivalent to None for meter_slug —
+        # matches the Go SDK's ``args.MeterSlug == ""`` semantics where empty
+        # string is the natural zero value. Without this, a caller passing
+        # ``meter_slug=""`` (explicit empty, not None) would silently bypass
+        # the cost-span check.
+        is_cost_lane = (meter_slug is None or meter_slug == "") and value is None
+        if is_cost_lane and (not provider or not model):
+            _check_cost_spans_have_provider_and_model(spans)
     if meta is not None:
         _check_meta_is_json_serializable(meta)
 
